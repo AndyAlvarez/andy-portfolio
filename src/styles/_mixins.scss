@@ -1,0 +1,7 @@
+@mixin cut($c: 10px) {
+  clip-path: polygon($c 0, 100% 0, 100% calc(100% - #{$c}), calc(100% - #{$c}) 100%, 0 100%, 0 $c);
+}
+@mixin chrome-text {
+  background: linear-gradient(180deg, #fff 0%, #c9ced6 45%, #6f7784 52%, #e8ebef 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}

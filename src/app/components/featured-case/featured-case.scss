@@ -1,0 +1,22 @@
+:host { display: grid; grid-template-columns: 1.1fr 1fr; gap: 36px; margin-bottom: 46px; align-items: start; }
+:host(.rev) .media { order: 2; }
+.media { display: grid; gap: 14px; min-width: 0; }
+.kick { font-family: var(--f-vfd); font-size: 19px; color: var(--cyan); letter-spacing: 2px; }
+h3 { font-family: var(--f-display); font-size: 30px; color: #fff; margin: 6px 0 16px; line-height: 1.15; }
+ul { padding-left: 18px; display: grid; gap: 8px; font-size: 15px; line-height: 1.5; }
+ul ::ng-deep b { color: #fff; }
+.supp { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
+.supp div { padding: 14px; }
+.supp b { display: block; margin-bottom: 4px; color: #fff; font-family: var(--f-display); font-size: 14px; }
+.supp small { font-size: 12.5px; line-height: 1.45; display: block; }
+.seal { margin-top: 18px; display: inline-block; padding: 8px 14px; font-size: 13px; letter-spacing: 1px; border: 1px solid var(--gold); color: var(--gold); font-family: var(--f-display); }
+@media (max-width: 1000px) {
+  :host { grid-template-columns: 1fr; gap: 22px; }
+  :host(.rev) .media { order: 0; }
+}
+@media (max-width: 600px) {
+  h3 { font-size: 24px; }
+  .kick { font-size: 16px; }
+  .supp { grid-template-columns: 1fr; }
+  ul { font-size: 14.5px; }
+}

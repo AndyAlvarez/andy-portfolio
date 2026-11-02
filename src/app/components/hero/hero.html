@@ -1,0 +1,26 @@
+<header class="hero" id="top">
+  <div class="unit" aria-hidden="true"></div>
+  <div class="intro">
+    <div class="eyebrow">{{ p.title }}</div>
+    <h1>{{ p.name.first }} <em>{{ p.name.last }}</em></h1>
+    <p class="lede">{{ p.lede }}</p>
+    <div class="meta">@for (m of p.meta; track m) { <span><i>◉</i> {{ m }}</span> }</div>
+    <div class="stats">
+      @for (s of p.stats; track s.value) { <div><b>{{ s.value }}</b><small>{{ s.label }}</small></div> }
+    </div>
+    <div class="btns">
+      <a class="chip-btn" href="#work" (click)="go('work', $event)">SEE FEATURED WORK</a>
+      <a class="chip-btn chrome" href="#resume" (click)="go('resume', $event)">VIEW RESUME</a>
+    </div>
+    <div class="eq" aria-hidden="true">
+      @for (h of eq; track $index) { <i [style.height.%]="h"></i> }
+    </div>
+  </div>
+  <article class="feature">
+    <div class="fhead"><span class="fno">CASE 01</span><span>GUIDENT CORP. · 2024–PRESENT</span></div>
+    @if (heroVideo) { <app-yt-embed [video]="heroVideo" [eager]="true" /> }
+    <h3>Passenger Communication Module</h3>
+    <p>{{ summary }}</p>
+    <div class="tags">@for (t of tags; track t) { <i>{{ t }}</i> }</div>
+  </article>
+</header>

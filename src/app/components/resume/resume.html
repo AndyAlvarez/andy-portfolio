@@ -1,0 +1,31 @@
+<section id="resume" class="sec">
+  <h2 class="sec-title"><span>04</span> RESUME</h2>
+  <div class="wrap">
+    <div class="left">
+      <ol class="tl">
+        @for (j of jobs; track j.role) {
+          <li><i class="dot"></i><div class="when">{{ j.when }}</div><b>{{ j.role }}</b><span>{{ j.org }}</span><p>{{ j.summary }}</p></li>
+        }
+        <li><i class="dot"></i><div class="when">{{ edu.when }}</div><b>{{ edu.degrees }}</b><span>{{ edu.school }}</span></li>
+      </ol>
+      <div class="skills">
+        @for (s of skills; track s.group) { <div class="panel"><b>{{ s.group }}</b><span>{{ s.items.join(' · ') }}</span></div> }
+      </div>
+    </div>
+    <app-viewer-frame class="doc" name="Andy_Alvarez · Resume">
+      <article class="paper">
+        <h1>ANDY ALVAREZ</h1>
+        <p class="pc">{{ p.location }} · Open to remote &amp; relocation · {{ p.email }} · {{ p.linkedin }} · {{ p.github }}</p>
+        <h2>EXPERIENCE</h2>
+        @for (j of jobs; track j.role) {
+          <p class="job"><b>{{ j.org.split(' · ')[0] }}</b> — {{ j.role }} <i>{{ j.when }}</i></p>
+          <ul>@for (b of j.bullets; track $index) { <li>{{ b }}</li> }</ul>
+        }
+        <h2>EDUCATION</h2>
+        <p><b>{{ edu.school }}</b><br />@for (l of edu.lines; track l) { {{ l }}<br /> }</p>
+        <h2>SKILLS</h2>
+        @for (s of skills; track s.group) { <p><b>{{ s.group }}:</b> {{ s.items.join(', ') }}</p> }
+      </article>
+    </app-viewer-frame>
+  </div>
+</section>
