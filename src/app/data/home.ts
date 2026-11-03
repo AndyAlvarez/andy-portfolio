@@ -47,7 +47,7 @@ export const WHAT_I_DO: WhatIDo[] = [
   },
 ];
 
-export type FeaturedId = 'pcm' | 'db' | 'ai' | 'wpt';
+export type FeaturedId = 'pcm' | 'db' | 'ai' | 'wpt' | 'sumo';
 
 export interface FeaturedCard {
   id: FeaturedId;
@@ -93,18 +93,16 @@ export const FEATURED: FeaturedCard[] = [
     link: { label: 'OPEN CASE STUDY →', href: CASE_STUDY_SOON },
   },
   {
-    id: 'ai',
-    kind: 'COURSEWORK',
-    kindColor: '#B48CFF',
-    discipline: 'AI · Neural networks',
-    title: 'Pandas vs Cats & Dogs: CNN Image Classifiers',
-    body: 'Neural Networks Project 2: built and iterated two convolutional image classifiers in TensorFlow/Keras over three model versions each. Best test accuracy: 0.97 for pandas vs dogs and 0.935 for pandas vs cats.',
-    more: 'Also on GitHub: MLP backprop digit classifier, EKG heart-attack classifier, Perceptron/Adaline vowels, power-plant regression, phishing detection.',
-    tags: ['Python', 'TensorFlow', 'Keras', 'Colab'],
-    foot: 'FIU coursework',
-    footFlag: 'TERM: CONFIRM', // DRAFT: replace with the course term, then delete footFlag.
-    // Notebook is not published yet: no link-out (null renders a non-clickable label).
-    link: { label: 'VIEW NOTEBOOK →', href: null },
+    id: 'sumo',
+    kind: 'PROFESSIONAL',
+    kindColor: '#00E5FF',
+    discipline: 'Embedded · Robotics',
+    title: 'Sumo Bot · GE Appliances',
+    // Facts from Andy's resume only (GE Appliances co-op, Jan – Apr 2023).
+    body: 'Built and programmed a sumo bot in C on an Adafruit Metro M0 with IR sensors, ultrasonic sensors, DC motors and LEDs. It placed 1st in the final competition.',
+    tags: ['C', 'Adafruit Metro M0', 'IR + ultrasonic', 'DC motors'],
+    foot: 'Software Technology Co-op · GE Appliances · Jan – Apr 2023',
+    link: { label: 'OPEN CASE STUDY →', href: CASE_STUDY_SOON },
   },
   {
     id: 'wpt',
@@ -116,6 +114,20 @@ export const FEATURED: FeaturedCard[] = [
     tags: ['C++', 'Arduino Mega', 'Hall-effect', 'DC motors'],
     foot: 'Team Leader · FIU Senior Design · 2022 – 23',
     link: { label: 'OPEN CASE STUDY →', href: CASE_STUDY_SOON },
+  },
+  {
+    id: 'ai',
+    kind: 'COURSEWORK',
+    kindColor: '#B48CFF',
+    discipline: 'AI · Neural networks',
+    title: 'Pandas vs Cats & Dogs: CNN Image Classifiers',
+    body: 'Neural Networks Project 2: built and iterated two convolutional image classifiers in TensorFlow/Keras over three model versions each. Best test accuracy on 200-image test sets: 0.97 for pandas vs dogs and 0.955 for pandas vs cats.',
+    more: 'Also on GitHub: MLP backprop digit classifier, EKG heart-attack classifier, Perceptron/Adaline vowels, power-plant regression, phishing detection.',
+    tags: ['Python', 'TensorFlow', 'Keras', 'Colab'],
+    foot: 'FIU coursework',
+    footFlag: 'TERM: CONFIRM', // DRAFT: replace with the course term, then delete footFlag.
+    // Notebook is not published yet: no link-out (null renders a non-clickable label).
+    link: { label: 'VIEW NOTEBOOK →', href: null },
   },
 ];
 

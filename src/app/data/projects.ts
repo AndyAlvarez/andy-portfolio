@@ -32,6 +32,6 @@ export const PROJECTS: Project[] = [
     title: 'Sumo Bot · GE Appliances',
     text: 'Built in C on an Adafruit Metro M0 with IR, ultrasonic and motors. 1st in the final competition.',
     stack: 'C · Metro M0 · Sensors',
-    clipPlaceholder: 'Clip coming soon',
+    image: 'assets/media/sumo_bot_poster.jpg',
   },
 ];

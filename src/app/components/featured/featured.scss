@@ -7,6 +7,16 @@
 .inv { filter: invert(1) hue-rotate(180deg); }
 .badge { position: absolute; left: 10px; top: 10px; z-index: 2; pointer-events: none; font-family: var(--f-vfd); font-size: 16px; padding: 1px 8px; background: #0b0b12dd; color: var(--cyan); border: 1px solid #00e5ff66; }
 .badge.r { left: auto; right: 10px; color: #b48cff; border-color: #7b2cff99; }
+.badge.r.gold { color: #ffd34d; border-color: #ffd34d88; }
+/* PCM spans the full row on top; its media sits beside the text on wide screens. */
+.card.wide { grid-column: 1 / -1; }
+@media (min-width: 1000px) {
+  .card.wide { flex-direction: row; }
+  .card.wide .cim { flex: 0 0 58%; height: auto; aspect-ratio: 16 / 9; border-bottom: 0; border-right: 1px solid #1f51ff55; }
+  .card.wide .cb { padding: 22px 22px 16px; justify-content: center; }
+  .card.wide h4 { font-size: 22px; }
+  .card.wide p { font-size: 14.5px; }
+}
 .paper-in {
   all: unset; cursor: zoom-in; position: absolute; right: 14px; bottom: 14px; z-index: 2; width: 128px; height: 168px; overflow: hidden;
   background: #fff; border: 2px solid #05060a; outline: 1px solid var(--purple); box-shadow: 0 10px 30px #000c; transform: rotate(3deg);

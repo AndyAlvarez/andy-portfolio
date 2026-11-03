@@ -40,6 +40,17 @@ export const WPT_CARD_CLIP: Clip = {
   label: 'Own clip · Mar 2023 · lab demo',
 };
 
+/**
+ * Clip on the home-page sumo bot card (personal Drive, phone video recorded Apr 19 2023, 4K60, 24.5 s).
+ * Re-encoded H.264 1280×720 30 fps + AAC 128k, faststart; full length, no trim. Has audio, so it plays unmuted.
+ */
+export const SUMO_CARD_CLIP: Clip = {
+  src: 'assets/media/sumo_bot.mp4',
+  poster: 'assets/media/sumo_bot_poster.jpg',
+  hasAudio: true,
+  label: 'Clip · Apr 2023 · sumo match',
+};
+
 /** Andy's photo of the lab-test serial monitor ("Percent Misalignment: 1.53%"). From his personal Drive, Sample Work › Self Aligning Wireless Power Transfer › percent_misalignment.png. */
 export const WPT_MISALIGNMENT_PHOTO = {
   src: 'assets/media/wpt_percent_misalignment.jpg',

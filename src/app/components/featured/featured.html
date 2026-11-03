@@ -2,7 +2,7 @@
   <h2 class="sec-title"><span>01</span> FEATURED PROJECTS <a class="more" href="#work">ALL PROJECTS →</a></h2>
   <div class="fg">
     @for (c of cards; track c.id) {
-      <article class="card panel cut" [attr.id]="'project-' + c.id">
+      <article class="card panel cut" [class.wide]="c.id === 'pcm'" [attr.id]="'project-' + c.id">
         <div class="cim" [class.diagram]="c.id === 'db'">
           @switch (c.id) {
             @case ('pcm') {
@@ -17,6 +17,10 @@
               <img src="assets/media/cnn_pandas_vs_cats_training.png" class="inv" loading="lazy"
                 alt="Training and validation accuracy curves from the pandas vs cats CNN notebook" />
               <span class="badge">CHART</span><span class="badge r">FROM THE NOTEBOOK</span>
+            }
+            @case ('sumo') {
+              <app-inline-video [src]="sumoClip.src" [poster]="sumoClip.poster" [bigPlay]="true" [muted]="!sumoClip.hasAudio" eqLabel="SUMO BOT CLIP" (playing)="sumoPlaying.set($event)" />
+              @if (!sumoPlaying()) { <span class="badge">▶ VIDEO</span><span class="badge r gold">1ST PLACE</span> }
             }
             @case ('wpt') {
               <app-inline-video [src]="clip.src" [poster]="clip.poster" [bigPlay]="true" [muted]="!clip.hasAudio" eqLabel="WPT ROBOT CLIP" (playing)="clipPlaying.set($event)" />
