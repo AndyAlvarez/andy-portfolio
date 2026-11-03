@@ -8,9 +8,10 @@
     clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);
   }
   .top { display: grid; grid-template-columns: minmax(0, 1fr) 560px; gap: 48px; align-items: center; }
-  .eyebrow { font-family: var(--f-vfd); font-size: 22px; letter-spacing: 3px; color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
+  .eyebrow { font-family: var(--f-vfd); font-size: 23px; letter-spacing: 1px; color: var(--cyan); }
   .role { display: none; }
-  h1 { font-family: var(--f-display); font-weight: 900; font-size: 88px; line-height: .96; margin: 10px 0 18px; filter: drop-shadow(0 2px 0 var(--blue)); }
+  .btns .chip-btn:not(.chrome) { box-shadow: 0 0 16px #1f51ff99; }
+  h1 { font-family: var(--f-display); font-weight: 700; font-size: 88px; line-height: .96; margin: 10px 0 18px; filter: drop-shadow(0 2px 0 var(--blue)); }
   h1 em { font-style: normal; display: block; }
   .lede { font-size: 18px; line-height: 1.55; color: #d5d9df; max-width: 620px; }
   .bul { list-style: none; display: grid; gap: 10px; margin: 22px 0 24px; }
@@ -34,7 +35,7 @@
 
   .hstack { margin: 22px 0 4px; max-width: 640px; border-top: 1px solid #1f51ff55; }
   .hstack div { display: grid; grid-template-columns: 190px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid #1f51ff55; }
-  .hstack dt { font-family: var(--f-vfd); font-size: 18px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); line-height: 1.3; }
+  .hstack dt { font-family: var(--f-vfd); font-size: 19px; letter-spacing: .5px; color: var(--cyan); line-height: 1.3; }
   .hstack dd { font-size: 14.5px; line-height: 1.55; color: #d5d9df; }
   .hstack dd span { white-space: nowrap; }
 
@@ -59,14 +60,9 @@
 @include m.pro {
   .unit { display: none; }
   .hx { position: relative; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gut); }
-  .hx::before {
-    content: ''; position: absolute; inset: -40px 0 auto auto; width: min(700px, 100%); height: 520px;
-    background: radial-gradient(closest-side, var(--glow), transparent); pointer-events: none;
-  }
-  .hx > * { position: relative; }
   .top { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; padding: 72px 0 56px; }
   .eyebrow { display: none; }
-  h1 { font-family: var(--f-head); font-size: 80px; line-height: .98; letter-spacing: -.04em; font-weight: 700; margin-bottom: 14px; color: var(--tx); }
+  h1 { font-family: var(--f-head); font-size: 80px; line-height: .98; letter-spacing: -.04em; font-weight: 600; margin-bottom: 14px; color: var(--tx); }
   .role { font-size: 22px; line-height: 1.35; font-weight: 400; letter-spacing: -.01em; color: var(--tx); margin-bottom: 18px; }
   .role span { white-space: nowrap; }
   h1 em { font-style: normal; }

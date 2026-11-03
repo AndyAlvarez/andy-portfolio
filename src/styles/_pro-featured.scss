@@ -28,7 +28,7 @@
 
   .cb { padding: 24px 26px 22px; display: flex; flex-direction: column; gap: 12px; flex: 1; min-width: 0; }
   .card.wide .cb { padding: 30px 32px; gap: 14px; }
-  h4 { font-family: var(--f-head); font-size: 22px; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; color: var(--tx); }
+  h4 { font-family: var(--f-head); font-size: 22px; font-weight: 600; letter-spacing: -.02em; line-height: 1.2; color: var(--tx); }
   .card.wide h4 { font-size: 28px; }
   p { font-size: 15px; line-height: 1.62; color: var(--tx2); }
   .note { font-size: 13.5px; color: var(--mut); border-left: 2px solid var(--line2); padding-left: 10px; }
@@ -45,19 +45,19 @@
   .pstrip { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0 16px 16px; }
   .ptile { margin: 0; min-width: 0; }
   .ptile app-loop-clip, .ptile button { display: block; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--r2); background: #000; }
-  .ptile button { all: unset; display: block; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--r2); cursor: zoom-in; }
+  .ptile button { all: unset; display: block; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--r2); cursor: zoom-in; box-sizing: border-box; border: 1px solid transparent; transition: border-color .15s; }
+  .ptile button:hover { border-color: var(--mut); }
   .ptile button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .ptile img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; transition: transform .2s; }
-  .ptile button:hover img { transform: scale(1.03); }
+  .ptile img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; }
   .ptile figcaption { font-size: 12.5px; color: var(--mut); margin-top: 6px; }
 
   .paper-in, .photo-in {
     all: unset; cursor: zoom-in; position: absolute; bottom: 12px; z-index: 2; overflow: hidden; border-radius: 4px;
-    border: 2px solid #fff; box-shadow: 0 6px 20px rgba(0, 0, 0, .35); transition: transform .15s;
+    border: 2px solid #fff; box-shadow: 0 6px 20px rgba(0, 0, 0, .35); transition: border-color .15s;
   }
   .paper-in { right: 12px; width: 96px; height: 126px; background: #fff; }
   .photo-in { left: 12px; bottom: 12px; width: 116px; height: 80px; background: #000; }
-  .paper-in:hover, .photo-in:hover, .paper-in:focus-visible, .photo-in:focus-visible { transform: scale(1.04); }
+  .paper-in:hover, .photo-in:hover, .paper-in:focus-visible, .photo-in:focus-visible { border-color: var(--accent); }
   .paper-in:focus-visible, .photo-in:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .paper-in img { width: 100%; height: auto; display: block; }
   .photo-in img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 62%; display: block; }
@@ -71,7 +71,7 @@
   .photodlg { width: min(1100px, 94vw); }
   .paperdlg::backdrop, .photodlg::backdrop { background: rgba(0, 0, 0, .6); backdrop-filter: blur(3px); }
   .photodlg img { display: block; width: 100%; height: auto; max-height: 80vh; object-fit: contain; user-select: none; background: #000; }
-  .dlgbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--line); font-family: var(--f-mono); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--mut); }
+  .dlgbar { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--line); font-family: var(--f-sans); font-size: 13px; color: var(--mut); }
   .x { all: unset; cursor: pointer; font-size: 16px; padding: 2px 8px; border-radius: 4px; color: var(--tx2); }
   .x:hover, .x:focus-visible { color: var(--accent-t); background: var(--chip); }
   .credit { display: block; padding: 8px 14px 10px; font-size: 11.5px; color: var(--mut); }

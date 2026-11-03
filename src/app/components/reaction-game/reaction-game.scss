@@ -43,15 +43,15 @@
   .pad { background: #0b0b12; border: 1px solid #c0c6cf44; @include m.cut(8px); }
   .pad:focus-visible, .go:focus-visible { outline: 1px solid var(--cyan); outline-offset: 2px; }
   .dot { background: #2a3140; }
-  .num { font-family: var(--f-vfd); font-size: 34px; color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
-  .num small { font-size: 16px; margin-left: 2px; color: var(--mute); text-shadow: none; }
+  .num { font-family: var(--f-vfd); font-size: 34px; color: var(--cyan); }
+  .num small { font-size: 16px; margin-left: 2px; color: var(--mute); }
   .rx[data-s='lit'] .pad { background: #00e5ff22; border-color: var(--cyan); box-shadow: 0 0 18px #00e5ff88, inset 0 0 14px #00e5ff55; }
   .rx[data-s='lit'] .dot { background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
   .rx[data-s='early'] .pad { border-style: dashed; border-color: #ffcc00; }
-  .rt b { font-family: var(--f-vfd); font-weight: 400; font-size: 20px; letter-spacing: 1px; color: #fff; text-transform: uppercase; }
+  .rt b { font-family: var(--f-vfd); font-weight: 400; font-size: 21px; letter-spacing: .5px; color: #fff; }
   .rt span { font-size: 13px; color: #b9c0ca; line-height: 1.45; }
   .go {
-    font-family: var(--f-display); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; padding: 10px 16px;
+    font-family: var(--f-display); font-size: 12px; font-weight: 600; letter-spacing: .5px; padding: 10px 16px;
     background: linear-gradient(#e9ecf0, #8d95a1); color: var(--ink); @include m.cut(8px);
   }
   .go:hover { filter: brightness(1.1); }

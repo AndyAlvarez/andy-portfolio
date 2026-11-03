@@ -35,9 +35,9 @@ let nextId = 0;
     :host-context([data-ui='atomic']) {
       & { border: 1px solid #c0c6cf44; }
       .lab { background: #000c; color: var(--cyan); font-family: var(--f-vfd); font-size: 15px; }
-      .bigplay { width: 76px; height: 76px; background: #05060acc; border: 2px solid var(--cyan); box-shadow: 0 0 18px #00e5ff88, inset 0 0 12px #00e5ff44; }
+      .bigplay { width: 76px; height: 76px; background: #05060acc; border: 2px solid var(--cyan); }
       .bigplay i { left: 31px; top: 23px; border-width: 15px 0 15px 24px;
-        border-color: transparent transparent transparent var(--cyan); filter: drop-shadow(0 0 6px #00e5ff); }
+        border-color: transparent transparent transparent var(--cyan); }
       .bigplay:hover, .bigplay:focus-visible { background: #00e5ff22; }
       @media (max-width: 600px) {
         .bigplay { width: 60px; height: 60px; }

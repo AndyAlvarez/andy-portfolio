@@ -14,12 +14,12 @@ li a { display: block; }
   .mark, .l-pro, .pi { display: none; }
   .logo, .hr { flex: 1 1 0; }
   .hr { justify-content: flex-end; gap: 14px; }
-  .l-atomic { @include m.chrome-text; font-family: var(--f-display); font-weight: 900; font-size: 20px; letter-spacing: 4px; }
+  .l-atomic { @include m.chrome-text; font-family: var(--f-display); font-weight: 700; font-size: 20px; letter-spacing: 4px; }
   .l-atomic span { color: var(--cyan); -webkit-text-fill-color: var(--cyan); }
-  .cta { text-transform: uppercase; }
   ul { gap: 6px; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
   li a { padding: 8px 16px; border: 1px solid transparent; transition: color .15s, border-color .15s; }
-  li a:hover, li.on a { color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
+  li a:hover, li.on a { color: var(--cyan); }
+  li.on a { text-shadow: 0 0 10px var(--cyan); }
   li.on a { border-color: #00e5ff55; background: #00e5ff0d; }
   @media (max-width: 900px) {
     .nav { padding: 14px var(--pad); }

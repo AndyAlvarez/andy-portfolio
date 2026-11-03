@@ -24,14 +24,14 @@
   --bg: #FAFAF8; --surf: #FFFFFF; --hdr: rgba(250, 250, 248, .9); --tx: #0E1116; --tx2: #3A4150; --mut: #6B7280;
   --line: #E7E5E0; --line2: #D5D2CB; --accent: #1F51FF; --accent-t: #1F44D6; --onacc: #FFFFFF; --chip: #EEF2FF; --pdfbg: #F1F0EC;
   --shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .06);
-  --segbg: #F1F0EC; --segon: #FFFFFF; --segonink: #0E1116; --glow: transparent; --btn2: #FFFFFF;
+  --segbg: #F1F0EC; --segon: #FFFFFF; --segonink: #0E1116; --btn2: #FFFFFF;
 }
 [data-theme='dark'] {
   color-scheme: dark;
   --bg: #0B0F17; --surf: #111723; --hdr: rgba(11, 15, 23, .85); --tx: #E7EBF1; --tx2: #B3BBC7; --mut: #7C8696;
   --line: #1D2532; --line2: #2B3545; --accent: #22D3EE; --accent-t: #67E8F9; --onacc: #04131A; --chip: rgba(34, 211, 238, .10); --pdfbg: #0D131D;
   --shadow: 0 10px 40px rgba(0, 0, 0, .35);
-  --segbg: #0F1520; --segon: #1E2736; --segonink: #E7EBF1; --glow: rgba(34, 211, 238, .09); --btn2: #151C29;
+  --segbg: #0F1520; --segon: #1E2736; --segonink: #E7EBF1; --btn2: #151C29;
 }
 [data-theme='atomic'] { color-scheme: dark; --bg: #0b0b12; --accent: #00e5ff; }
 
@@ -57,38 +57,38 @@ button.chip-btn { border: 0; }
   /* Section shell + heading shared by all sections */
   .sec { padding: 60px var(--pad) 20px; max-width: var(--max); margin: 0 auto; }
   .sec-title {
-    font-family: var(--f-display); font-size: 26px; font-weight: 800; letter-spacing: 3px; color: #fff; margin-bottom: 28px;
-    display: flex; align-items: center; gap: 14px; text-transform: uppercase;
+    font-family: var(--f-display); font-size: 26px; font-weight: 700; letter-spacing: .5px; color: #fff; margin-bottom: 28px;
+    display: flex; align-items: center; gap: 14px;
   }
-  .sec-title::after { content: ''; flex: 1; order: 2; height: 1px; background: linear-gradient(90deg, var(--blue), #7b2cff55, transparent); }
+  .sec-title::after { content: ''; flex: 1; order: 2; height: 1px; background: linear-gradient(90deg, var(--blue), #1f51ff00); }
   .sec-title .sr, .sec-title .tk { display: none; }
-  .sec-title .more { order: 3; font-family: var(--f-ui); font-size: 13px; letter-spacing: 2px; color: var(--cyan); font-weight: 600; white-space: nowrap; }
+  .sec-title .more { order: 3; font-family: var(--f-ui); font-size: 14px; letter-spacing: .3px; color: var(--cyan); font-weight: 600; white-space: nowrap; }
   @media (max-width: 600px) {
     .sec { padding-top: 44px; }
-    .sec-title { font-size: 18px; letter-spacing: 3px; }
+    .sec-title { font-size: 18px; letter-spacing: .5px; }
     .sec-title::after { min-width: 24px; }
   }
 
   /* Chrome "PS2" panel + angular buttons */
   .panel { background: linear-gradient(#171922, #0f1017); border: 1px solid #c0c6cf33; box-shadow: inset 0 1px 0 #fff2; }
   .chip-btn {
-    display: inline-block; font-family: var(--f-display); font-size: 12px; letter-spacing: 2px; padding: 11px 20px; text-transform: uppercase;
-    background: linear-gradient(#3b6bff, var(--blue)); color: #fff; box-shadow: 0 0 18px var(--blue); cursor: pointer;
+    display: inline-block; font-family: var(--f-display); font-size: 12.5px; font-weight: 600; letter-spacing: .5px; padding: 11px 20px;
+    background: linear-gradient(#3b6bff, var(--blue)); color: #fff; cursor: pointer;
     transition: filter .15s; @include m.cut(10px);
   }
   .chip-btn:hover { filter: brightness(1.2); }
-  .chip-btn.chrome { background: linear-gradient(#e9ecf0, #8d95a1); color: var(--ink); box-shadow: none; }
+  .chip-btn.chrome { background: linear-gradient(#e9ecf0, #8d95a1); color: var(--ink); }
   ::selection { background: var(--blue); color: #fff; }
 
   /* Shared bits used across sections */
   .cut { @include m.cut(16px); }
   .chrome { @include m.chrome-text; }
-  .vfd { font-family: var(--f-vfd); color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
+  .vfd { font-family: var(--f-vfd); color: var(--cyan); }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tags i { font-size: 11px; padding: 3px 8px; border: 1px solid var(--blue); color: #9fb4ff; }
   @media (max-width: 600px) {
     .sec-title { font-size: 19px; gap: 10px; margin-bottom: 20px; }
-    .sec-title .more { font-size: 11px; letter-spacing: 1px; }
+    .sec-title .more { font-size: 12px; letter-spacing: .3px; }
   }
 }
 
@@ -100,12 +100,12 @@ button.chip-btn { border: 0; }
 
   .sec { max-width: var(--wrap); margin: 0 auto; padding: 76px var(--gut) 0; }
   // Section heading as a hairline schematic rule: node, title, trace, optional link, ticks, square pad.
-  .sec-title { display: flex; align-items: center; margin-bottom: 28px; color: var(--mut); font: 700 36px/1.15 var(--f-head); }
+  .sec-title { display: flex; align-items: center; margin-bottom: 28px; color: var(--mut); font: 600 36px/1.15 var(--f-head); }
   .sec-title::before { content: ''; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
   .sec-title .st { padding: 0 14px; color: var(--tx); letter-spacing: -.03em; }
   .sec-title .sr { flex: 1; min-width: 24px; height: 1px; background: var(--line2); }
   .sec-title .more {
-    padding: 0 14px; white-space: nowrap; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--accent-t);
+    padding: 0 14px; white-space: nowrap; font: 500 14px/1 var(--f-sans); color: var(--accent-t);
   }
   .sec-title .more:hover { text-decoration: underline; text-underline-offset: 3px; }
   .sec-title .tk {

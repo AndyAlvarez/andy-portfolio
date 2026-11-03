@@ -5,9 +5,9 @@
     <div>
       <ol class="tl">
         @for (j of jobs; track j.role; let i = $index) {
-          <li><i class="dot" [class.g]="i === 1"></i><div class="when">{{ j.when }}</div><b>{{ j.role }}</b><span>{{ j.org }}</span><p>{{ j.summary }}</p></li>
+          <li><i class="dot"></i><div class="when">{{ j.when }}</div><b>{{ j.role }}</b><span>{{ j.org }}</span><p>{{ j.summary }}</p></li>
         }
-        <li><i class="dot p"></i><div class="when">{{ edu.when }}</div><b>{{ edu.degrees }}</b><span>{{ edu.school }}</span>
+        <li><i class="dot"></i><div class="when">{{ edu.when }}</div><b>{{ edu.degrees }}</b><span>{{ edu.school }}</span>
           @if (edu.note) { <p>{{ edu.note }}</p> }</li>
       </ol>
       <div class="skl">

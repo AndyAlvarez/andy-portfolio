@@ -6,19 +6,18 @@
   .xr { display: grid; grid-template-columns: 1.1fr 1fr; gap: 34px; align-items: start; }
 
   .tl { list-style: none; position: relative; padding-left: 30px; display: grid; gap: 22px; }
-  .tl::before { content: ''; position: absolute; left: 6px; top: 4px; bottom: 4px; width: 2px; background: linear-gradient(var(--cyan), var(--green), var(--purple)); }
+  .tl::before { content: ''; position: absolute; left: 6px; top: 4px; bottom: 4px; width: 2px; background: #c0c6cf33; }
   .tl li { position: relative; }
-  .dot { position: absolute; left: -30px; top: 3px; width: 14px; height: 14px; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
-  .dot.g { background: var(--green); box-shadow: 0 0 10px var(--green); }
-  .dot.p { background: var(--purple); box-shadow: 0 0 10px var(--purple); }
-  .when { font-family: var(--f-vfd); font-size: 18px; letter-spacing: 2px; color: var(--cyan); text-transform: uppercase; }
+  .dot { position: absolute; left: -30px; top: 3px; width: 14px; height: 14px; background: #3a4352; border: 1px solid #c0c6cf55; }
+  .tl li:first-child .dot { background: var(--cyan); border-color: var(--cyan); }
+  .when { font-family: var(--f-vfd); font-size: 19px; letter-spacing: .5px; color: var(--cyan); }
   .tl b { display: block; font-size: 18px; color: #fff; margin: 2px 0; }
   .tl span { font-size: 13px; color: var(--mute); }
   .tl p { font-size: 14px; margin-top: 6px; color: #b9c0ca; max-width: 720px; line-height: 1.5; }
 
   .skl { display: grid; gap: 8px; margin-top: 28px; }
   .skl div { display: grid; grid-template-columns: 130px 1fr; padding: 10px 14px; font-size: 13.5px; background: #0f1017; border: 1px solid #c0c6cf22; }
-  .skl b { font-family: var(--f-vfd); font-weight: 400; font-size: 17px; letter-spacing: 2px; color: var(--green); text-transform: uppercase; }
+  .skl b { font-family: var(--f-vfd); font-weight: 400; font-size: 18px; letter-spacing: .5px; color: var(--green); }
 
   /* Letter-size page (8.5 × 11) plus the viewer bar; stays in view while the timeline scrolls. */
   .rdoc { position: sticky; top: 76px; aspect-ratio: 8.5 / 11.9; max-height: calc(100vh - 96px); background: #05060a; border: 1px solid #1f51ff55; }
