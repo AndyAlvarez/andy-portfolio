@@ -16,7 +16,7 @@
             @case ('ai') {
               <img src="assets/media/cnn_pandas_vs_cats_training.png" class="inv" loading="lazy"
                 alt="Training and validation accuracy curves from the pandas vs cats CNN notebook" />
-              <span class="badge">CHART</span><span class="badge r">FROM THE NOTEBOOK</span>
+              <span class="badge">CHART</span>
             }
             @case ('sumo') {
               <app-inline-video [src]="sumoClip.src" [poster]="sumoClip.poster" [bigPlay]="true" [muted]="!sumoClip.hasAudio" eqLabel="SUMO BOT CLIP" (playing)="sumoPlaying.set($event)" />

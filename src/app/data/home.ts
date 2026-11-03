@@ -7,7 +7,6 @@
  *  - GTK/WebKit and Mapbox tags on the PCM card
  *  - "two-factor login and role-based access" + "I designed and migrated the schemas" on the DB card
  *    (the core schema was a shared effort; Andy's resume says "Designed and migrated PoC schemas")
- *  - The AI course term (shown as a yellow "TERM: CONFIRM" flag until filled in)
  */
 
 /** NBC feature card in the hero (video comes from data/videos.ts, placement 'hero'). */
@@ -124,8 +123,7 @@ export const FEATURED: FeaturedCard[] = [
     body: 'Neural Networks Project 2: built and iterated two convolutional image classifiers in TensorFlow/Keras over three model versions each. Best test accuracy on 200-image test sets: 0.97 for pandas vs dogs and 0.955 for pandas vs cats.',
     more: 'Also on GitHub: MLP backprop digit classifier, EKG heart-attack classifier, Perceptron/Adaline vowels, power-plant regression, phishing detection.',
     tags: ['Python', 'TensorFlow', 'Keras', 'Colab'],
-    foot: 'FIU coursework',
-    footFlag: 'TERM: CONFIRM', // DRAFT: replace with the course term, then delete footFlag.
+    foot: 'FIU coursework · Spring 2024',
     // Notebook is not published yet: no link-out (null renders a non-clickable label).
     link: { label: 'VIEW NOTEBOOK →', href: null },
   },
