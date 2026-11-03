@@ -19,7 +19,7 @@
               <span class="badge">CHART</span><span class="badge r">FROM THE NOTEBOOK</span>
             }
             @case ('wpt') {
-              <app-inline-video [src]="clip.src" [poster]="clip.poster" eqLabel="WPT ROBOT CLIP" (playing)="clipPlaying.set($event)" />
+              <app-inline-video [src]="clip.src" [poster]="clip.poster" [bigPlay]="true" eqLabel="WPT ROBOT CLIP" (playing)="clipPlaying.set($event)" />
               @if (!clipPlaying()) {
                 <button type="button" class="photo-in" (click)="openPhoto()" aria-label="Enlarge the lab-test readout: 1.53% misalignment">
                   <img [src]="misalign.src" alt="" loading="lazy" />

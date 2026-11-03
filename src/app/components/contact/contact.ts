@@ -11,7 +11,7 @@ import { Icon } from '../../shared/icon/icon';
     <section id="contact" class="contact">
       <div class="cbox panel cut">
         <div>
-          <h3 class="chrome">Let's build something real-time.</h3>
+          <h3 class="chrome">Let's build something!</h3>
           <p class="lede">Email is the fastest way to reach me.</p>
         </div>
         <div class="clinks">
