@@ -1,5 +1,5 @@
 /** Identity, hero copy and contact. Facts from Andy's current resume only. No phone / street address. */
-export type IconName = 'pin' | 'cap' | 'mail' | 'linkedin' | 'github';
+export type IconName = 'pin' | 'cap' | 'mail' | 'linkedin' | 'github' | 'sun' | 'moon' | 'atom' | 'arrow' | 'doc';
 
 export interface HeroBullet {
   icon: IconName;

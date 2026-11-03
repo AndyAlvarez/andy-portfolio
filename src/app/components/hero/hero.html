@@ -14,8 +14,8 @@
         }
       </ul>
       <div class="btns">
-        <a class="chip-btn" href="#work" (click)="go('work', $event)">SEE MY WORK</a>
-        <a class="chip-btn chrome" href="#resume" (click)="go('resume', $event)">VIEW RESUME</a>
+        <a class="chip-btn" href="#work" (click)="go('work', $event)">See my work<app-icon class="pi" name="arrow" [size]="17" /></a>
+        <a class="chip-btn chrome" href="#resume" (click)="go('resume', $event)"><app-icon class="pi" name="doc" [size]="17" />View resume</a>
       </div>
     </div>
 
@@ -29,16 +29,18 @@
     }
   </div>
 
-  <app-eq-band />
+  @if (theme.atomic()) {
+    <app-eq-band />
+  }
 
-  <div class="wdh">WHAT I DO</div>
+  <h2 class="wdh">What I do</h2>
   <div class="wds">
     @for (w of what; track w.title; let i = $index) {
-      <div class="wd panel cut" [style.border-top-color]="w.color">
-        <div class="vfd" [style.color]="w.color" [style.text-shadow]="'0 0 8px ' + w.color">{{ (i + 1).toString().padStart(2, '0') }}</div>
+      <div class="wd panel cut" [style.border-top-color]="theme.atomic() ? w.color : null">
+        <div class="vfd" [style.color]="theme.atomic() ? w.color : null" [style.text-shadow]="theme.atomic() ? '0 0 8px ' + w.color : null">{{ (i + 1).toString().padStart(2, '0') }}</div>
         <h4>{{ w.title }}</h4>
         <p>{{ w.text }}</p>
-        <small [style.color]="w.color">{{ w.stack }}</small>
+        <small [style.color]="theme.atomic() ? w.color : null">{{ w.stack }}</small>
       </div>
     }
   </div>

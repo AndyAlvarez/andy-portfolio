@@ -25,6 +25,10 @@ import { ViewerFrame } from '../viewer-frame/viewer-frame';
     .pages { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; }
     :host ::ng-deep canvas.pdfpage { width: calc(var(--z, 1) * 100%); height: auto; box-shadow: 0 4px 18px #0008; background: #fff; }
     .err { color: var(--chrome); font-family: var(--f-vfd); }
+    :host-context([data-ui='pro']) {
+      ::ng-deep canvas.pdfpage { box-shadow: 0 2px 12px rgba(0, 0, 0, .18); }
+      .err { color: var(--mut); font-family: var(--f-sans); }
+    }
   `,
 })
 export class PdfViewer implements OnDestroy {

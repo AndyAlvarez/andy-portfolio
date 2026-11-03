@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { FEATURED, FeaturedCard, SHOW_CASE_STUDY_LINKS, WPT_PAPER_CARD } from '../../data/home';
 import { videosFor } from '../../data/videos';
 import { IEEE_PAPER, PCM_PHOTOS, PCM_ROUTE_LOOP, SUMO_CARD_CLIP, WPT_CARD_CLIP, WPT_MISALIGNMENT_PHOTO } from '../../data/media';
@@ -7,6 +7,7 @@ import { InlineVideo } from '../../shared/inline-video/inline-video';
 import { PdfViewer } from '../../shared/pdf-viewer/pdf-viewer';
 import { DbDiagram } from '../db-diagram/db-diagram';
 import { LoopClip } from '../../shared/loop-clip/loop-clip';
+import { ThemeService } from '../../shared/theme/theme.service';
 
 /** "01 Featured projects": PCM as a wide card on top, then a 2×2 grid (stacks on mobile). Copy lives in data/home.ts. */
 @Component({
@@ -17,6 +18,7 @@ import { LoopClip } from '../../shared/loop-clip/loop-clip';
   styleUrl: './featured.scss',
 })
 export class Featured {
+  readonly theme = inject(ThemeService);
   readonly cards: FeaturedCard[] = FEATURED;
   readonly showCaseLinks = SHOW_CASE_STUDY_LINKS;
   readonly pcmVideo = videosFor('pcm')[0];

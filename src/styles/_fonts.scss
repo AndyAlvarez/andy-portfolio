@@ -1,4 +1,8 @@
-// All fonts are bundled locally (SIL OFL 1.1), no CDN.
+// All fonts are bundled locally (SIL OFL 1.1, see /assets/fonts/OFL-NOTICE.txt), no CDN.
+// Browsers only download a face once text actually uses it, so the Atomic faces
+// (Orbitron, Chakra Petch, VT323) are fetched only in Atomic mode and the Pro faces only in Pro.
+
+// Atomic mode (TrueType)
 @font-face { font-family: 'Orbitron'; src: url('/assets/fonts/Orbitron-Variable.ttf') format('truetype'); font-weight: 400 900; font-display: swap; }
 @font-face { font-family: 'Chakra Petch'; src: url('/assets/fonts/ChakraPetch-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
 @font-face { font-family: 'Chakra Petch'; src: url('/assets/fonts/ChakraPetch-Medium.ttf') format('truetype'); font-weight: 500; font-display: swap; }
@@ -6,3 +10,8 @@
 @font-face { font-family: 'Chakra Petch'; src: url('/assets/fonts/ChakraPetch-Bold.ttf') format('truetype'); font-weight: 700; font-display: swap; }
 @font-face { font-family: 'VT323'; src: url('/assets/fonts/VT323-Regular.ttf') format('truetype'); font-weight: 400; font-display: swap; }
 @font-face { font-family: 'IBM Plex Sans'; src: url('/assets/fonts/IBMPlexSans-Variable.ttf') format('truetype'); font-weight: 100 700; font-display: swap; }
+
+// Pro light / dark (variable WOFF2, Latin subset)
+@font-face { font-family: 'Inter'; src: url('/assets/fonts/Inter-Variable.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: 'Inter Tight'; src: url('/assets/fonts/InterTight-Variable.woff2') format('woff2'); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: 'JetBrains Mono'; src: url('/assets/fonts/JetBrainsMono-Variable.woff2') format('woff2'); font-weight: 100 800; font-display: swap; }

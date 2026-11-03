@@ -31,6 +31,19 @@ import { IconName } from '../../data/profile';
           <path d="M22 10v6" />
           <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
         }
+        @case ('sun') {
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" />
+        }
+        @case ('moon') { <path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z" /> }
+        @case ('atom') {
+          <ellipse cx="12" cy="12" rx="10" ry="4" stroke-width="1.6" />
+          <ellipse cx="12" cy="12" rx="10" ry="4" stroke-width="1.6" transform="rotate(60 12 12)" />
+          <ellipse cx="12" cy="12" rx="10" ry="4" stroke-width="1.6" transform="rotate(120 12 12)" />
+          <circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none" />
+        }
+        @case ('arrow') { <path d="M5 12h14M13 6l6 6-6 6" /> }
+        @case ('doc') { <path d="M6 2h9l5 5v15H6z" /><path d="M14 2v6h6" /> }
       }
     </svg>
   `,

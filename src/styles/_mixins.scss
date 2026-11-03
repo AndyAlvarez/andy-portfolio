@@ -5,3 +5,9 @@
   background: linear-gradient(180deg, #fff 0%, #c9ced6 45%, #6f7784 52%, #e8ebef 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
+
+// Theme scoping for component styles. <html> carries data-theme (light | dark | atomic) and
+// data-ui (pro | atomic), set by the inline script in index.html before first paint.
+// Atomic-only rules live inside `@include m.atomic { ... }`; use `&` for the host element.
+@mixin atomic { :host-context([data-ui='atomic']) { @content; } }
+@mixin pro { :host-context([data-ui='pro']) { @content; } }

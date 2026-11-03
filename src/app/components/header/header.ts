@@ -1,19 +1,36 @@
 import { afterNextRender, ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
 import { scrollToSection } from '../../scroll';
+import { ThemeSwitch } from '../../shared/theme/theme-switch';
+import { Icon } from '../../shared/icon/icon';
 
 @Component({
   selector: 'app-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ThemeSwitch, Icon],
   template: `
     <nav class="nav">
-      <a class="logo" href="#top" (click)="go('top', $event)">ANDY<span>·</span>ALVAREZ</a>
-      <button type="button" class="burger" (click)="open.set(!open())" [attr.aria-expanded]="open()" aria-label="Menu">☰</button>
+      <a class="logo" href="#top" (click)="go('top', $event)" aria-label="Andy Alvarez, back to top">
+        <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <g transform="rotate(-14 16 19)" fill="none" stroke="var(--accent)" stroke-width="1.9"><path d="M2.8 19 A13.2 4.6 0 0 1 29.2 19" /></g>
+          <path d="M6.6 27.2 L16 4.8 L25.4 27.2" fill="none" stroke="var(--bg)" stroke-width="6" />
+          <path d="M6.6 27.2 L16 4.8 L25.4 27.2" fill="none" stroke="currentColor" stroke-width="3.6" />
+          <g transform="rotate(-14 16 19)" fill="none" stroke="var(--accent)" stroke-width="1.9"><path d="M29.2 19 A13.2 4.6 0 0 1 2.8 19" /></g>
+          <circle cx="16" cy="19" r="2.4" fill="var(--accent)" />
+        </svg>
+        <span class="l-atomic" aria-hidden="true">ANDY<span>·</span>ALVAREZ</span><span class="l-pro" aria-hidden="true">Andy Alvarez</span>
+      </a>
+      <button type="button" class="burger" (click)="open.set(!open())" [attr.aria-expanded]="open()" aria-label="Menu">
+        <span class="glyph" aria-hidden="true">☰</span><i aria-hidden="true"></i><i aria-hidden="true"></i>
+      </button>
       <ul [class.open]="open()">
         @for (l of links; track l.id) {
           <li [class.on]="l.id === active()"><a [href]="'#' + l.id" [attr.aria-current]="l.id === active() ? 'true' : null" (click)="go(l.id, $event)">{{ l.label }}</a></li>
         }
       </ul>
-      <a class="cta chip-btn" href="#resume" (click)="go('resume', $event)">VIEW RESUME</a>
+      <div class="hr">
+        <app-theme-switch />
+        <a class="cta chip-btn" href="#resume" (click)="go('resume', $event)"><app-icon class="pi" name="doc" [size]="16" />View resume</a>
+      </div>
     </nav>
   `,
   styleUrl: './header.scss',

@@ -24,20 +24,31 @@ let nextId = 0;
     @if (label()) { <span class="lab">{{ label() }}</span> }
   `,
   styles: `
-    :host { display: block; position: relative; background: #000; overflow: hidden; border: 1px solid #c0c6cf44; }
+    :host { display: block; position: relative; background: #000; overflow: hidden; }
     video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .lab { position: absolute; left: 8px; top: 8px; padding: 3px 8px; background: #000c; color: var(--cyan);
-      font-family: var(--f-vfd); font-size: 15px; pointer-events: none; }
+    .lab { position: absolute; left: 8px; top: 8px; padding: 3px 8px; pointer-events: none; }
     /* Centered play button; sits above any card insets (they use z-index 2). */
-    .bigplay { all: unset; cursor: pointer; position: absolute; left: 50%; top: 50%; z-index: 5; width: 76px; height: 76px;
-      transform: translate(-50%, -50%); border-radius: 50%; background: #05060acc; border: 2px solid var(--cyan);
-      box-shadow: 0 0 18px #00e5ff88, inset 0 0 12px #00e5ff44; transition: transform .15s, background .15s; }
-    .bigplay i { position: absolute; left: 31px; top: 23px; border-style: solid; border-width: 15px 0 15px 24px;
-      border-color: transparent transparent transparent var(--cyan); filter: drop-shadow(0 0 6px #00e5ff); }
-    .bigplay:hover, .bigplay:focus-visible { transform: translate(-50%, -50%) scale(1.08); background: #00e5ff22; }
-    @media (max-width: 600px) {
-      .bigplay { width: 60px; height: 60px; }
-      .bigplay i { left: 24px; top: 18px; border-width: 12px 0 12px 19px; }
+    .bigplay { all: unset; cursor: pointer; position: absolute; left: 50%; top: 50%; z-index: 5; transform: translate(-50%, -50%);
+      border-radius: 50%; transition: transform .15s, background .15s; }
+    .bigplay:hover, .bigplay:focus-visible { transform: translate(-50%, -50%) scale(1.08); }
+    .bigplay i { position: absolute; border-style: solid; }
+    :host-context([data-ui='atomic']) {
+      & { border: 1px solid #c0c6cf44; }
+      .lab { background: #000c; color: var(--cyan); font-family: var(--f-vfd); font-size: 15px; }
+      .bigplay { width: 76px; height: 76px; background: #05060acc; border: 2px solid var(--cyan); box-shadow: 0 0 18px #00e5ff88, inset 0 0 12px #00e5ff44; }
+      .bigplay i { left: 31px; top: 23px; border-width: 15px 0 15px 24px;
+        border-color: transparent transparent transparent var(--cyan); filter: drop-shadow(0 0 6px #00e5ff); }
+      .bigplay:hover, .bigplay:focus-visible { background: #00e5ff22; }
+      @media (max-width: 600px) {
+        .bigplay { width: 60px; height: 60px; }
+        .bigplay i { left: 24px; top: 18px; border-width: 12px 0 12px 19px; }
+      }
+    }
+    :host-context([data-ui='pro']) {
+      .lab { border-radius: 4px; background: rgba(0, 0, 0, .66); color: #fff; font: 500 11px var(--f-mono); }
+      .bigplay { width: 58px; height: 58px; background: rgba(255, 255, 255, .92); box-shadow: 0 6px 24px rgba(0, 0, 0, .3); }
+      .bigplay i { left: 23px; top: 18px; border-width: 11px 0 11px 17px; border-color: transparent transparent transparent #111; }
+      .bigplay:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
     }
   `,
 })

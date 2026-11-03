@@ -1,5 +1,5 @@
 <section id="work" class="sec">
-  <h2 class="sec-title"><span>01</span> FEATURED PROJECTS <a class="more" href="#work">ALL PROJECTS →</a></h2>
+  <h2 class="sec-title"><span>01</span> Featured projects <a class="more" href="#work">All projects →</a></h2>
   <div class="fg">
     @for (c of cards; track c.id) {
       <article class="card panel cut" [class.wide]="c.id === 'pcm'" [attr.id]="'project-' + c.id">
@@ -7,20 +7,20 @@
           @switch (c.id) {
             @case ('pcm') {
               @if (pcmVideo) { <app-yt-embed [video]="pcmVideo" [caption]="false" eqLabel="PASSENGER COMM MODULE" /> }
-              <span class="badge">▶ VIDEO</span>
+              <span class="badge">▶ Video</span>
             }
             @case ('db') {
               <app-db-diagram />
-              <span class="badge">DIAGRAM</span>
+              <span class="badge tr">Diagram</span>
             }
             @case ('ai') {
               <img src="assets/media/cnn_pandas_vs_cats_training.png" class="inv" loading="lazy"
                 alt="Training and validation accuracy curves from the pandas vs cats CNN notebook" />
-              <span class="badge">CHART</span>
+              <span class="badge tr">Chart</span>
             }
             @case ('sumo') {
               <app-loop-clip [src]="sumoClip.src" [poster]="sumoClip.poster" />
-              <span class="badge r gold">1ST PLACE</span>
+              <span class="badge r gold">1st place</span>
             }
             @case ('wpt') {
               <app-inline-video [src]="clip.src" [poster]="clip.poster" [bigPlay]="true" [muted]="!clip.hasAudio" eqLabel="WPT ROBOT CLIP" (playing)="clipPlaying.set($event)" />
@@ -32,14 +32,14 @@
                 <button type="button" class="paper-in" (click)="openPaper()" aria-label="Read the IEEE Access paper">
                   <img [src]="paperCard.thumb" alt="" loading="lazy" />
                 </button>
-                <span class="badge">▶ VIDEO</span><span class="badge r">IEEE ACCESS</span>
+                <span class="badge">▶ Video</span><span class="badge r">IEEE Access</span>
               }
             }
           }
         </div>
         <div class="cb">
           <div class="kind">
-            <span class="vfd" [style.color]="c.kindColor">{{ c.kind }}</span>
+            <span class="vfd" [class.k-alt]="c.kind !== 'PROFESSIONAL'" [style.color]="theme.atomic() ? c.kindColor : null">{{ c.kind }}</span>
             <span class="disc">{{ c.discipline }}</span>
           </div>
           <h4>{{ c.title }}</h4>

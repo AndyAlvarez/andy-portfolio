@@ -26,20 +26,20 @@ export interface WhatIDo {
 
 export const WHAT_I_DO: WhatIDo[] = [
   {
-    title: 'REAL-TIME STREAMING',
+    title: 'Real-time streaming',
     text: 'Low-latency two-way video and audio in C++ with GLib, GStreamer and WebRTC, running live on public autonomous shuttles.',
     stack: 'C++ · GLib · GStreamer · WebRTC',
     color: '#00E5FF',
   },
   {
-    title: 'EMBEDDED SOFTWARE',
+    title: 'Embedded software',
     // DRAFT: ESP32 not on the current resume; confirm.
     text: 'C/C++ on microcontrollers, sensors and motors (Arduino Mega, Adafruit Metro M0, ESP32), state machines, and Redis Streams telemetry at the vehicle edge.',
     stack: 'C/C++ · Arduino · ESP32 · Redis',
     color: '#39FF14',
   },
   {
-    title: 'FULL-STACK & DATA',
+    title: 'Full-stack & data',
     text: 'Angular onboard UIs, NodeJS and Python services, PostgreSQL and TimescaleDB schemas, deployed on AWS.',
     stack: 'Angular · NodeJS · PostgreSQL · AWS',
     color: '#7B2CFF',

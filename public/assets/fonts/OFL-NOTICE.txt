@@ -1,1 +1,12 @@
-Orbitron, Chakra Petch, VT323 and IBM Plex Sans are licensed under the SIL Open Font License 1.1 (https://openfontlicense.org). Bundled locally, converted to WOFF2.
+All fonts in this folder are licensed under the SIL Open Font License 1.1
+(https://openfontlicense.org) and are bundled locally (no CDN).
+
+Atomic mode (TrueType):
+  Orbitron, Chakra Petch, VT323, IBM Plex Sans
+
+Pro light / dark mode (variable WOFF2, subset to Latin-1 + common punctuation and arrows):
+  Inter          Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter)
+  Inter Tight    Copyright 2022 The Inter Project Authors (https://github.com/rsms/inter-tight)
+  JetBrains Mono Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)
+
+Full license text: OFL.txt (in this folder).
