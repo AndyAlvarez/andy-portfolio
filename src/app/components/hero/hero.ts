@@ -1,22 +1,24 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PROFILE } from '../../data/profile';
-import { PCM_SUMMARY, PCM_TAGS } from '../../data/cases';
+import { NBC_FEATURE, WHAT_I_DO } from '../../data/home';
 import { videosFor } from '../../data/videos';
 import { YtEmbed } from '../../shared/yt-embed/yt-embed';
+import { Icon } from '../../shared/icon/icon';
+import { EqBand } from '../eq-band/eq-band';
 import { scrollToSection } from '../../scroll';
 
+/** Hero: who I am (name, lede, location + degrees), the NBC feature, the EQ band and "What I do". */
 @Component({
   selector: 'app-hero',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [YtEmbed],
+  imports: [YtEmbed, Icon, EqBand],
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
 })
 export class Hero {
   readonly p = PROFILE;
-  readonly tags = PCM_TAGS;
-  readonly summary = PCM_SUMMARY;
-  readonly heroVideo = videosFor('hero')[0];
-  readonly eq = [30, 55, 80, 45, 95, 70, 40, 85, 60, 35, 75, 50, 90, 65, 30, 55, 80, 45, 70, 38, 88, 52, 66, 42];
+  readonly nbc = NBC_FEATURE;
+  readonly what = WHAT_I_DO;
+  readonly video = videosFor('hero')[0];
   readonly go = scrollToSection;
 }

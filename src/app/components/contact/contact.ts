@@ -1,32 +1,62 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { PROFILE } from '../../data/profile';
+import { IconName, PROFILE } from '../../data/profile';
+import { Icon } from '../../shared/icon/icon';
 
 /** Contact: email, LinkedIn, GitHub and location only (no phone / street address). */
 @Component({
   selector: 'app-contact',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [Icon],
   template: `
-    <footer id="contact" class="sec foot">
-      <div>
-        <h2 class="sec-title plain"><span>05</span> CONTACT</h2>
-        <p>{{ p.location }} · {{ p.availability }}</p>
+    <section id="contact" class="contact">
+      <h2 class="sec-title"><span>◉</span> CONTACT</h2>
+      <div class="cbox panel cut">
+        <div>
+          <h3 class="chrome">Let's build something real-time.</h3>
+          <p class="lede">{{ p.availability }} The fastest way to reach me is email.</p>
+        </div>
+        <div class="clinks">
+          @for (l of links; track l.tag) {
+            <a [href]="l.href" [attr.target]="l.external ? '_blank' : null" [attr.rel]="l.external ? 'noopener' : null">
+              <app-icon class="ico" [name]="l.icon" [size]="20" /><span>{{ l.text }}</span><b>{{ l.tag }}</b>
+            </a>
+          }
+        </div>
       </div>
-      <div class="links">
-        <a class="hot" [href]="'mailto:' + p.email">✉ {{ p.email }}</a>
-        <a [href]="'https://www.' + p.linkedin + '/'" target="_blank" rel="noopener">in {{ p.linkedin }}</a>
-        <a [href]="'https://' + p.github" target="_blank" rel="noopener">⌥ {{ p.github }}</a>
-      </div>
-    </footer>
+    </section>
+    <footer class="fine"><span>© {{ year }} {{ p.name.first }} {{ p.name.last }} · {{ p.location }}</span><span>Built with Angular</span></footer>
   `,
   styles: `
-    .foot { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-bottom: 50px; flex-wrap: wrap; }
-    .sec-title.plain::after { display: none; }
-    .links { display: flex; flex-wrap: wrap; gap: 16px; }
-    .links a { padding: 12px 18px; font-size: 14px; border: 1px solid #c0c6cf55; background: linear-gradient(#1c1e27, #0f1017); transition: border-color .15s, box-shadow .15s; }
-    .links a:hover, .links a.hot { border-color: var(--blue); box-shadow: 0 0 14px #1f51ff66; }
-    @media (max-width: 600px) { .links { flex-direction: column; width: 100%; } .links a { text-align: center; } }
+    .contact { max-width: var(--max); margin: 64px auto 0; padding: 0 var(--pad) 56px; }
+    .sec-title span { text-shadow: 0 0 8px var(--cyan); }
+    .cbox { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: center; padding: 34px 36px; }
+    h3 { font-family: var(--f-display); font-size: 34px; font-weight: 900; line-height: 1.05; margin-bottom: 10px; }
+    .lede { font-size: 16px; line-height: 1.55; color: #d5d9df; }
+    .clinks { display: grid; gap: 10px; }
+    .clinks a {
+      display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: #05060a; border: 1px solid #1f51ff66;
+      font-size: 15px; transition: border-color .15s, box-shadow .15s; overflow-wrap: anywhere;
+    }
+    .clinks a:hover, .clinks a:focus-visible { border-color: var(--cyan); box-shadow: 0 0 14px #1f51ff66; }
+    .clinks .ico { color: var(--cyan); filter: drop-shadow(0 0 6px #00e5ff88); }
+    .clinks a span { flex: 1; }
+    .clinks b { font-family: var(--f-vfd); font-weight: 400; font-size: 18px; color: var(--cyan); letter-spacing: 2px; }
+    .fine { max-width: var(--max); margin: 0 auto; padding: 18px var(--pad) 30px; border-top: 1px solid #c0c6cf1f; display: flex; justify-content: space-between; gap: 6px; font-size: 12px; color: #5d6a7d; }
+    @media (max-width: 800px) {
+      .cbox { grid-template-columns: 1fr; padding: 22px; }
+      h3 { font-size: 26px; }
+      .clinks a { font-size: 13.5px; padding: 12px 14px; }
+      .clinks b { display: none; }
+      .fine { flex-direction: column; }
+    }
   `,
 })
 export class Contact {
   readonly p = PROFILE;
+  readonly year = new Date().getFullYear();
+  readonly links: { icon: IconName; text: string; tag: string; href: string; external: boolean }[] = [
+    { icon: 'mail', text: PROFILE.email, tag: 'EMAIL', href: `mailto:${PROFILE.email}`, external: false },
+    { icon: 'linkedin', text: PROFILE.linkedin, tag: 'LINKEDIN', href: `https://www.${PROFILE.linkedin}/`, external: true },
+    { icon: 'github', text: PROFILE.github, tag: 'GITHUB', href: `https://${PROFILE.github}`, external: true },
+  ];
 }

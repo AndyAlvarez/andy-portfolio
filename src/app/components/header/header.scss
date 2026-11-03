@@ -6,8 +6,10 @@
 }
 .logo { @include m.chrome-text; font-family: var(--f-display); font-weight: 900; font-size: 20px; letter-spacing: 4px; }
 .logo span { color: var(--cyan); -webkit-text-fill-color: var(--cyan); }
-ul { display: flex; gap: 30px; list-style: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+ul { display: flex; gap: 6px; list-style: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+li a { display: block; padding: 8px 16px; border: 1px solid transparent; transition: color .15s, border-color .15s; }
 li a:hover, li.on a { color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
+li.on a { border-color: #00e5ff55; background: #00e5ff0d; }
 .burger { all: unset; display: none; }
 @media (max-width: 900px) {
   .nav { padding: 14px var(--pad); }
@@ -15,6 +17,7 @@ li a:hover, li.on a { color: var(--cyan); text-shadow: 0 0 10px var(--cyan); }
   .burger { display: block; cursor: pointer; font-size: 22px; color: var(--chrome); order: 3; margin-left: 12px; }
   ul { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; background: #0b0b12f7; border-bottom: 1px solid #1f51ff55; }
   ul.open { display: flex; }
-  li a { display: block; padding: 14px var(--pad); }
+  li a { padding: 14px var(--pad); border: 0; }
+  li.on a { background: transparent; }
   .cta { margin-left: auto; padding: 9px 12px !important; font-size: 10px !important; }
 }

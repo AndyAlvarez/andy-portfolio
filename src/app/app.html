@@ -1,30 +1,7 @@
 <app-header />
 <main>
   <app-hero />
-
-  <section id="work" class="sec">
-    <h2 class="sec-title"><span>01</span> FEATURED WORK</h2>
-
-    <app-featured-case [data]="pcm">
-      <ng-container media>
-        @if (photo.approved) {
-          <figure class="photo"><img [src]="photo.src" [alt]="photo.caption" loading="lazy" /></figure>
-        }
-        @for (v of pcmVideos; track v.id) { <app-yt-embed [video]="v" /> }
-      </ng-container>
-    </app-featured-case>
-
-    <app-featured-case [data]="wpt">
-      <div media class="pair">
-        <app-inline-video [src]="clip.src" [poster]="clip.poster" [label]="clip.label" />
-        <app-pdf-viewer [src]="paper.src" [name]="paper.title" />
-      </div>
-      <small credit class="credit">{{ paper.credit }}</small>
-    </app-featured-case>
-  </section>
-
-  <app-projects />
-  <app-video-row />
+  <app-featured />
   <app-resume />
   <app-contact />
 </main>

@@ -27,6 +27,13 @@ export const WPT_CLIP: Clip = {
   label: 'Own clip · Dec 2022 · robot test',
 };
 
+/** Clip on the home-page WPT card (note: Andy's WPT clips have no audio track, so the EQ shows its simulated pattern). */
+export const WPT_CARD_CLIP: Clip = {
+  src: 'assets/video/wpt_coil_20230131.mp4',
+  poster: 'assets/media/wpt_robot_coil_frame.jpg',
+  label: 'Own clip · Jan 2023 · robot test',
+};
+
 export const IEEE_PAPER = {
   src: 'assets/docs/ieee-access-2024-wpt.pdf',
   title: 'IEEE_Access_2024_WPT.pdf',

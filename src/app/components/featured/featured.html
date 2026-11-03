@@ -1,0 +1,68 @@
+<section id="work" class="sec">
+  <h2 class="sec-title"><span>01</span> FEATURED PROJECTS <a class="more" href="#work">ALL PROJECTS →</a></h2>
+  <div class="fg">
+    @for (c of cards; track c.id) {
+      <article class="card panel cut" [attr.id]="'project-' + c.id">
+        <div class="cim" [class.diagram]="c.id === 'db'">
+          @switch (c.id) {
+            @case ('pcm') {
+              @if (pcmVideo) { <app-yt-embed [video]="pcmVideo" [caption]="false" eqLabel="PASSENGER COMM MODULE" /> }
+              <span class="badge">▶ VIDEO</span>
+            }
+            @case ('db') {
+              <app-db-diagram />
+              <span class="badge">DIAGRAM</span>
+            }
+            @case ('ai') {
+              <img src="assets/media/cnn_pandas_vs_cats_training.png" class="inv" loading="lazy"
+                alt="Training and validation accuracy curves from the pandas vs cats CNN notebook" />
+              <span class="badge">CHART</span><span class="badge r">FROM THE NOTEBOOK</span>
+            }
+            @case ('wpt') {
+              <app-inline-video [src]="clip.src" [poster]="clip.poster" eqLabel="WPT ROBOT CLIP" (playing)="clipPlaying.set($event)" />
+              @if (!clipPlaying()) {
+                <button type="button" class="paper-in" (click)="openPaper()" aria-label="Read the IEEE Access paper">
+                  <img [src]="paperCard.thumb" alt="" loading="lazy" />
+                </button>
+                <span class="badge">▶ VIDEO</span><span class="badge r">IEEE ACCESS</span>
+              }
+            }
+          }
+        </div>
+        <div class="cb">
+          <div class="kind">
+            <span class="vfd" [style.color]="c.kindColor">{{ c.kind }}</span>
+            <span class="disc">{{ c.discipline }}</span>
+          </div>
+          <h4>{{ c.title }}</h4>
+          <p>{{ c.body }}</p>
+          @if (c.more) { <p class="more6">{{ c.more }}</p> }
+          @if (c.id === 'wpt') {
+            <button type="button" class="paperlink" (click)="openPaper()">
+              <span aria-hidden="true">▤</span>
+              <span><b>{{ paperCard.title }}</b><small>{{ paperCard.meta }}</small></span>
+            </button>
+          }
+          <div class="tags">@for (t of c.tags; track t) { <i>{{ t }}</i> }</div>
+          <div class="foot">
+            <span>{{ c.foot }}@if (c.footFlag) { · <span class="flagd">{{ c.footFlag }}</span> }</span>
+            @if (c.link.href) {
+              <a [href]="c.link.href" title="Case study page coming soon">{{ c.link.label }}</a>
+            } @else {
+              <b class="soon" title="Link coming soon">{{ c.link.label }}</b>
+            }
+          </div>
+        </div>
+      </article>
+    }
+  </div>
+
+  <dialog #dlg class="paperdlg" aria-label="IEEE Access paper" (close)="onDialogClose()" (click)="onDialogClick($event)">
+    <div class="dlgbar">
+      <span>{{ paperCard.meta }}</span>
+      <button type="button" class="x" (click)="closePaper()" aria-label="Close">✕</button>
+    </div>
+    @if (paperOpen()) { <app-pdf-viewer [src]="paper.src" [name]="paper.title" /> }
+    <small class="credit">{{ paper.credit }}</small>
+  </dialog>
+</section>

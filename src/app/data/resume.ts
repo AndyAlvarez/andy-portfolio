@@ -40,9 +40,10 @@ export const JOBS: Job[] = [
 ];
 
 export const EDUCATION = {
-  when: '2024 · 2023',
-  degrees: 'M.S. Computer Engineering (4.0) · B.S. Electrical Engineering (3.52)',
+  when: '2023 · 2024',
+  degrees: 'B.S. Electrical Engineering (3.52) · M.S. Computer Engineering (4.0)',
   school: 'Florida International University',
+  note: 'Senior design team leader: EV wireless charging alignment, acknowledged in IEEE Access 2024.',
   lines: ['M.S. Computer Engineering, 2024 (GPA 4.0)', 'B.S. Electrical Engineering, 2023 (GPA 3.52)'],
 };
 

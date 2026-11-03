@@ -1,26 +1,45 @@
-<header class="hero" id="top">
+<header id="top" class="hx">
   <div class="unit" aria-hidden="true"></div>
-  <div class="intro">
-    <div class="eyebrow">{{ p.title }}</div>
-    <h1>{{ p.name.first }} <em>{{ p.name.last }}</em></h1>
-    <p class="lede">{{ p.lede }}</p>
-    <div class="meta">@for (m of p.meta; track m) { <span><i>◉</i> {{ m }}</span> }</div>
-    <div class="stats">
-      @for (s of p.stats; track s.value) { <div><b>{{ s.value }}</b><small>{{ s.label }}</small></div> }
+  <div class="top">
+    <div class="intro">
+      <div class="eyebrow">{{ p.title.toUpperCase() }}</div>
+      <h1 class="chrome">{{ p.name.first }} <em>{{ p.name.last }}</em></h1>
+      <p class="lede">{{ p.lede }}</p>
+      <ul class="bul">
+        @for (b of p.bullets; track b.text) {
+          <li [class.sm]="b.small">
+            <app-icon class="ico" [name]="b.icon" [size]="b.small ? 16 : 18" />
+            <span>@if (b.strong) {<b>{{ b.strong }}</b>}{{ b.text }}</span>
+          </li>
+        }
+      </ul>
+      <div class="btns">
+        <a class="chip-btn" href="#work" (click)="go('work', $event)">SEE MY WORK</a>
+        <a class="chip-btn chrome" href="#resume" (click)="go('resume', $event)">VIEW RESUME</a>
+      </div>
     </div>
-    <div class="btns">
-      <a class="chip-btn" href="#work" (click)="go('work', $event)">SEE FEATURED WORK</a>
-      <a class="chip-btn chrome" href="#resume" (click)="go('resume', $event)">VIEW RESUME</a>
-    </div>
-    <div class="eq" aria-hidden="true">
-      @for (h of eq; track $index) { <i [style.height.%]="h"></i> }
-    </div>
+
+    @if (video) {
+      <article class="feature">
+        <div class="fhead"><span class="fno">{{ nbc.kicker }}</span><span>{{ nbc.source }}</span></div>
+        <app-yt-embed class="yt" [video]="video" [eager]="true" eqLabel="NBC NIGHTLY NEWS" />
+        <h3>{{ nbc.title }}</h3>
+        <p>{{ nbc.text }}</p>
+      </article>
+    }
   </div>
-  <article class="feature">
-    <div class="fhead"><span class="fno">CASE 01</span><span>GUIDENT CORP. · 2024–PRESENT</span></div>
-    @if (heroVideo) { <app-yt-embed [video]="heroVideo" [eager]="true" /> }
-    <h3>Passenger Communication Module</h3>
-    <p>{{ summary }}</p>
-    <div class="tags">@for (t of tags; track t) { <i>{{ t }}</i> }</div>
-  </article>
+
+  <app-eq-band />
+
+  <div class="wdh">WHAT I DO</div>
+  <div class="wds">
+    @for (w of what; track w.title; let i = $index) {
+      <div class="wd panel cut" [style.border-top-color]="w.color">
+        <div class="vfd" [style.color]="w.color" [style.text-shadow]="'0 0 8px ' + w.color">{{ (i + 1).toString().padStart(2, '0') }}</div>
+        <h4>{{ w.title }}</h4>
+        <p>{{ w.text }}</p>
+        <small [style.color]="w.color">{{ w.stack }}</small>
+      </div>
+    }
+  </div>
 </header>

@@ -23,8 +23,6 @@ export class Header {
   readonly links = [
     { id: 'top', label: 'Home' },
     { id: 'work', label: 'Work' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'media', label: 'Media' },
     { id: 'resume', label: 'Resume' },
     { id: 'contact', label: 'Contact' },
   ];

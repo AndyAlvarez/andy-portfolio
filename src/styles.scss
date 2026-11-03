@@ -2,9 +2,9 @@
 @use 'styles/mixins' as m;
 
 :root {
-  --ink: #0b0b12; --chrome: #c0c6cf; --blue: #1f51ff; --cyan: #00e5ff; --green: #39ff14; --gold: #d4af37;
+  --ink: #0b0b12; --chrome: #c0c6cf; --blue: #1f51ff; --cyan: #00e5ff; --green: #39ff14; --gold: #d4af37; --purple: #7b2cff; --mute: #8fa0b5;
   --f-display: 'Orbitron', sans-serif; --f-ui: 'Chakra Petch', sans-serif; --f-vfd: 'VT323', monospace; --f-body: 'IBM Plex Sans', sans-serif;
-  --pad: 56px; --max: 1440px;
+  --pad: 56px; --max: 1328px;
 }
 @media (max-width: 900px) { :root { --pad: 28px; } }
 @media (max-width: 600px) { :root { --pad: 18px; } }
@@ -22,11 +22,11 @@ img, video, canvas { max-width: 100%; }
 /* Section shell + heading shared by all sections */
 .sec { padding: 60px var(--pad) 20px; max-width: var(--max); margin: 0 auto; }
 .sec-title {
-  font-family: var(--f-display); font-size: 26px; font-weight: 700; letter-spacing: 5px; color: #fff; margin-bottom: 28px;
+  font-family: var(--f-display); font-size: 26px; font-weight: 800; letter-spacing: 3px; color: #fff; margin-bottom: 28px;
   display: flex; align-items: center; gap: 14px;
 }
-.sec-title::after { content: ''; flex: 1; height: 2px; background: linear-gradient(90deg, var(--blue), transparent); }
-.sec-title span { font-family: var(--f-vfd); font-size: 28px; font-weight: 400; color: var(--cyan); }
+.sec-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--blue), #7b2cff55, transparent); }
+.sec-title > span { font-family: var(--f-vfd); font-size: 30px; font-weight: 400; color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
 @media (max-width: 600px) {
   .sec { padding-top: 44px; }
   .sec-title { font-size: 18px; letter-spacing: 3px; }
@@ -43,3 +43,18 @@ img, video, canvas { max-width: 100%; }
 .chip-btn:hover { filter: brightness(1.2); }
 .chip-btn.chrome { background: linear-gradient(#e9ecf0, #8d95a1); color: var(--ink); box-shadow: none; }
 ::selection { background: var(--blue); color: #fff; }
+
+/* Shared bits used across sections */
+.cut { @include m.cut(16px); }
+.chrome { @include m.chrome-text; }
+.vfd { font-family: var(--f-vfd); color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags i { font-style: normal; font-size: 11px; padding: 3px 8px; border: 1px solid var(--blue); color: #9fb4ff; }
+/* Dashed yellow chip = wording still to be confirmed by Andy */
+.flagd { display: inline-block; font-size: 10.5px; padding: 2px 7px; border: 1px dashed #ffcc00; color: #ffcc00; letter-spacing: .5px; }
+button.chip-btn { border: 0; }
+@media (max-width: 600px) {
+  .sec-title { font-size: 19px; gap: 10px; margin-bottom: 20px; }
+  .sec-title > span { font-size: 24px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
