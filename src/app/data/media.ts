@@ -19,6 +19,8 @@ export interface Clip {
   src: string;
   poster: string;
   label: string;
+  /** True when the file carries an audio track: the player is then not muted, so the EQ can react live. */
+  hasAudio?: boolean;
 }
 
 export const WPT_CLIP: Clip = {
@@ -27,11 +29,15 @@ export const WPT_CLIP: Clip = {
   label: 'Own clip · Dec 2022 · robot test',
 };
 
-/** Clip on the home-page WPT card (note: Andy's WPT clips have no audio track, so the EQ shows its simulated pattern). */
+/**
+ * Clip on the home-page WPT card: Andy's lab demo of the apparatus (personal Drive, VID-20230316-WA0002.mp4),
+ * re-encoded H.264 720×480 + AAC, faststart. It has an audio track, so it plays unmuted and the EQ can go live.
+ */
 export const WPT_CARD_CLIP: Clip = {
-  src: 'assets/video/wpt_coil_20230131.mp4',
-  poster: 'assets/media/wpt_robot_coil_frame.jpg',
-  label: 'Own clip · Jan 2023 · robot test',
+  src: 'assets/media/wpt_ev_demo.mp4',
+  poster: 'assets/media/wpt_ev_demo_poster.jpg',
+  hasAudio: true,
+  label: 'Own clip · Mar 2023 · lab demo',
 };
 
 /** Andy's photo of the lab-test serial monitor ("Percent Misalignment: 1.53%"). From his personal Drive, Sample Work › Self Aligning Wireless Power Transfer › percent_misalignment.png. */

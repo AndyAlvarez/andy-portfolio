@@ -14,7 +14,7 @@ let nextId = 0;
   selector: 'app-inline-video',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <video #v [src]="src()" [poster]="poster()" controls muted playsinline preload="none"
+    <video #v [src]="src()" [poster]="poster()" controls [muted]="muted()" playsinline preload="none"
       controlsList="nodownload noremoteplayback" disablePictureInPicture disableRemotePlayback
       (contextmenu)="$event.preventDefault()" (play)="onPlay(true)" (pause)="onPlay(false)"
       (ended)="onPlay(false)"></video>
@@ -48,6 +48,8 @@ export class InlineVideo {
   readonly label = input<string>('');
   /** Short label shown on the EQ band while this clip plays. */
   readonly eqLabel = input('OWN CLIP');
+  /** Start muted (default). Set false for clips with an audio track so the EQ reacts live. */
+  readonly muted = input(true);
   /** Show a large centered play button over the poster until the clip plays. */
   readonly bigPlay = input(false);
   readonly playing = output<boolean>();
