@@ -19,18 +19,16 @@
               <span class="badge">CHART</span><span class="badge r">FROM THE NOTEBOOK</span>
             }
             @case ('wpt') {
-              @if (showClip()) {
-                <app-inline-video [src]="clip.src" [poster]="clip.poster" [autoplay]="true" eqLabel="WPT ROBOT CLIP" (playing)="clipPlaying.set($event)" />
-              } @else {
-                <img [src]="misalign.src" [alt]="misalign.alt" class="misalign" loading="lazy" />
-                <span class="badge g">1.53% MISALIGNMENT · LAB TEST</span>
-                <button type="button" class="playclip" (click)="showClip.set(true)">▶ PLAY ROBOT CLIP</button>
-              }
+              <app-inline-video [src]="clip.src" [poster]="clip.poster" eqLabel="WPT ROBOT CLIP" (playing)="clipPlaying.set($event)" />
               @if (!clipPlaying()) {
+                <button type="button" class="photo-in" (click)="openPhoto()" aria-label="Enlarge the lab-test readout: 1.53% misalignment">
+                  <img [src]="misalign.src" alt="" loading="lazy" />
+                  <span>1.53%</span>
+                </button>
                 <button type="button" class="paper-in" (click)="openPaper()" aria-label="Read the IEEE Access paper">
                   <img [src]="paperCard.thumb" alt="" loading="lazy" />
                 </button>
-                <span class="badge r">IEEE ACCESS</span>
+                <span class="badge">▶ VIDEO</span><span class="badge r">IEEE ACCESS</span>
               }
             }
           }
@@ -70,5 +68,13 @@
     </div>
     @if (paperOpen()) { <app-pdf-viewer [src]="paper.src" [name]="paper.title" /> }
     <small class="credit">{{ paper.credit }}</small>
+  </dialog>
+
+  <dialog #photoDlg class="photodlg" aria-label="Lab-test serial monitor readout" (click)="onPhotoClick($event)">
+    <div class="dlgbar">
+      <span>LAB TEST · SERIAL MONITOR · 1.53% MISALIGNMENT</span>
+      <button type="button" class="x" (click)="closePhoto()" aria-label="Close">✕</button>
+    </div>
+    <img [src]="misalign.src" [alt]="misalign.alt" (contextmenu)="$event.preventDefault()" draggable="false" />
   </dialog>
 </section>

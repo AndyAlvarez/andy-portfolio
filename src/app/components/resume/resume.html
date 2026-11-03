@@ -1,6 +1,22 @@
 <section id="resume" class="sec">
-  <h2 class="sec-title"><span>02</span> EXPERIENCE · RESUME</h2>
-  <div class="rdoc cut">
-    <app-pdf-viewer [src]="pdf.src" [name]="pdf.title" />
+  <h2 class="sec-title"><span>02</span> EXPERIENCE · RESUME
+    <a class="more" href="#resume-doc" (click)="showPdf($event)">VIEW FULL RESUME →</a></h2>
+  <div class="xr">
+    <div>
+      <ol class="tl">
+        @for (j of jobs; track j.role; let i = $index) {
+          <li><i class="dot" [class.g]="i === 1"></i><div class="when">{{ j.when }}</div><b>{{ j.role }}</b><span>{{ j.org }}</span><p>{{ j.summary }}</p></li>
+        }
+        <li><i class="dot p"></i><div class="when">{{ edu.when }}</div><b>{{ edu.degrees }}</b><span>{{ edu.school }}</span>
+          @if (edu.note) { <p>{{ edu.note }}</p> }</li>
+      </ol>
+      <div class="skl">
+        @for (s of skills; track s.group) { <div><b>{{ s.group }}</b><span>{{ s.items.join(' · ') }}</span></div> }
+      </div>
+    </div>
+
+    <div id="resume-doc" class="rdoc cut">
+      <app-pdf-viewer [src]="pdf.src" [name]="pdf.title" />
+    </div>
   </div>
 </section>

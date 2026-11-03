@@ -22,12 +22,23 @@ export class Featured {
   readonly paper = IEEE_PAPER;
   readonly paperCard = WPT_PAPER_CARD;
   readonly misalign = WPT_MISALIGNMENT_PHOTO;
-  /** The card shows the misalignment photo until the visitor asks for the robot clip. */
-  readonly showClip = signal(false);
   readonly clipPlaying = signal(false);
   /** The paper viewer is only created while the dialog is open. */
   readonly paperOpen = signal(false);
   private readonly dialog = viewChild.required<ElementRef<HTMLDialogElement>>('dlg');
+  private readonly photoDialog = viewChild.required<ElementRef<HTMLDialogElement>>('photoDlg');
+
+  openPhoto() {
+    this.photoDialog().nativeElement.showModal();
+  }
+
+  closePhoto() {
+    this.photoDialog().nativeElement.close();
+  }
+
+  onPhotoClick(ev: MouseEvent) {
+    if (ev.target === this.photoDialog().nativeElement) this.closePhoto();
+  }
 
   openPaper() {
     this.paperOpen.set(true);

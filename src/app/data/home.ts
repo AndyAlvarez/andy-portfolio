@@ -112,7 +112,7 @@ export const FEATURED: FeaturedCard[] = [
     kindColor: '#B48CFF',
     discipline: 'Embedded · Hardware',
     title: 'Self-Aligning Wireless Power Transfer',
-    body: "A robot that finds an EV's receiver coil and moves the charging pad under it, reaching 1.53% misalignment in lab testing (serial-monitor readout above). Our senior design team was acknowledged in IEEE Access (2024).",
+    body: "A robot that finds an EV's receiver coil and moves the charging pad under it, reaching 1.53% misalignment in lab testing (serial-monitor readout in the inset above). Our senior design team was acknowledged in IEEE Access (2024).",
     tags: ['C++', 'Arduino Mega', 'Hall-effect', 'DC motors'],
     foot: 'Team Leader · FIU Senior Design · 2022 – 23',
     link: { label: 'OPEN CASE STUDY →', href: CASE_STUDY_SOON },
