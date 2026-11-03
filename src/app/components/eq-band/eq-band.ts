@@ -13,7 +13,6 @@ const barsFor = (w: number) => (w < 600 ? 30 : 72);
   template: `
     <div class="r">
       <span aria-live="polite"><b [class.on]="mode() !== 'idle'">● {{ status() }}</b> · {{ detail() }}</span>
-      <span class="hint">REACTS LIVE TO SELF-HOSTED CLIPS · SIMULATED WHILE A YOUTUBE VIDEO PLAYS</span>
     </div>
     <canvas #c aria-hidden="true"></canvas>
   `,

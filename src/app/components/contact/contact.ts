@@ -9,11 +9,10 @@ import { Icon } from '../../shared/icon/icon';
   imports: [Icon],
   template: `
     <section id="contact" class="contact">
-      <h2 class="sec-title"><span>◉</span> CONTACT</h2>
       <div class="cbox panel cut">
         <div>
           <h3 class="chrome">Let's build something real-time.</h3>
-          <p class="lede">{{ p.availability }} The fastest way to reach me is email.</p>
+          <p class="lede">Email is the fastest way to reach me.</p>
         </div>
         <div class="clinks">
           @for (l of links; track l.tag) {
@@ -28,7 +27,6 @@ import { Icon } from '../../shared/icon/icon';
   `,
   styles: `
     .contact { max-width: var(--max); margin: 64px auto 0; padding: 0 var(--pad) 56px; }
-    .sec-title span { text-shadow: 0 0 8px var(--cyan); }
     .cbox { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: center; padding: 34px 36px; }
     h3 { font-family: var(--f-display); font-size: 34px; font-weight: 900; line-height: 1.05; margin-bottom: 10px; }
     .lede { font-size: 16px; line-height: 1.55; color: #d5d9df; }

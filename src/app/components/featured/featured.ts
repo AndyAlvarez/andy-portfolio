@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, signal, viewChild } from '@angular/core';
 import { FEATURED, FeaturedCard, WPT_PAPER_CARD } from '../../data/home';
 import { videosFor } from '../../data/videos';
-import { IEEE_PAPER, WPT_CARD_CLIP } from '../../data/media';
+import { IEEE_PAPER, WPT_CARD_CLIP, WPT_MISALIGNMENT_PHOTO } from '../../data/media';
 import { YtEmbed } from '../../shared/yt-embed/yt-embed';
 import { InlineVideo } from '../../shared/inline-video/inline-video';
 import { PdfViewer } from '../../shared/pdf-viewer/pdf-viewer';
@@ -21,6 +21,9 @@ export class Featured {
   readonly clip = WPT_CARD_CLIP;
   readonly paper = IEEE_PAPER;
   readonly paperCard = WPT_PAPER_CARD;
+  readonly misalign = WPT_MISALIGNMENT_PHOTO;
+  /** The card shows the misalignment photo until the visitor asks for the robot clip. */
+  readonly showClip = signal(false);
   readonly clipPlaying = signal(false);
   /** The paper viewer is only created while the dialog is open. */
   readonly paperOpen = signal(false);

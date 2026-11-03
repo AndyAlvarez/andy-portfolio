@@ -10,5 +10,4 @@ canvas { display: block; width: 100%; height: 120px; }
 @media (max-width: 600px) {
   :host { margin-top: 24px; padding: 10px 10px 8px; }
   canvas { height: 84px; }
-  .hint { display: none; }
 }

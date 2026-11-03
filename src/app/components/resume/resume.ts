@@ -1,29 +1,18 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { EDUCATION, JOBS, SKILLS } from '../../data/resume';
-import { PROFILE } from '../../data/profile';
-import { scrollToSection } from '../../scroll';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RESUME_PDF } from '../../data/media';
+import { PdfViewer } from '../../shared/pdf-viewer/pdf-viewer';
 
 /**
- * "02 Experience · Resume": timeline + skills on the left, a resume preview on the right.
- * The preview is rendered HTML (not the PDF) so the phone number in the PDF is never published,
- * and there is deliberately no download / save button.
+ * "02 Experience · Resume": Andy's own resume PDF in the inline pdf.js viewer (canvas only, no download / print).
+ * The served copy has the phone number redacted out of the file itself.
  */
 @Component({
   selector: 'app-resume',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [PdfViewer],
   templateUrl: './resume.html',
   styleUrl: './resume.scss',
 })
 export class Resume {
-  readonly jobs = JOBS;
-  readonly edu = EDUCATION;
-  readonly skills = SKILLS;
-  readonly p = PROFILE;
-  readonly open = signal(false);
-
-  toggle() {
-    const wasOpen = this.open();
-    this.open.set(!wasOpen);
-    if (wasOpen) scrollToSection('resume');
-  }
+  readonly pdf = RESUME_PDF;
 }

@@ -19,12 +19,18 @@
               <span class="badge">CHART</span><span class="badge r">FROM THE NOTEBOOK</span>
             }
             @case ('wpt') {
-              <app-inline-video [src]="clip.src" [poster]="clip.poster" eqLabel="WPT ROBOT CLIP" (playing)="clipPlaying.set($event)" />
+              @if (showClip()) {
+                <app-inline-video [src]="clip.src" [poster]="clip.poster" [autoplay]="true" eqLabel="WPT ROBOT CLIP" (playing)="clipPlaying.set($event)" />
+              } @else {
+                <img [src]="misalign.src" [alt]="misalign.alt" class="misalign" loading="lazy" />
+                <span class="badge g">1.53% MISALIGNMENT · LAB TEST</span>
+                <button type="button" class="playclip" (click)="showClip.set(true)">▶ PLAY ROBOT CLIP</button>
+              }
               @if (!clipPlaying()) {
                 <button type="button" class="paper-in" (click)="openPaper()" aria-label="Read the IEEE Access paper">
                   <img [src]="paperCard.thumb" alt="" loading="lazy" />
                 </button>
-                <span class="badge">▶ VIDEO</span><span class="badge r">IEEE ACCESS</span>
+                <span class="badge r">IEEE ACCESS</span>
               }
             }
           }

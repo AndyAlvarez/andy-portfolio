@@ -34,6 +34,18 @@ export const WPT_CARD_CLIP: Clip = {
   label: 'Own clip · Jan 2023 · robot test',
 };
 
+/** Andy's photo of the lab-test serial monitor ("Percent Misalignment: 1.53%"). From his personal Drive, Sample Work › Self Aligning Wireless Power Transfer › percent_misalignment.png. */
+export const WPT_MISALIGNMENT_PHOTO = {
+  src: 'assets/media/wpt_percent_misalignment.jpg',
+  alt: 'Laptop serial monitor during a lab test of the alignment robot, reading Percent Misalignment: 1.53%',
+};
+
+/** Andy's resume. Redacted copy of his PDF (phone number removed from the file, not just covered). */
+export const RESUME_PDF = {
+  src: 'assets/docs/andy-alvarez-resume.pdf',
+  title: 'Andy_Alvarez_Resume.pdf',
+};
+
 export const IEEE_PAPER = {
   src: 'assets/docs/ieee-access-2024-wpt.pdf',
   title: 'IEEE_Access_2024_WPT.pdf',
