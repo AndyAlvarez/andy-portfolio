@@ -1,0 +1,8 @@
+{
+  "name": "andy-portfolio",
+  "compatibility_date": "2026-11-02",
+  "assets": {
+    "directory": "./dist/andy-portfolio/browser",
+    "not_found_handling": "single-page-application"
+  }
+}
