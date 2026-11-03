@@ -61,10 +61,15 @@ export interface FeaturedCard {
   foot: string;
   /** Shows a dashed yellow "needs confirming" chip after the foot text. */
   footFlag?: string;
-  link: { label: string; href: string | null };
+  /** Optional card link; rendered only when SHOW_CASE_STUDY_LINKS is true. */
+  link?: { label: string; href: string };
 }
 
-/** Case-study pages are not built yet; links point back to the section until they are. */
+/**
+ * Case-study pages are not built yet, so the 'OPEN CASE STUDY →' links are hidden.
+ * To re-enable: set this to true and point each card's link.href at its page.
+ */
+export const SHOW_CASE_STUDY_LINKS = false;
 const CASE_STUDY_SOON = '#work';
 
 export const FEATURED: FeaturedCard[] = [
@@ -124,8 +129,6 @@ export const FEATURED: FeaturedCard[] = [
     more: 'Also on GitHub: MLP backprop digit classifier, EKG heart-attack classifier, Perceptron/Adaline vowels, power-plant regression, phishing detection.',
     tags: ['Python', 'TensorFlow', 'Keras', 'Colab'],
     foot: 'FIU coursework · Spring 2024',
-    // Notebook is not published yet: no link-out (null renders a non-clickable label).
-    link: { label: 'VIEW NOTEBOOK →', href: null },
   },
 ];
 

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, signal, viewChild } from '@angular/core';
-import { FEATURED, FeaturedCard, WPT_PAPER_CARD } from '../../data/home';
+import { FEATURED, FeaturedCard, SHOW_CASE_STUDY_LINKS, WPT_PAPER_CARD } from '../../data/home';
 import { videosFor } from '../../data/videos';
 import { IEEE_PAPER, SUMO_CARD_CLIP, WPT_CARD_CLIP, WPT_MISALIGNMENT_PHOTO } from '../../data/media';
 import { YtEmbed } from '../../shared/yt-embed/yt-embed';
@@ -17,6 +17,7 @@ import { DbDiagram } from '../db-diagram/db-diagram';
 })
 export class Featured {
   readonly cards: FeaturedCard[] = FEATURED;
+  readonly showCaseLinks = SHOW_CASE_STUDY_LINKS;
   readonly pcmVideo = videosFor('pcm')[0];
   readonly clip = WPT_CARD_CLIP;
   readonly sumoClip = SUMO_CARD_CLIP;

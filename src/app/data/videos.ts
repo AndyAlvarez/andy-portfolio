@@ -34,7 +34,6 @@ export const VIDEOS: Video[] = [
     placement: 'hero',
     enabled: true,
     andyConfirmed: true,
-    note: 'features Andy as remote control operator',
     thumb: 'assets/media/yt/n8bM6e9aCgo_max.jpg',
   },
   {
