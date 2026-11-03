@@ -19,13 +19,13 @@
               <span class="badge">CHART</span>
             }
             @case ('sumo') {
-              <app-inline-video [src]="sumoClip.src" [poster]="sumoClip.poster" [bigPlay]="true" [muted]="!sumoClip.hasAudio" eqLabel="SUMO BOT CLIP" (playing)="sumoPlaying.set($event)" />
-              @if (!sumoPlaying()) { <span class="badge">▶ VIDEO</span><span class="badge r gold">1ST PLACE</span> }
+              <app-loop-clip [src]="sumoClip.src" [poster]="sumoClip.poster" />
+              <span class="badge r gold">1ST PLACE</span>
             }
             @case ('wpt') {
               <app-inline-video [src]="clip.src" [poster]="clip.poster" [bigPlay]="true" [muted]="!clip.hasAudio" eqLabel="WPT ROBOT CLIP" (playing)="clipPlaying.set($event)" />
               @if (!clipPlaying()) {
-                <button type="button" class="photo-in" (click)="openPhoto()" aria-label="Enlarge the lab-test readout: 1.53% misalignment">
+                <button type="button" class="photo-in" (click)="openLabPhoto()" aria-label="Enlarge the lab-test readout: 1.53% misalignment">
                   <img [src]="misalign.src" alt="" loading="lazy" />
                   <span>1.53%</span>
                 </button>
@@ -57,6 +57,22 @@
             @if (showCaseLinks && c.link) { <a [href]="c.link.href">{{ c.link.label }}</a> }
           </div>
         </div>
+        @if (c.id === 'pcm') {
+          <div class="pstrip">
+            <figure class="ptile vid">
+              <app-loop-clip [src]="routeLoop.src" [poster]="routeLoop.poster" />
+              <figcaption><i class="live">●</i> {{ routeLoop.caption }}</figcaption>
+            </figure>
+            @for (p of pcmPhotos; track p.src) {
+              <figure class="ptile">
+                <button type="button" (click)="openPhoto(p.src, p.alt, p.caption)" [attr.aria-label]="'Enlarge photo: ' + p.caption">
+                  <img [src]="p.thumb" [alt]="p.alt" loading="lazy" decoding="async" draggable="false" (contextmenu)="$event.preventDefault()" />
+                </button>
+                <figcaption>{{ p.caption }}</figcaption>
+              </figure>
+            }
+          </div>
+        }
       </article>
     }
   </div>
@@ -70,11 +86,11 @@
     <small class="credit">{{ paper.credit }}</small>
   </dialog>
 
-  <dialog #photoDlg class="photodlg" aria-label="Lab-test serial monitor readout" (click)="onPhotoClick($event)">
+  <dialog #photoDlg class="photodlg" [attr.aria-label]="photo().title" (click)="onPhotoClick($event)" (close)="onPhotoClose()">
     <div class="dlgbar">
-      <span>LAB TEST · SERIAL MONITOR · 1.53% MISALIGNMENT</span>
+      <span>{{ photo().title }}</span>
       <button type="button" class="x" (click)="closePhoto()" aria-label="Close">✕</button>
     </div>
-    <img [src]="misalign.src" [alt]="misalign.alt" (contextmenu)="$event.preventDefault()" draggable="false" />
+    @if (photoOpen()) { <img [src]="photo().src" [alt]="photo().alt" (contextmenu)="$event.preventDefault()" draggable="false" /> }
   </dialog>
 </section>

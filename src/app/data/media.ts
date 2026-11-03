@@ -28,9 +28,10 @@ export const WPT_CARD_CLIP: Clip = {
  * Re-encoded H.264 1280×720 30 fps + AAC 128k, faststart; full length, no trim. Has audio, so it plays unmuted.
  */
 export const SUMO_CARD_CLIP: Clip = {
-  src: 'assets/media/sumo_bot.mp4',
+  /** Silent card loop: same full 24.5 s clip, audio track removed (video stream copied, no re-encode). */
+  src: 'assets/media/sumo_bot_loop.mp4',
   poster: 'assets/media/sumo_bot_poster.jpg',
-  hasAudio: true,
+  hasAudio: false,
   label: 'Clip · Apr 2023 · sumo match',
 };
 
@@ -51,3 +52,34 @@ export const IEEE_PAPER = {
   title: 'IEEE_Access_2024_WPT.pdf',
   credit: 'Paper by Behnamfar, Tariq & Sarwat (CC BY-NC-ND 4.0), shown unmodified.',
 };
+
+export interface StripPhoto {
+  src: string;
+  /** Small copy for the card strip; the full-size file only loads in the popup. */
+  thumb: string;
+  alt: string;
+  caption: string;
+}
+
+/** PCM in service: the passenger screens are public on board, so these are fine to show. */
+export const PCM_ROUTE_LOOP = {
+  src: 'assets/media/pcm_screen_loop.mp4',
+  poster: 'assets/media/pcm_screen_loop_poster.jpg',
+  caption: 'Live onboard screen',
+  alt: 'Onboard passenger screen in service, cycling between the live route map with stops and ETAs and an ad slot',
+};
+
+export const PCM_PHOTOS: StripPhoto[] = [
+  {
+    src: 'assets/media/pcm_welcome.jpg',
+    thumb: 'assets/media/pcm_welcome_thumb.jpg',
+    alt: 'Onboard passenger screen showing the welcome aboard screen',
+    caption: 'Onboard welcome screen',
+  },
+  {
+    src: 'assets/media/pcm_ad_slot.jpg',
+    thumb: 'assets/media/pcm_ad_slot_thumb.jpg',
+    alt: "Onboard passenger screen showing the 'Your ad could be on this screen' ad slot with a QR code",
+    caption: 'Ad slot',
+  },
+];
