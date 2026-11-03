@@ -4,6 +4,7 @@
     <div class="intro">
       <div class="eyebrow">{{ p.title.toUpperCase() }}</div>
       <h1 class="chrome">{{ p.name.first }} <em>{{ p.name.last }}</em></h1>
+      <p class="role">@for (t of p.title.split(' · '); track t; let last = $last) {<span>{{ t }}{{ last ? '' : ' ·' }}</span>{{ last ? '' : ' ' }}}</p>
       <p class="lede">{{ p.lede }}</p>
       <dl class="hstack">
         @for (s of p.skills; track s.group) { <div><dt>{{ s.group }}</dt><dd>@for (it of s.items; track it; let last = $last) {<span>{{ it }}{{ last ? '' : ' ·' }}</span>{{ last ? '' : ' ' }}}</dd></div> }

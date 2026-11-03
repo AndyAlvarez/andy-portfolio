@@ -32,7 +32,7 @@
   .rt b { font-size: 14.5px; font-weight: 650; color: var(--tx); }
   .rt span { font-size: 13px; color: var(--mut); line-height: 1.45; }
   .go {
-    height: 36px; padding: 0 14px; border: 1px solid var(--line2); border-radius: var(--r); background: var(--btn2); color: var(--tx);
+    height: 36px; padding: 0 14px; border: 1px solid var(--line2); border-radius: 0; background: var(--btn2); color: var(--tx);
     font: 550 13.5px/34px var(--f-sans); transition: border-color .15s;
   }
   .go:hover { border-color: var(--mut); }

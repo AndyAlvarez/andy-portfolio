@@ -44,7 +44,7 @@ export class EqService {
   /** Live mode read only silence (no audio track / muted): show the simulated pattern instead. */
   liveWasSilent() {
     const next = new Map(this.active());
-    for (const [k, s] of next) if (s.mode === 'live') next.set(k, { mode: 'ext', label: `${s.label} · NO AUDIO` });
+    for (const [k, s] of next) if (s.mode === 'live') next.set(k, { mode: 'ext', label: s.label });
     this.active.set(next);
     this.eq?.setMode(this.mode());
   }

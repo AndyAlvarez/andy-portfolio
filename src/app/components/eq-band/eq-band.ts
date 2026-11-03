@@ -6,7 +6,7 @@ import { HeadUnitEQ } from '../../shared/eq/head-unit-eq';
 
 const barsFor = (w: number) => (w < 600 ? 30 : 72);
 
-/** Full-width hero EQ band. Idle drift by default; live / simulated while a video on the page plays. */
+/** Full-width hero EQ band. Idle drift by default; reacts while a video on the page plays. */
 @Component({
   selector: 'app-eq-band',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -22,7 +22,7 @@ export class EqBand {
   private readonly svc = inject(EqService);
   private readonly canvas = viewChild.required<ElementRef<HTMLCanvasElement>>('c');
   readonly mode = this.svc.mode;
-  readonly status = computed(() => ({ idle: 'IDLE', live: 'LIVE', ext: 'SIMULATED' })[this.mode()]);
+  readonly status = computed(() => (this.mode() === 'idle' ? 'IDLE' : 'PLAYING'));
   readonly detail = computed(() => (this.mode() === 'idle' ? 'AMBIENT' : this.svc.label() || 'NOW PLAYING'));
 
   constructor() {

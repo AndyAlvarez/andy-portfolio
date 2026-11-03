@@ -121,7 +121,7 @@ export class HeadUnitEQ {
       if (this.audio.ctx.state === 'suspended') void this.audio.ctx.resume();
       return true;
     } catch (e) {
-      console.warn('EQ: Web Audio unavailable, using simulated mode', e);
+      console.debug('EQ: Web Audio unavailable; falling back to the drawn pattern', e);
       return false;
     }
   }

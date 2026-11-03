@@ -63,7 +63,7 @@ import { ThemeService } from '../../shared/theme/theme.service';
       .cbox { grid-template-columns: 1fr 1fr; gap: 32px; padding: 34px; border: 1px solid var(--line); border-radius: var(--r3); background: var(--surf); }
       h3 { font-family: var(--f-head); font-size: 34px; font-weight: 650; letter-spacing: -.025em; line-height: 1.1; margin-bottom: 10px; color: var(--tx); }
       .lede { font-size: 18.5px; line-height: 1.6; color: var(--tx2); }
-      .clinks a { padding: 14px 16px; border: 1px solid var(--line2); border-radius: var(--r); font-size: 15px; color: var(--tx); transition: border-color .15s; }
+      .clinks a { padding: 14px 16px; border: 1px solid var(--line2); border-radius: 0; font-size: 15px; color: var(--tx); transition: border-color .15s; }
       .clinks a:hover { border-color: var(--accent); }
       .clinks .ico { color: var(--accent-t); flex: none; }
       .clinks b { font: 400 11.5px var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--mut); }

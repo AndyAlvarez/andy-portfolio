@@ -115,7 +115,7 @@ button.chip-btn { border: 0; }
   .sec-title .tk::after { content: ''; margin-left: auto; width: 10px; height: 10px; box-sizing: border-box; border: 1px solid var(--tx2); }
 
   .chip-btn {
-    display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 18px; border-radius: var(--r); cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 18px; border-radius: 0; cursor: pointer;
     border: 1px solid var(--accent); background: var(--accent); color: var(--onacc); font: 550 14.5px/1 var(--f-sans);
     transition: filter .15s, border-color .15s;
   }
@@ -125,7 +125,7 @@ button.chip-btn { border: 0; }
   button.chip-btn { border-style: solid; border-width: 1px; }
 
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tags i { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: -.01em; padding: 4px 8px; border: 1px solid var(--line2); border-radius: 4px; color: var(--tx2); }
+  .tags i { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: -.01em; padding: 4px 8px; border: 1px solid var(--line2); border-radius: 2px; color: var(--tx2); }
   @media (max-width: 800px) {
     .sec { padding-top: 48px; }
     .sec-title { font-size: 26px; }
