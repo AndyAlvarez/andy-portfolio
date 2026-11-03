@@ -5,15 +5,13 @@
   <title>Andy Alvarez · Embedded Systems Engineer</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Andy Alvarez, Embedded Systems Engineer and Project Lead. Real-time video, IoT edge systems, teleoperation and embedded hardware.">
+  <meta name="description" content="Andy Alvarez, Embedded Systems Engineer and Project Lead. Software and hardware that run in the real world, from embedded systems to full-stack apps.">
   <meta name="theme-color" content="#FAFAF8">
-  <!-- Favicon D (atom A: orbit crossbar + nucleus). Alternates: favicon-alt-aa/ (AA monogram), favicon-alt-eq/ (EQ bars), favicon-alt-atom-orbit/ (C). -->
   <link rel="icon" href="favicon.svg?v=d" type="image/svg+xml">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=d">
   <link rel="icon" href="favicon.ico?v=d" sizes="16x16 32x32 48x48">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=d">
-  <!-- Theme before first paint (no flash): ?theme= > saved choice > OS light/dark. Pro = light | dark, Atomic = the Y2K chrome look.
-       Sets data-theme + data-ui on <html> and preloads only that mode's display fonts. Keep in sync with ThemeService. -->
+  <!-- Set theme before first paint. Keep in sync with ThemeService. -->
   <script>
     (function () {
       var d = document, h = d.documentElement, ok = { light: 1, dark: 1, atomic: 1 }, t = null;
@@ -29,7 +27,7 @@
       if (m) m.setAttribute('content', { light: '#FAFAF8', dark: '#0B0F17', atomic: '#0B0B12' }[t]);
       var f = t === 'atomic'
         ? [['Orbitron-Variable.ttf', 'font/ttf'], ['VT323-Regular.ttf', 'font/ttf']]
-        : [['InterTight-Variable.woff2', 'font/woff2'], ['Inter-Variable.woff2', 'font/woff2']];
+        : [['SchibstedGrotesk-Variable.woff2', 'font/woff2'], ['MartianMono-Variable.woff2', 'font/woff2']];
       for (var i = 0; i < f.length; i++) {
         var l = d.createElement('link');
         l.rel = 'preload'; l.as = 'font'; l.type = f[i][1]; l.crossOrigin = 'anonymous'; l.href = '/assets/fonts/' + f[i][0];

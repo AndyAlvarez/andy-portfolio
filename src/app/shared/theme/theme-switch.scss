@@ -5,27 +5,28 @@ button {
   all: unset; box-sizing: border-box; cursor: pointer; display: flex; align-items: center; gap: 6px; height: 28px; padding: 0 9px;
 }
 .lbl { white-space: nowrap; }
-// Sun / moon are icon-only (name kept for screen readers); Atomic shows its label on wide screens.
-.o-light .lbl, .o-dark .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.o-atomic { padding: 0 11px 0 9px; }
-@media (max-width: 900px) {
-  .o-atomic { padding: 0 8px; }
-  .o-atomic .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
-  button { padding: 0 8px; }
-}
+@mixin sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 900px) { .lbl { @include sr-only; } }
 
+// Pro: square segmented control, labels on wide screens.
 @include m.pro {
-  .seg { border: 1px solid var(--line2); border-radius: 999px; background: var(--segbg); }
-  button { border-radius: 999px; color: var(--mut); font: 600 12.5px/1 var(--f-sans); transition: color .15s, background-color .15s; }
+  .seg { gap: 0; padding: 2px; border: 1px solid var(--line2); border-radius: 0; background: var(--segbg); }
+  button { height: 30px; padding: 0 11px; color: var(--mut); font: 600 12.5px/1 var(--f-sans); transition: color .15s, background-color .15s; }
+  button + button { border-left: 1px solid var(--line); }
+  button.on + button, button:has(+ .on) { border-left-color: transparent; }
   button:hover { color: var(--tx); }
-  // Light: the mockup's --mut on --segbg is 4.24:1, a bit under AA for the 12.5px "Atomic" label; nudge darker.
+  // AA contrast on the segment background.
   :host-context([data-theme='light']) & button:not(.on) { color: #636A77; }
-  button.on { background: var(--segon); color: var(--segonink); box-shadow: 0 1px 3px rgba(0, 0, 0, .12), 0 0 0 1px var(--line); }
+  button.on { background: var(--segon); color: var(--segonink); box-shadow: 0 0 0 1px var(--line2); }
   button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  @media (max-width: 900px) { button { padding: 0 9px; } }
 }
 
 // Atomic: same control, restyled as a chrome-bezel toggle.
 @include m.atomic {
+  .o-light .lbl, .o-dark .lbl { @include sr-only; }
+  .o-atomic { padding: 0 11px 0 9px; }
+  @media (max-width: 900px) { .o-atomic, button { padding: 0 8px; } }
   .seg { background: #05060a; border: 1px solid #c0c6cf44; box-shadow: inset 0 1px 0 #fff1; @include m.cut(6px); }
   button { height: 26px; color: var(--mute); font: 600 10.5px/1 var(--f-display); letter-spacing: 1.5px; text-transform: uppercase; transition: color .15s; }
   button:hover { color: var(--cyan); }

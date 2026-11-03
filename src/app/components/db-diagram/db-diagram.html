@@ -1,4 +1,4 @@
-<svg viewBox="0 0 640 300" class="dbsvg" role="img" aria-labelledby="dbt" font-family="VT323" font-size="16"><title id="dbt">Illustrative diagram: sensor data flows through Redis Streams into the main processor, then to a local time-series database, a remote server with retry, and other services. Below, a Node and Express API sits in front of a simplified PostgreSQL schema.</title><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#00E5FF"/>
+<svg viewBox="0 0 640 300" class="dbsvg" role="img" aria-labelledby="dbt" font-family="VT323" font-size="16"><title id="dbt">Diagram: sensor data flows through Redis Streams into the main processor, then to a local time-series database, a remote server with retry, and other services. Below, a Node and Express API sits in front of a simplified PostgreSQL schema.</title><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#00E5FF"/>
   </marker></defs><rect width="640" height="300" fill="#05060a"/>
   <g stroke="#1F51FF1c"><line x1="0" y1="0" x2="0" y2="300"/>
   <line x1="32" y1="0" x2="32" y2="300"/>
@@ -31,42 +31,42 @@
   <line x1="0" y1="224" x2="640" y2="224"/>
   <line x1="0" y1="256" x2="640" y2="256"/>
   <line x1="0" y1="288" x2="640" y2="288"/>
-  </g><text x="112" y="20" fill="#5d6a7d" font-size="15">EDGE PIPELINE · TEAM PROJECT · MY PART HIGHLIGHTED</text>
+  </g><text x="16" y="20" fill="#5d6a7d" font-size="15" class="u">Edge pipeline (team project)</text>
   <rect x="16" y="32" width="104" height="24" fill="#0b1a0b" stroke="#39FF14"/>
-  <text x="24" y="49.0" fill="#39FF14" font-size="15">IMU · 100 Hz</text>
+  <text x="24" y="49.0" fill="#39FF14" font-size="15" class="u">IMU · 100 Hz</text>
   <rect x="16" y="62" width="104" height="24" fill="#0b1a0b" stroke="#39FF14"/>
-  <text x="24" y="79.0" fill="#39FF14" font-size="15">GPS · 50 Hz</text>
+  <text x="24" y="79.0" fill="#39FF14" font-size="15" class="u">GPS · 50 Hz</text>
   <rect x="16" y="92" width="104" height="24" fill="#0b1a0b" stroke="#39FF14"/>
-  <text x="24" y="109.0" fill="#39FF14" font-size="15">CAMERA EVENTS</text>
+  <text x="24" y="109.0" fill="#39FF14" font-size="15" class="u">Camera events</text>
   <g stroke="#00E5FF" stroke-dasharray="4 3" fill="none" marker-end="url(#ah)"><path d="M120 44H134V64H144"/>
   <path d="M120 74H144"/>
   <path d="M120 104H134V84H144"/>
   </g><rect x="146" y="52" width="104" height="44" fill="#04141a" stroke="#00E5FF"/>
-  <text x="154" y="69" fill="#00E5FF" font-size="16">REDIS STREAMS</text>
+  <text x="154" y="69" fill="#00E5FF" font-size="16" class="u">Redis Streams</text>
   <text x="154" y="85" fill="#6f8099" font-size="13">consumer groups</text>
   <path d="M250 74H272" stroke="#00E5FF" stroke-dasharray="4 3" marker-end="url(#ah)"/>
   <rect x="274" y="34" width="156" height="82" fill="#140a2a" stroke="#B48CFF" stroke-width="2"/>
   <rect x="274" y="34" width="156" height="82" fill="none" stroke="#7B2CFF" stroke-width="6" opacity=".25"/>
-  <text x="284" y="54" fill="#fff" font-size="18">MAIN PROCESSOR</text>
+  <text x="284" y="54" fill="#fff" font-size="18" class="u">Main processor</text>
   <text x="284" y="74" fill="#c9b3ff" font-size="14">validate · batch IMU</text>
   <text x="284" y="90" fill="#c9b3ff" font-size="14">event snapshots</text>
   <text x="284" y="106" fill="#c9b3ff" font-size="14">persist · upload · retry</text>
-  <rect x="368" y="22" width="62" height="16" fill="#7B2CFF"/>
-  <text x="374" y="35" fill="#fff" font-size="13">★ MY PART</text>
+  <rect x="344" y="22" width="86" height="16" fill="#7B2CFF"/>
+  <text x="351" y="35" fill="#fff" font-size="13" class="u">I built this</text>
   <g stroke="#00E5FF" stroke-dasharray="4 3" fill="none" marker-end="url(#ah)"><path d="M430 60H446V44H458"/>
   <path d="M430 74H458"/>
   <path d="M430 90H446V104H458"/>
   </g><rect x="460" y="32" width="164" height="24" fill="#0a0f2a" stroke="#1F51FF"/>
-  <text x="468" y="49.0" fill="#9fb4ff" font-size="15">TIMESCALEDB · LOCAL</text>
+  <text x="468" y="49.0" fill="#9fb4ff" font-size="15" class="u">TimescaleDB · local</text>
   <rect x="460" y="62" width="164" height="24" fill="#0a0f2a" stroke="#1F51FF"/>
-  <text x="468" y="79.0" fill="#9fb4ff" font-size="15">REMOTE SERVER · ↻ RETRY</text>
+  <text x="468" y="79.0" fill="#9fb4ff" font-size="15" class="u">Remote server · retry</text>
   <rect x="460" y="92" width="164" height="24" fill="#0a0f2a" stroke="#1F51FF"/>
-  <text x="468" y="109.0" fill="#9fb4ff" font-size="15">EVENTS → OTHER SERVICES</text>
+  <text x="468" y="109.0" fill="#9fb4ff" font-size="15" class="u">Events → other services</text>
   <line x1="16" y1="134" x2="624" y2="134" stroke="#c0c6cf33" stroke-dasharray="2 4"/>
-  <text x="16" y="156" fill="#5d6a7d" font-size="15">CORE API + POSTGRESQL SCHEMA</text>
+  <text x="16" y="156" fill="#5d6a7d" font-size="15" class="u">Core API + PostgreSQL schema</text>
   <rect x="16" y="170" width="134" height="50" fill="#04141a" stroke="#00E5FF"/>
-  <text x="24" y="187" fill="#00E5FF" font-size="16">NODE · EXPRESS API</text>
-  <text x="24" y="203" fill="#6f8099" font-size="13">JWT · 2FA · roles</text>
+  <text x="24" y="187" fill="#00E5FF" font-size="16" class="u">Node · Express API</text>
+  <text x="24" y="203" fill="#6f8099" font-size="13">REST</text>
   <path d="M150 195H180" stroke="#00E5FF" stroke-dasharray="4 3" marker-end="url(#ah)"/>
   <g stroke="#39FF14" stroke-width="1.2" fill="none"><path d="M282 182H300"/>
   <path d="M402 182H420"/>
@@ -84,12 +84,12 @@
   <rect x="542" y="170" width="82" height="24" fill="#0f1017" stroke="#C0C6CF66"/>
   <text x="550" y="187.0" fill="#e6e9ee" font-size="14">Device</text>
   <rect x="182" y="238" width="100" height="24" fill="#0f1017" stroke="#C0C6CF66"/>
-  <text x="190" y="255.0" fill="#e6e9ee" font-size="14">User · Role</text>
+  <text x="190" y="255.0" fill="#e6e9ee" font-size="14">User</text>
   <rect x="302" y="238" width="100" height="24" fill="#0f1017" stroke="#C0C6CF66"/>
   <text x="310" y="255.0" fill="#e6e9ee" font-size="14">Route · Stops</text>
   <rect x="422" y="238" width="100" height="24" fill="#0f1017" stroke="#C0C6CF66"/>
   <text x="430" y="255.0" fill="#e6e9ee" font-size="14">Op. session</text>
   <rect x="542" y="238" width="82" height="24" fill="#0f1017" stroke="#C0C6CF66"/>
   <text x="550" y="255.0" fill="#e6e9ee" font-size="14">Ad · Impr.</text>
-  </g><text x="16" y="290" fill="#ffcc00" font-size="14">ILLUSTRATIVE · SIMPLIFIED</text>
+  </g><text x="16" y="290" fill="#ffcc00" font-size="14" class="u">Simplified</text>
   </svg>

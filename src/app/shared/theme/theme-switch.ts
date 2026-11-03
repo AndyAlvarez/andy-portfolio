@@ -5,8 +5,8 @@ import { THEMES, Theme, ThemeService } from './theme.service';
 
 /**
  * Three-way theme control: Light / Dark (Pro) and Atomic. An ARIA radiogroup with roving tabindex:
- * arrow keys / Home / End move and select, Tab leaves the group. Sun and moon are icon-only with
- * tooltips; "Atomic" shows its label on wide screens. Every option keeps a text name for screen readers.
+ * arrow keys / Home / End move and select, Tab leaves the group. Labels show on wide screens
+ * (Pro: all three; Atomic: "Atomic" only). Every option keeps a text name for screen readers.
  */
 @Component({
   selector: 'app-theme-switch',
@@ -31,7 +31,7 @@ export class ThemeSwitch {
   readonly opts: { id: Theme; label: string; tip: string; icon: IconName }[] = [
     { id: 'light', label: 'Light', tip: 'Light', icon: 'sun' },
     { id: 'dark', label: 'Dark', tip: 'Dark', icon: 'moon' },
-    { id: 'atomic', label: 'Atomic', tip: 'Atomic (Y2K chrome look)', icon: 'atom' },
+    { id: 'atomic', label: 'Atomic', tip: 'Atomic', icon: 'atom' },
   ];
 
   onKey(ev: KeyboardEvent) {

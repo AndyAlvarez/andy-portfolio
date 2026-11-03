@@ -6,7 +6,7 @@ import { EqService } from '../eq/eq.service';
 let nextId = 0;
 
 /**
- * HTML5 player for Andy's own clips. Downloads stay blocked: controlsList="nodownload noremoteplayback",
+ * HTML5 player for my own clips. Downloads stay blocked: controlsList="nodownload noremoteplayback",
  * no picture-in-picture / remote playback, no context menu. While it plays, the hero EQ reacts live to its audio
  * (same-origin file, Web Audio analyser); clips without an audio track fall back to the simulated pattern.
  */

@@ -5,8 +5,7 @@ Atomic mode (TrueType):
   Orbitron, Chakra Petch, VT323, IBM Plex Sans
 
 Pro light / dark mode (variable WOFF2, subset to Latin-1 + common punctuation and arrows):
-  Inter          Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter)
-  Inter Tight    Copyright 2022 The Inter Project Authors (https://github.com/rsms/inter-tight)
-  JetBrains Mono Copyright 2020 The JetBrains Mono Project Authors (https://github.com/JetBrains/JetBrainsMono)
+  Schibsted Grotesk  Copyright 2023 The Schibsted-Grotesk Project Authors (https://github.com/schibsted/schibsted-grotesk)
+  Martian Mono       Copyright 2021 The Martian Mono Project Authors (https://github.com/evilmartians/mono)
 
 Full license text: OFL.txt (in this folder).

@@ -20,7 +20,7 @@ import { Icon } from '../../shared/icon/icon';
         <span class="l-atomic" aria-hidden="true">ANDY<span>·</span>ALVAREZ</span><span class="l-pro" aria-hidden="true">Andy Alvarez</span>
       </a>
       <button type="button" class="burger" (click)="open.set(!open())" [attr.aria-expanded]="open()" aria-label="Menu">
-        <span class="glyph" aria-hidden="true">☰</span><i aria-hidden="true"></i><i aria-hidden="true"></i>
+        <app-icon name="menu" [size]="22" />
       </button>
       <ul [class.open]="open()">
         @for (l of links; track l.id) {

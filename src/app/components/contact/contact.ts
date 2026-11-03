@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { IconName, PROFILE } from '../../data/profile';
 import { Icon } from '../../shared/icon/icon';
+import { ThemeService } from '../../shared/theme/theme.service';
 
 /** Contact: email, LinkedIn, GitHub and location only (no phone / street address). */
 @Component({
@@ -9,6 +10,9 @@ import { Icon } from '../../shared/icon/icon';
   imports: [Icon],
   template: `
     <section id="contact" class="contact">
+      @if (!theme.atomic()) {
+        <h2 class="sec-title"><span class="st">Contact</span><i class="sr" aria-hidden="true"></i><i class="tk" aria-hidden="true"></i></h2>
+      }
       <div class="cbox panel cut">
         <div>
           <h3 class="chrome">Let's build something!</h3>
@@ -23,7 +27,7 @@ import { Icon } from '../../shared/icon/icon';
         </div>
       </div>
     </section>
-    <footer class="fine"><span>© {{ year }} {{ p.name.first }} {{ p.name.last }} · {{ p.location }}</span><span>Built with Angular</span></footer>
+    <footer class="fine"><span>© {{ year }} {{ p.name.first }} {{ p.name.last }} · {{ p.location }}</span></footer>
   `,
   styles: `
     .cbox { display: grid; align-items: center; }
@@ -55,7 +59,7 @@ import { Icon } from '../../shared/icon/icon';
       }
     }
     :host-context([data-ui='pro']) {
-      .contact { max-width: var(--wrap); margin: 0 auto; padding: 72px var(--gut) 0; }
+      .contact { max-width: var(--wrap); margin: 0 auto; padding: 76px var(--gut) 0; }
       .cbox { grid-template-columns: 1fr 1fr; gap: 32px; padding: 34px; border: 1px solid var(--line); border-radius: var(--r3); background: var(--surf); }
       h3 { font-family: var(--f-head); font-size: 34px; font-weight: 650; letter-spacing: -.025em; line-height: 1.1; margin-bottom: 10px; color: var(--tx); }
       .lede { font-size: 18.5px; line-height: 1.6; color: var(--tx2); }
@@ -65,6 +69,7 @@ import { Icon } from '../../shared/icon/icon';
       .clinks b { font: 400 11.5px var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--mut); }
       .fine { max-width: var(--wrap); margin: 0 auto; padding: 40px var(--gut); font-size: 13px; color: var(--mut); }
       @media (max-width: 800px) {
+        .contact { padding-top: 48px; }
         .cbox { grid-template-columns: 1fr; padding: 22px; }
         h3 { font-size: 26px; }
         .lede { font-size: 16.5px; }
@@ -77,6 +82,7 @@ import { Icon } from '../../shared/icon/icon';
 })
 export class Contact {
   readonly p = PROFILE;
+  readonly theme = inject(ThemeService);
   readonly year = new Date().getFullYear();
   readonly links: { icon: IconName; text: string; tag: string; href: string; external: boolean }[] = [
     { icon: 'mail', text: PROFILE.email, tag: 'EMAIL', href: `mailto:${PROFILE.email}`, external: false },

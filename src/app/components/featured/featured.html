@@ -1,5 +1,5 @@
 <section id="work" class="sec">
-  <h2 class="sec-title"><span>01</span> Featured projects <a class="more" href="#work">All projects →</a></h2>
+  <h2 class="sec-title"><span class="st">Work</span><i class="sr" aria-hidden="true"></i><i class="tk" aria-hidden="true"></i></h2>
   <div class="fg">
     @for (c of cards; track c.id) {
       <article class="card panel cut" [class.wide]="c.id === 'pcm'" [attr.id]="'project-' + c.id">
@@ -7,20 +7,17 @@
           @switch (c.id) {
             @case ('pcm') {
               @if (pcmVideo) { <app-yt-embed [video]="pcmVideo" [caption]="false" eqLabel="PASSENGER COMM MODULE" /> }
-              <span class="badge">▶ Video</span>
             }
             @case ('db') {
               <app-db-diagram />
-              <span class="badge tr">Diagram</span>
             }
             @case ('ai') {
               <img src="assets/media/cnn_pandas_vs_cats_training.png" class="inv" loading="lazy"
                 alt="Training and validation accuracy curves from the pandas vs cats CNN notebook" />
-              <span class="badge tr">Chart</span>
             }
             @case ('sumo') {
               <app-loop-clip [src]="sumoClip.src" [poster]="sumoClip.poster" />
-              <span class="badge r gold">1st place</span>
+              <span class="badge r gold">1st place, final competition</span>
             }
             @case ('wpt') {
               <app-inline-video [src]="clip.src" [poster]="clip.poster" [bigPlay]="true" [muted]="!clip.hasAudio" eqLabel="WPT ROBOT CLIP" (playing)="clipPlaying.set($event)" />
@@ -32,19 +29,16 @@
                 <button type="button" class="paper-in" (click)="openPaper()" aria-label="Read the IEEE Access paper">
                   <img [src]="paperCard.thumb" alt="" loading="lazy" />
                 </button>
-                <span class="badge">▶ Video</span><span class="badge r">IEEE Access</span>
+                <span class="badge r">IEEE Access</span>
               }
             }
           }
         </div>
+        @if (c.id === 'pcm') { <app-reaction-game class="rxg" /> }
         <div class="cb">
-          <div class="kind">
-            <span class="vfd" [class.k-alt]="c.kind !== 'PROFESSIONAL'" [style.color]="theme.atomic() ? c.kindColor : null">{{ c.kind }}</span>
-            <span class="disc">{{ c.discipline }}</span>
-          </div>
           <h4>{{ c.title }}</h4>
           <p>{{ c.body }}</p>
-          @if (c.more) { <p class="more6">{{ c.more }}</p> }
+          @if (c.more) { <p class="note">{{ c.more }}</p> }
           @if (c.id === 'wpt') {
             <button type="button" class="paperlink" (click)="openPaper()">
               <span aria-hidden="true">▤</span>
@@ -52,16 +46,13 @@
             </button>
           }
           <div class="tags">@for (t of c.tags; track t) { <i>{{ t }}</i> }</div>
-          <div class="foot">
-            <span>{{ c.foot }}@if (c.footFlag) { · <span class="flagd">{{ c.footFlag }}</span> }</span>
-            @if (showCaseLinks && c.link) { <a [href]="c.link.href">{{ c.link.label }}</a> }
-          </div>
+          <div class="foot">{{ c.foot }}</div>
         </div>
         @if (c.id === 'pcm') {
           <div class="pstrip">
             <figure class="ptile vid">
               <app-loop-clip [src]="routeLoop.src" [poster]="routeLoop.poster" />
-              <figcaption><i class="live">●</i> {{ routeLoop.caption }}</figcaption>
+              <figcaption>{{ routeLoop.caption }}</figcaption>
             </figure>
             @for (p of pcmPhotos; track p.src) {
               <figure class="ptile">

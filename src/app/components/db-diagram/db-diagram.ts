@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 /**
- * Static, illustrative diagram for the "Core API, Database & Telemetry Pipeline" card.
+ * Static, simplified diagram for the "Core API, Database & Telemetry Pipeline" card.
  * Entities are generalized on purpose: no real table names, hosts or customer names.
+ * Labels are sentence case in the source; Atomic shows them uppercase (VT323).
  * Scrolls horizontally on phones so the labels stay readable.
  */
 @Component({
@@ -16,14 +17,17 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       :host { overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .dbsvg { width: 620px; height: 291px; }
     }
-    /* Pro look: same diagram, recoloured from the theme tokens; JetBrains Mono is wider than VT323, so sizes scale down. */
+    :host-context([data-ui='atomic']) text.u { text-transform: uppercase; }
+    /* Pro look: same diagram, recoloured from the theme tokens; Martian Mono is wider than VT323, so sizes scale down. */
     :host-context([data-ui='pro']) {
       .dbsvg { font-family: var(--f-mono); }
-      text[font-size='13'] { font-size: 9.5px; }
-      text[font-size='14'] { font-size: 10px; }
-      text[font-size='15'] { font-size: 10.5px; }
-      text[font-size='16'] { font-size: 11px; font-weight: 600; }
-      text[font-size='18'] { font-size: 12.5px; font-weight: 700; }
+      text[font-size='13'] { font-size: 9px; }
+      text[font-size='14'] { font-size: 9.5px; }
+      text[font-size='15'] { font-size: 9.5px; }
+      text[font-size='16'] { font-size: 10px; font-weight: 600; }
+      text[font-size='18'] { font-size: 11.5px; font-weight: 600; }
+      text[fill='#fff'][font-size='13'] { font-weight: 600; }
+      text[fill='#c9b3ff'] { font-size: 9px; }
       [fill='#05060a'] { fill: var(--bg); }
       g[stroke='#1F51FF1c'] { stroke: var(--line); }
       [fill='#5d6a7d'], [fill='#6f8099'] { fill: var(--mut); }

@@ -27,7 +27,7 @@ let nextId = 0;
         @if (caption()) {
           <span class="cap">
             <b>{{ video().title }}</b>
-            <span>{{ video().source }} · {{ video().date }}@if (video().note) { · {{ video().note }} }</span>
+            <span>{{ video().source }} · {{ video().date }}</span>
           </span>
         }
       </button>

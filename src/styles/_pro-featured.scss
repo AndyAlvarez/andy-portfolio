@@ -3,30 +3,35 @@
 [data-ui='pro'] app-featured {
   .fg { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
   .card { background: var(--surf); border: 1px solid var(--line); border-radius: var(--r3); overflow: hidden; display: flex; flex-direction: column; }
-  .card.wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1.25fr 1fr; }
+  // PCM: video + reaction game stacked on the left, text on the right, photo strip across the bottom.
+  // The game row takes the leftover height, so the left column always ends level with the text.
+  .card.wide {
+    grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto; grid-template-areas: 'media body' 'game body' 'strip strip';
+  }
+  .card.wide .cim { grid-area: media; }
+  .card.wide .rxg { grid-area: game; margin: 12px 0 16px 16px; }
+  .card.wide .cb { grid-area: body; }
+  .card.wide .pstrip { grid-area: strip; }
   .cim { position: relative; margin: 14px 14px 0; aspect-ratio: 16 / 9; border-radius: var(--r2); overflow: hidden; background: #000; }
-  .card.wide .cim { margin: 16px 0 16px 16px; }
+  .card.wide .cim { margin: 16px 0 0 16px; }
   .cim > img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .cim app-yt-embed, .cim app-inline-video, .cim app-loop-clip { width: 100%; height: 100%; aspect-ratio: auto; }
   .cim.diagram { background: var(--bg); border: 1px solid var(--line); }
   .cim:has(> img.inv) { background: #fff; border: 1px solid var(--line); padding: 10px; }
   .cim > img.inv { object-fit: contain; }
   .badge {
-    position: absolute; left: 12px; bottom: 12px; z-index: 2; pointer-events: none; font-family: var(--f-mono); font-size: 11px;
+    position: absolute; left: 12px; bottom: 12px; z-index: 2; pointer-events: none; font-family: var(--f-mono); font-size: 10px;
     letter-spacing: .04em; padding: 5px 8px; border-radius: 4px; background: rgba(0, 0, 0, .66); color: #fff;
   }
-  .badge.r, .badge.tr { left: auto; right: 12px; top: 12px; bottom: auto; }
+  .badge.r { left: auto; right: 12px; top: 12px; bottom: auto; }
 
   .cb { padding: 24px 26px 22px; display: flex; flex-direction: column; gap: 12px; flex: 1; min-width: 0; }
-  .card.wide .cb { padding: 30px 32px; }
-  .kind { display: flex; gap: 10px; align-items: center; font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; }
-  .kind .vfd { padding: 3px 8px; border-radius: 4px; background: var(--chip); color: var(--accent-t); }
-  .kind .vfd.k-alt { color: var(--tx2); }
-  .disc { color: var(--mut); }
-  h4 { font-family: var(--f-head); font-size: 22px; font-weight: 650; letter-spacing: -.015em; line-height: 1.2; color: var(--tx); }
+  .card.wide .cb { padding: 30px 32px; gap: 14px; }
+  h4 { font-family: var(--f-head); font-size: 22px; font-weight: 700; letter-spacing: -.02em; line-height: 1.2; color: var(--tx); }
   .card.wide h4 { font-size: 28px; }
   p { font-size: 15px; line-height: 1.62; color: var(--tx2); }
-  .more6 { font-size: 13.5px; color: var(--mut); border-left: 2px solid var(--line2); padding-left: 10px; }
+  .note { font-size: 13.5px; color: var(--mut); border-left: 2px solid var(--line2); padding-left: 10px; }
   .paperlink {
     all: unset; cursor: pointer; display: flex; gap: 12px; align-items: center; padding: 10px; border: 1px solid var(--line);
     border-radius: var(--r2); background: var(--bg); color: var(--mut); transition: border-color .15s;
@@ -35,8 +40,7 @@
   .paperlink > span:first-child { font-size: 20px; color: var(--accent-t); }
   .paperlink b { display: block; font-size: 13px; line-height: 1.35; color: var(--tx); font-weight: 600; }
   .paperlink small { font-size: 12px; color: var(--mut); }
-  .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 10px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; color: var(--mut); }
-  .foot a { color: var(--accent-t); font-weight: 550; white-space: nowrap; }
+  .foot { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--mut); }
 
   .pstrip { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0 16px 16px; }
   .ptile { margin: 0; min-width: 0; }
@@ -45,15 +49,14 @@
   .ptile button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .ptile img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; transition: transform .2s; }
   .ptile button:hover img { transform: scale(1.03); }
-  .ptile figcaption { font-size: 12.5px; color: var(--mut); margin-top: 6px; display: flex; gap: 6px; align-items: center; }
-  .ptile .live { color: #EF4444; font-style: normal; font-size: 10px; }
+  .ptile figcaption { font-size: 12.5px; color: var(--mut); margin-top: 6px; }
 
   .paper-in, .photo-in {
     all: unset; cursor: zoom-in; position: absolute; bottom: 12px; z-index: 2; overflow: hidden; border-radius: 4px;
     border: 2px solid #fff; box-shadow: 0 6px 20px rgba(0, 0, 0, .35); transition: transform .15s;
   }
   .paper-in { right: 12px; width: 96px; height: 126px; background: #fff; }
-  .photo-in { left: 12px; bottom: 44px; width: 116px; height: 80px; background: #000; }
+  .photo-in { left: 12px; bottom: 12px; width: 116px; height: 80px; background: #000; }
   .paper-in:hover, .photo-in:hover, .paper-in:focus-visible, .photo-in:focus-visible { transform: scale(1.04); }
   .paper-in:focus-visible, .photo-in:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   .paper-in img { width: 100%; height: auto; display: block; }
@@ -74,8 +77,9 @@
   .credit { display: block; padding: 8px 14px 10px; font-size: 11.5px; color: var(--mut); }
 
   @media (max-width: 1000px) {
-    .card.wide { grid-template-columns: 1fr; }
+    .card.wide { grid-template-columns: 1fr; grid-template-rows: auto; grid-template-areas: 'media' 'game' 'body' 'strip'; }
     .card.wide .cim { margin: 16px 16px 0; }
+    .card.wide .rxg { margin: 12px 16px 0; }
     .card.wide .cb { padding: 22px; }
   }
   @media (max-width: 800px) {
@@ -86,6 +90,6 @@
     .pstrip { gap: 8px; }
     .ptile figcaption { font-size: 11px; }
     .paper-in { width: 62px; height: 82px; right: 8px; bottom: 8px; }
-    .photo-in { width: 84px; height: 58px; left: 8px; bottom: 36px; }
+    .photo-in { width: 84px; height: 58px; left: 8px; bottom: 8px; }
   }
 }

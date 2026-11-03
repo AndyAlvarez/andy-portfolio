@@ -2,8 +2,7 @@
 @use 'styles/mixins' as m;
 @use 'styles/pro-featured';
 
-// Two looks share one markup. <html data-theme="light|dark|atomic" data-ui="pro|atomic"> is set before first
-// paint by the inline script in index.html (see ThemeService). Atomic = the Y2K chrome look; Pro = light / dark.
+// <html data-theme="light|dark|atomic" data-ui="pro|atomic"> is set before first paint by the inline script in index.html.
 :root {
   --ink: #0b0b12; --chrome: #c0c6cf; --blue: #1f51ff; --cyan: #00e5ff; --green: #39ff14; --gold: #d4af37; --purple: #7b2cff; --mute: #8fa0b5;
   --f-display: 'Orbitron', sans-serif; --f-ui: 'Chakra Petch', sans-serif; --f-vfd: 'VT323', monospace; --f-body: 'IBM Plex Sans', sans-serif;
@@ -14,9 +13,9 @@
 
 // Pro tokens (one design, two colour schemes)
 [data-ui='pro'] {
-  --f-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --f-head: 'Inter Tight', 'Inter', system-ui, sans-serif;
-  --f-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --f-sans: 'Schibsted Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-head: 'Schibsted Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'Martian Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
   --r: 8px; --r2: 6px; --r3: 12px; --wrap: 1200px; --gut: 40px;
 }
 @media (max-width: 800px) { [data-ui='pro'] { --gut: 20px; } }
@@ -25,14 +24,14 @@
   --bg: #FAFAF8; --surf: #FFFFFF; --hdr: rgba(250, 250, 248, .9); --tx: #0E1116; --tx2: #3A4150; --mut: #6B7280;
   --line: #E7E5E0; --line2: #D5D2CB; --accent: #1F51FF; --accent-t: #1F44D6; --onacc: #FFFFFF; --chip: #EEF2FF; --pdfbg: #F1F0EC;
   --shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .06);
-  --segbg: #F1F0EC; --segon: #FFFFFF; --segonink: #0E1116; --glow: transparent; --btn2: #FFFFFF; --rule: #0E1116;
+  --segbg: #F1F0EC; --segon: #FFFFFF; --segonink: #0E1116; --glow: transparent; --btn2: #FFFFFF;
 }
 [data-theme='dark'] {
   color-scheme: dark;
   --bg: #0B0F17; --surf: #111723; --hdr: rgba(11, 15, 23, .85); --tx: #E7EBF1; --tx2: #B3BBC7; --mut: #7C8696;
   --line: #1D2532; --line2: #2B3545; --accent: #22D3EE; --accent-t: #67E8F9; --onacc: #04131A; --chip: rgba(34, 211, 238, .10); --pdfbg: #0D131D;
   --shadow: 0 10px 40px rgba(0, 0, 0, .35);
-  --segbg: #0F1520; --segon: #1E2736; --segonink: #E7EBF1; --glow: rgba(34, 211, 238, .09); --btn2: #151C29; --rule: #3B4658;
+  --segbg: #0F1520; --segon: #1E2736; --segonink: #E7EBF1; --glow: rgba(34, 211, 238, .09); --btn2: #151C29;
 }
 [data-theme='atomic'] { color-scheme: dark; --bg: #0b0b12; --accent: #00e5ff; }
 
@@ -61,8 +60,9 @@ button.chip-btn { border: 0; }
     font-family: var(--f-display); font-size: 26px; font-weight: 800; letter-spacing: 3px; color: #fff; margin-bottom: 28px;
     display: flex; align-items: center; gap: 14px; text-transform: uppercase;
   }
-  .sec-title::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--blue), #7b2cff55, transparent); }
-  .sec-title > span { font-family: var(--f-vfd); font-size: 30px; font-weight: 400; color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
+  .sec-title::after { content: ''; flex: 1; order: 2; height: 1px; background: linear-gradient(90deg, var(--blue), #7b2cff55, transparent); }
+  .sec-title .sr, .sec-title .tk { display: none; }
+  .sec-title .more { order: 3; font-family: var(--f-ui); font-size: 13px; letter-spacing: 2px; color: var(--cyan); font-weight: 600; white-space: nowrap; }
   @media (max-width: 600px) {
     .sec { padding-top: 44px; }
     .sec-title { font-size: 18px; letter-spacing: 3px; }
@@ -86,11 +86,9 @@ button.chip-btn { border: 0; }
   .vfd { font-family: var(--f-vfd); color: var(--cyan); text-shadow: 0 0 8px var(--cyan); }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
   .tags i { font-size: 11px; padding: 3px 8px; border: 1px solid var(--blue); color: #9fb4ff; }
-  /* Dashed yellow chip = wording still to be confirmed by Andy */
-  .flagd { display: inline-block; font-size: 10.5px; padding: 2px 7px; border: 1px dashed #ffcc00; color: #ffcc00; letter-spacing: .5px; }
   @media (max-width: 600px) {
     .sec-title { font-size: 19px; gap: 10px; margin-bottom: 20px; }
-    .sec-title > span { font-size: 24px; }
+    .sec-title .more { font-size: 11px; letter-spacing: 1px; }
   }
 }
 
@@ -100,17 +98,21 @@ button.chip-btn { border: 0; }
   ::selection { background: var(--accent); color: var(--onacc); }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-  .sec { max-width: var(--wrap); margin: 0 auto; padding: 72px var(--gut) 0; }
-  .sec-title {
-    display: flex; align-items: baseline; flex-wrap: wrap; gap: 14px; margin-bottom: 28px; padding-top: 16px; border-top: 1.5px solid var(--rule);
-    font-family: var(--f-head); font-size: 38px; font-weight: 650; letter-spacing: -.025em; line-height: 1.15; color: var(--tx);
-  }
-  .sec-title > span { font-family: var(--f-mono); font-size: 14px; font-weight: 400; letter-spacing: 0; color: var(--accent-t); }
+  .sec { max-width: var(--wrap); margin: 0 auto; padding: 76px var(--gut) 0; }
+  // Section heading as a hairline schematic rule: node, title, trace, optional link, ticks, square pad.
+  .sec-title { display: flex; align-items: center; margin-bottom: 28px; color: var(--mut); font: 700 36px/1.15 var(--f-head); }
+  .sec-title::before { content: ''; flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+  .sec-title .st { padding: 0 14px; color: var(--tx); letter-spacing: -.03em; }
+  .sec-title .sr { flex: 1; min-width: 24px; height: 1px; background: var(--line2); }
   .sec-title .more {
-    margin-left: auto; padding-left: 10px; border-left: 2px solid var(--line2); white-space: nowrap;
-    font-family: var(--f-mono); font-size: 13.5px; font-weight: 400; letter-spacing: .06em; text-transform: uppercase; color: var(--mut);
+    padding: 0 14px; white-space: nowrap; font: 500 11px/1 var(--f-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--accent-t);
   }
-  .sec-title .more:hover { color: var(--accent-t); }
+  .sec-title .more:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .sec-title .tk {
+    flex: none; display: flex; align-items: center; gap: 6px; width: 37px; height: 10px; padding-left: 6px;
+    background: repeating-linear-gradient(90deg, var(--line2) 0 1px, transparent 1px 7px) 6px 50% / 19px 9px no-repeat;
+  }
+  .sec-title .tk::after { content: ''; margin-left: auto; width: 10px; height: 10px; box-sizing: border-box; border: 1px solid var(--tx2); }
 
   .chip-btn {
     display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 18px; border-radius: var(--r); cursor: pointer;
@@ -123,12 +125,11 @@ button.chip-btn { border: 0; }
   button.chip-btn { border-style: solid; border-width: 1px; }
 
   .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .tags i { font-family: var(--f-mono); font-size: 11.5px; padding: 4px 8px; border: 1px solid var(--line2); border-radius: 4px; color: var(--tx2); }
-  .flagd { display: inline-block; font-size: 11px; padding: 1px 6px; border: 1px dashed #B45309; border-radius: 4px; color: #B45309; }
+  .tags i { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: -.01em; padding: 4px 8px; border: 1px solid var(--line2); border-radius: 4px; color: var(--tx2); }
   @media (max-width: 800px) {
     .sec { padding-top: 48px; }
-    .sec-title { font-size: 28px; }
-    .sec-title .more { flex-basis: 100%; margin: 6px 0 0; }
+    .sec-title { font-size: 26px; }
+    .sec-title .st { padding: 0 12px; }
+    .sec-title .more { padding: 0 10px; }
   }
 }
-[data-theme='dark'] .flagd { border-color: #FBBF24; color: #FBBF24; }

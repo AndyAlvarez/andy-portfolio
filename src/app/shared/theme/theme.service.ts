@@ -1,6 +1,7 @@
 import { ApplicationRef, DOCUMENT, Injectable, computed, inject, signal } from '@angular/core';
+import { powerDown, powerOn } from './crt';
 
-/** light / dark = the Pro look; atomic = the Y2K chrome look. */
+/** light / dark = the Pro look; atomic = the Atomic look. */
 export type Theme = 'light' | 'dark' | 'atomic';
 export const THEMES: readonly Theme[] = ['light', 'dark', 'atomic'];
 export const isTheme = (v: unknown): v is Theme => v === 'light' || v === 'dark' || v === 'atomic';
@@ -29,11 +30,32 @@ export class ThemeService {
       this.applyAttrs(next);
     };
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return apply();
+    // Into / out of Atomic: CRT power-on / power-down; the swap happens while the screen is dark.
+    // A click during the effect just retargets it: the latest pick is what gets applied.
+    if (this.crt) { this.crt.target = next; if (this.crt.swapped) apply(); return; }
+    const prev = this.theme();
+    if ((next === 'atomic' || prev === 'atomic') && typeof this.doc.body.animate === 'function') {
+      const crt: { target: Theme; swapped: boolean } = { target: next, swapped: false };
+      this.crt = crt;
+      const swap = () => {
+        crt.swapped = true;
+        this.theme.set(crt.target);
+        this.applyAttrs(crt.target);
+        this.appRef.tick();
+      };
+      (next === 'atomic' ? powerOn : powerDown)(this.doc, swap)
+        .catch(() => { if (!crt.swapped) swap(); })
+        .finally(() => { this.crt = null; });
+      return;
+    }
+    // Light <-> dark: short cross-fade; render the new theme inside the transition callback.
     const vt = (this.doc as Document & { startViewTransition?: (cb: () => void) => unknown }).startViewTransition;
-    if (reduce || typeof vt !== 'function') return apply();
-    // Short cross-fade between looks; render the new theme inside the transition callback.
+    if (typeof vt !== 'function') return apply();
     vt.call(this.doc, () => { apply(); this.appRef.tick(); });
   }
+
+  private crt: { target: Theme; swapped: boolean } | null = null;
 
   private initial(): Theme {
     const t = this.doc.documentElement.getAttribute('data-theme');

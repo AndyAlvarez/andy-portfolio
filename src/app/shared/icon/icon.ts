@@ -44,6 +44,7 @@ import { IconName } from '../../data/profile';
         }
         @case ('arrow') { <path d="M5 12h14M13 6l6 6-6 6" /> }
         @case ('doc') { <path d="M6 2h9l5 5v15H6z" /><path d="M14 2v6h6" /> }
+        @case ('menu') { <path d="M4 7h16M4 12h16M4 17h16" /> }
       }
     </svg>
   `,

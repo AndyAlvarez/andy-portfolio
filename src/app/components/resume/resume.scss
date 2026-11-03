@@ -3,7 +3,6 @@
 .rdoc app-pdf-viewer { height: 100%; }
 
 @include m.atomic {
-  .sec-title .more { order: 3; font-family: var(--f-ui); font-size: 13px; letter-spacing: 2px; color: var(--cyan); font-weight: 600; white-space: nowrap; }
   .xr { display: grid; grid-template-columns: 1.1fr 1fr; gap: 34px; align-items: start; }
 
   .tl { list-style: none; position: relative; padding-left: 30px; display: grid; gap: 22px; }
@@ -30,7 +29,6 @@
     .rdoc { position: static; max-height: none; width: 100%; max-width: 760px; margin: 0 auto; }
   }
   @media (max-width: 600px) {
-    .sec-title .more { font-size: 11px; letter-spacing: 1px; }
     .tl b { font-size: 16px; }
     .skl div { grid-template-columns: 1fr; gap: 2px; }
   }

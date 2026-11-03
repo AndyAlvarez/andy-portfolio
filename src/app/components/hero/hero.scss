@@ -27,31 +27,27 @@
     clip-path: polygon(24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 24px) 100%, 0 100%, 0 24px);
   }
   .fhead { display: flex; justify-content: space-between; gap: 10px; font-family: var(--f-vfd); font-size: 18px; color: #8fa0b5; margin-bottom: 10px; }
-  .fno { color: var(--cyan); }
   .yt { border: 2px solid #05060a; outline: 1px solid #1f51ff88; }
   .feature h3 { font-family: var(--f-display); font-size: 22px; margin: 14px 0 6px; color: #fff; }
   .feature p { font-size: 14px; }
 
-  .wdh { font-weight: 400; text-transform: uppercase; display: flex; align-items: center; gap: 14px; margin: 34px 0 16px; font-family: var(--f-vfd); font-size: 20px; letter-spacing: 3px; color: var(--cyan); }
-  .wdh::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--blue), transparent); }
-  .wds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .wd { padding: 22px; border-top: 2px solid; }
-  .wd .vfd { font-size: 30px; }
-  .wd h4 { text-transform: uppercase; font-family: var(--f-display); font-size: 16px; color: #fff; margin: 6px 0 8px; letter-spacing: 1px; }
-  .wd p { font-size: 14px; color: #b9c0ca; }
-  .wd small { display: block; margin-top: 12px; font-size: 12px; }
+  .hstack { margin: 22px 0 4px; max-width: 640px; border-top: 1px solid #1f51ff55; }
+  .hstack div { display: grid; grid-template-columns: 190px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid #1f51ff55; }
+  .hstack dt { font-family: var(--f-vfd); font-size: 18px; letter-spacing: 2px; text-transform: uppercase; color: var(--cyan); line-height: 1.3; }
+  .hstack dd { font-size: 14.5px; line-height: 1.55; color: #d5d9df; }
+  .hstack dd span { white-space: nowrap; }
 
   @media (max-width: 1100px) {
     .top { grid-template-columns: 1fr; gap: 30px; }
     .feature { max-width: 640px; }
   }
-  @media (max-width: 900px) { .wds { grid-template-columns: 1fr; } }
   @media (max-width: 600px) {
     .hx { padding: 26px var(--pad) 30px; }
     .unit { display: none; }
     .top { gap: 26px; }
     h1 { font-size: 50px; }
     .lede { font-size: 16px; }
+    .hstack div { grid-template-columns: 1fr; gap: 2px; }
     .bul li { font-size: 14px; align-items: flex-start; }
     .bul .ico { margin-top: 2px; }
     .feature { padding: 14px; }
@@ -68,11 +64,11 @@
   }
   .hx > * { position: relative; }
   .top { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; padding: 72px 0 56px; }
-  .eyebrow { font-family: var(--f-mono); font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-t); margin-bottom: 18px; }
-  h1 { font-family: var(--f-head); font-size: 80px; line-height: .98; letter-spacing: -.035em; font-weight: 700; margin-bottom: 22px; color: var(--tx); }
+  .eyebrow { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-t); margin-bottom: 18px; }
+  h1 { font-family: var(--f-head); font-size: 80px; line-height: .98; letter-spacing: -.04em; font-weight: 700; margin-bottom: 22px; color: var(--tx); }
   h1 em { font-style: normal; }
-  .lede { font-size: 18.5px; line-height: 1.6; color: var(--tx2); max-width: 560px; }
-  .bul { list-style: none; margin: 24px 0 30px; display: grid; gap: 9px; }
+  .lede { font-size: 19px; line-height: 1.6; color: var(--tx2); max-width: 560px; }
+  .bul { list-style: none; margin: 18px 0 28px; display: grid; gap: 9px; }
   .bul li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--tx2); }
   .bul li b { color: var(--tx); font-weight: 600; }
   .bul .ico { color: var(--accent-t); flex: none; }
@@ -80,23 +76,16 @@
   .btns { display: flex; gap: 10px; flex-wrap: wrap; }
 
   .feature { background: var(--surf); border: 1px solid var(--line); border-radius: var(--r3); padding: 12px; box-shadow: var(--shadow); }
-  .fhead { display: flex; justify-content: space-between; gap: 10px; font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--mut); padding: 2px 4px 10px; }
-  .fno { display: flex; gap: 6px; align-items: center; color: var(--accent-t); font-weight: 500; }
-  .fno::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #EF4444; }
+  .fhead { display: flex; justify-content: space-between; gap: 10px; font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--mut); padding: 2px 4px 10px; }
   .yt { border-radius: var(--r2); }
   .feature h3 { font-size: 16px; font-weight: 600; margin: 14px 6px 4px; color: var(--tx); }
   .feature p { font-size: 14px; line-height: 1.5; color: var(--mut); margin: 0 6px 4px; }
 
-  .wdh {
-    margin: 72px 0 28px; padding-top: 16px; border-top: 1.5px solid var(--rule);
-    font-family: var(--f-head); font-size: 38px; font-weight: 650; letter-spacing: -.025em; line-height: 1.15; color: var(--tx);
-  }
-  .wds { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .wd { background: var(--surf); border: 1px solid var(--line); border-radius: var(--r3); padding: 26px; display: flex; flex-direction: column; }
-  .wd .vfd { font-family: var(--f-mono); font-size: 12px; color: var(--accent-t); }
-  .wd h4 { font-size: 19px; font-weight: 600; margin: 10px 0; letter-spacing: -.01em; color: var(--tx); }
-  .wd p { font-size: 15px; line-height: 1.6; color: var(--tx2); }
-  .wd small { display: block; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); font-family: var(--f-mono); font-size: 12px; color: var(--mut); }
+  .hstack { margin: 26px 0 6px; max-width: 620px; border-top: 1px solid var(--line); }
+  .hstack div { display: grid; grid-template-columns: 168px 1fr; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .hstack dt { font-size: 14.5px; font-weight: 600; color: var(--tx); }
+  .hstack dd { font: 400 11.5px/1.75 var(--f-mono); color: var(--tx2); }
+  .hstack dd span { white-space: nowrap; }
 
   @media (max-width: 1000px) { .top { grid-template-columns: 1fr; gap: 28px; } }
   @media (max-width: 800px) {
@@ -105,7 +94,6 @@
     .lede { font-size: 16.5px; }
     .bul li { font-size: 14px; align-items: flex-start; }
     .btns .chip-btn { flex: 1; justify-content: center; }
-    .wdh { font-size: 28px; margin-top: 48px; }
-    .wds { grid-template-columns: 1fr; }
+    .hstack div { grid-template-columns: 1fr; gap: 4px; }
   }
 }

@@ -1,7 +1,4 @@
-/**
- * Resume content (source: Andy_Alvarez.pdf, current version).
- * The site renders this as HTML instead of embedding the PDF, because the PDF contains a phone number.
- */
+/** Resume content (source: my current resume PDF). */
 export interface Job {
   when: string;
   role: string;

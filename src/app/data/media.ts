@@ -6,42 +6,29 @@ export interface Clip {
   hasAudio?: boolean;
 }
 
-export const WPT_CLIP: Clip = {
-  src: 'assets/video/wpt_demo_20221218.mp4',
-  poster: 'assets/media/wpt_robot_pad_frame.jpg',
-  label: 'Own clip · Dec 2022 · robot test',
-};
-
-/**
- * Clip on the home-page WPT card: Andy's lab demo of the apparatus (personal Drive, VID-20230316-WA0002.mp4),
- * re-encoded H.264 720×480 + AAC, faststart. It has an audio track, so it plays unmuted and the EQ can go live.
- */
+/** WPT card: lab demo of the apparatus. H.264 720×480 + AAC, faststart; has audio, so it plays unmuted and the EQ can go live. */
 export const WPT_CARD_CLIP: Clip = {
   src: 'assets/media/wpt_ev_demo.mp4',
   poster: 'assets/media/wpt_ev_demo_poster.jpg',
   hasAudio: true,
-  label: 'Own clip · Mar 2023 · lab demo',
+  label: 'Lab demo, Mar 2023',
 };
 
-/**
- * Clip on the home-page sumo bot card (personal Drive, phone video recorded Apr 19 2023, 4K60, 24.5 s).
- * Re-encoded H.264 1280×720 30 fps + AAC 128k, faststart; full length, no trim. Has audio, so it plays unmuted.
- */
+/** Sumo bot card: silent loop of the full 24.5 s match clip (H.264 1280×720, faststart, no audio track). */
 export const SUMO_CARD_CLIP: Clip = {
-  /** Silent card loop: same full 24.5 s clip, audio track removed (video stream copied, no re-encode). */
   src: 'assets/media/sumo_bot_loop.mp4',
   poster: 'assets/media/sumo_bot_poster.jpg',
   hasAudio: false,
-  label: 'Clip · Apr 2023 · sumo match',
+  label: 'Sumo match, Apr 2023',
 };
 
-/** Andy's photo of the lab-test serial monitor ("Percent Misalignment: 1.53%"). From his personal Drive, Sample Work › Self Aligning Wireless Power Transfer › percent_misalignment.png. */
+/** Lab-test serial monitor reading ("Percent Misalignment: 1.53%"). */
 export const WPT_MISALIGNMENT_PHOTO = {
   src: 'assets/media/wpt_percent_misalignment.jpg',
   alt: 'Laptop serial monitor during a lab test of the alignment robot, reading Percent Misalignment: 1.53%',
 };
 
-/** Andy's resume. Redacted copy of his PDF (phone number removed from the file, not just covered). */
+/** Resume PDF (phone number removed from the file itself, not just covered). */
 export const RESUME_PDF = {
   src: 'assets/docs/andy-alvarez-resume.pdf',
   title: 'Andy_Alvarez_Resume.pdf',
@@ -50,7 +37,7 @@ export const RESUME_PDF = {
 export const IEEE_PAPER = {
   src: 'assets/docs/ieee-access-2024-wpt.pdf',
   title: 'IEEE_Access_2024_WPT.pdf',
-  credit: 'Paper by Behnamfar, Tariq & Sarwat (CC BY-NC-ND 4.0), shown unmodified.',
+  credit: 'Behnamfar, Tariq & Sarwat, IEEE Access 2024. CC BY-NC-ND 4.0.',
 };
 
 export interface StripPhoto {
@@ -61,11 +48,11 @@ export interface StripPhoto {
   caption: string;
 }
 
-/** PCM in service: the passenger screens are public on board, so these are fine to show. */
+/** PCM passenger screens in service. */
 export const PCM_ROUTE_LOOP = {
   src: 'assets/media/pcm_screen_loop.mp4',
   poster: 'assets/media/pcm_screen_loop_poster.jpg',
-  caption: 'Live onboard screen',
+  caption: 'Onboard screen in service',
   alt: 'Onboard passenger screen in service, cycling between the live route map with stops and ETAs and an ad slot',
 };
 
@@ -74,12 +61,12 @@ export const PCM_PHOTOS: StripPhoto[] = [
     src: 'assets/media/pcm_welcome.jpg',
     thumb: 'assets/media/pcm_welcome_thumb.jpg',
     alt: 'Onboard passenger screen showing the welcome aboard screen',
-    caption: 'Onboard welcome screen',
+    caption: 'Welcome screen',
   },
   {
     src: 'assets/media/pcm_ad_slot.jpg',
     thumb: 'assets/media/pcm_ad_slot_thumb.jpg',
     alt: "Onboard passenger screen showing the 'Your ad could be on this screen' ad slot with a QR code",
-    caption: 'Ad slot',
+    caption: 'Ad screen',
   },
 ];

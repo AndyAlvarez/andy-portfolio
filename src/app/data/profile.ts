@@ -1,5 +1,5 @@
-/** Identity, hero copy and contact. Facts from Andy's current resume only. No phone / street address. */
-export type IconName = 'pin' | 'cap' | 'mail' | 'linkedin' | 'github' | 'sun' | 'moon' | 'atom' | 'arrow' | 'doc';
+/** Identity, hero copy and contact. Facts from my current resume only. No phone / street address. */
+export type IconName = 'pin' | 'cap' | 'mail' | 'linkedin' | 'github' | 'sun' | 'moon' | 'atom' | 'arrow' | 'doc' | 'menu';
 
 export interface HeroBullet {
   icon: IconName;
@@ -13,8 +13,12 @@ export interface HeroBullet {
 export const PROFILE = {
   name: { first: 'Andy', last: 'Alvarez' },
   title: 'Embedded Systems Engineer · Project Lead',
-  lede:
-    'I build real-time systems that move people, from live video links on public autonomous shuttles to a robot that aligns EV wireless chargers. C++, GStreamer, WebRTC, Angular, and embedded hardware.',
+  lede: 'I build software and hardware that run in the real world, from embedded systems to full-stack apps.',
+  /** Hero skill rows. */
+  skills: [
+    { group: 'Embedded & systems', items: ['C', 'C++', 'Arduino', 'ESP32', 'State machines', 'TCP/UDP', 'ROS integration'] },
+    { group: 'Full-stack & data', items: ['TypeScript', 'Angular', 'Node.js', 'Python', 'PostgreSQL', 'TimescaleDB', 'Redis', 'REST APIs', 'Docker', 'AWS'] },
+  ],
   bullets: [
     { icon: 'pin', text: 'Wellington, FL · Open to relocation / remote', small: true },
     { icon: 'cap', strong: 'B.S. Electrical Engineering', text: ' · Florida International University · 2023' },

@@ -5,6 +5,9 @@
       <div class="eyebrow">{{ p.title.toUpperCase() }}</div>
       <h1 class="chrome">{{ p.name.first }} <em>{{ p.name.last }}</em></h1>
       <p class="lede">{{ p.lede }}</p>
+      <dl class="hstack">
+        @for (s of p.skills; track s.group) { <div><dt>{{ s.group }}</dt><dd>@for (it of s.items; track it; let last = $last) {<span>{{ it }}{{ last ? '' : ' ·' }}</span>{{ last ? '' : ' ' }}}</dd></div> }
+      </dl>
       <ul class="bul">
         @for (b of p.bullets; track b.text) {
           <li [class.sm]="b.small">
@@ -21,7 +24,7 @@
 
     @if (video) {
       <article class="feature">
-        <div class="fhead"><span class="fno">{{ nbc.kicker }}</span><span>{{ nbc.source }}</span></div>
+        <div class="fhead"><span>{{ nbc.source }}</span></div>
         <app-yt-embed class="yt" [video]="video" [eager]="true" eqLabel="NBC NIGHTLY NEWS" />
         <h3>{{ nbc.title }}</h3>
         <p>{{ nbc.text }}</p>
@@ -33,15 +36,4 @@
     <app-eq-band />
   }
 
-  <h2 class="wdh">What I do</h2>
-  <div class="wds">
-    @for (w of what; track w.title; let i = $index) {
-      <div class="wd panel cut" [style.border-top-color]="theme.atomic() ? w.color : null">
-        <div class="vfd" [style.color]="theme.atomic() ? w.color : null" [style.text-shadow]="theme.atomic() ? '0 0 8px ' + w.color : null">{{ (i + 1).toString().padStart(2, '0') }}</div>
-        <h4>{{ w.title }}</h4>
-        <p>{{ w.text }}</p>
-        <small [style.color]="theme.atomic() ? w.color : null">{{ w.stack }}</small>
-      </div>
-    }
-  </div>
 </header>
