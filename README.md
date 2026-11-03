@@ -45,7 +45,6 @@ Edit `src/app/data/videos.ts`. Each entry looks like this:
 
 - **No downloads or outbound "watch on YouTube" links.** Own clips play in `<video controlsList="nodownload">` with the right-click menu disabled. The IEEE paper renders with pdf.js onto canvases, with no download or print buttons. A determined visitor can still save media from DevTools.
 - **The resume renders as HTML** from `data/resume.ts` instead of embedding the PDF, because the PDF contains a phone number. The site shows no phone number or street address.
-- **PCM passenger photo:** `PCM_PHOTO.approved` in `data/media.ts` is `false`, so the photo is hidden. The file is still in `public/assets/media/`, so it gets served if someone requests it directly. Delete it until it's approved.
 - The IEEE Access paper (Behnamfar, Tariq & Sarwat) is CC BY-NC-ND 4.0 and is shown unmodified, with credit.
 
 ## Fonts

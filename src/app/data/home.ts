@@ -79,7 +79,7 @@ export const FEATURED: FeaturedCard[] = [
     kindColor: '#00E5FF',
     discipline: 'Embedded · Web · Video',
     title: 'Passenger Communication Module',
-    body: 'Led end-to-end development and deployment aboard 2 autonomous shuttles: a C++ streaming module (GStreamer pipeline, WebRTC, WebSocket signaling, state machine) for live two-way video/audio with a remote operator, plus an Angular onboard UI with routes, ETAs and rotating ads. 4,000+ passengers over 300+ hours of live operation.',
+    body: 'Led end-to-end development and deployment aboard 2 autonomous shuttles: a C++ streaming module (GStreamer pipeline, WebRTC, WebSocket signaling, state machine) for live two-way video/audio with a remote operator at <200 ms glass-to-glass latency, plus an Angular onboard UI with routes, ETAs and rotating ads. 5,500+ passengers over 400+ hours of live operation.',
     tags: ['C++', 'GStreamer', 'WebRTC', 'GTK/WebKit', 'Angular', 'Mapbox'], // DRAFT: GTK/WebKit, Mapbox
     foot: 'Project Lead · Guident · 2024 – Present',
     link: { label: 'OPEN CASE STUDY →', href: CASE_STUDY_SOON },

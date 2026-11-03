@@ -1,20 +1,3 @@
-/**
- * Photos/clips that need Andy's sign-off before they go public.
- * `approved: false` keeps the item hidden everywhere on the site.
- */
-export interface GatedPhoto {
-  src: string;
-  caption: string;
-  approved: boolean;
-}
-
-/** Andy's own photo of the in-shuttle passenger display (Feb 4, 2026). PENDING APPROVAL. */
-export const PCM_PHOTO: GatedPhoto = {
-  src: 'assets/media/passenger_comm_20260204_133815.jpg',
-  caption: 'Passenger display on board · own photo, Feb 2026',
-  approved: false,
-};
-
 export interface Clip {
   src: string;
   poster: string;

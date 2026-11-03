@@ -25,7 +25,7 @@ export const CASES: FeaturedCase[] = [
       'Streaming module in C++ with GLib, GStreamer and WebRTC at <b>under 200 ms</b> glass-to-glass latency.',
       'Onboard UI: GTK/WebKitWebView loading a local Angular app (stops, routes, ETAs, rotating ads), network-aware screen switching via the Mapbox API.',
       'Designed and migrated PoC schemas into the core PostgreSQL database.',
-      '<b>4,000+ passengers</b> over <b>300+ hours</b> of live operation on 2 autonomous shuttles.',
+      '<b>5,500+ passengers</b> over <b>400+ hours</b> of live operation on 2 autonomous shuttles.',
     ],
     support: [
       {
