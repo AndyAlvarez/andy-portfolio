@@ -1,6 +1,6 @@
 # andy-portfolio
 
-Source for my personal engineering portfolio, live at [andy.inspirehomehub.com](https://andy.inspirehomehub.com).
+Source for my personal engineering portfolio, live at [andyalvarez.dev](https://andyalvarez.dev).
 
 ![Portfolio home page](docs/screenshot.png)
 
