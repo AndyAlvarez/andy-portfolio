@@ -12,7 +12,7 @@ const THEME_COLOR: Record<Theme, string> = { light: '#FAFAF8', dark: '#0B0F17', 
 
 /**
  * Site theme. The inline script in index.html picks the first theme before paint
- * (?theme= > localStorage `theme` > prefers-color-scheme) and sets data-theme / data-ui on <html>.
+ * (?theme= > localStorage `theme` > Pro Light) and sets data-theme / data-ui on <html>.
  *
  * Prerender and the first client render (hydration) always start as light so the DOM matches.
  * After hydration, this service reads the attribute the inline script already set.

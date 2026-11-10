@@ -39,7 +39,7 @@
         if (q && ok[q]) { t = q; localStorage.setItem('theme', q); }
         else { var s = localStorage.getItem('theme'); if (s && ok[s]) t = s; }
       } catch (e) {}
-      if (!t) t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (!t) t = 'light';
       h.setAttribute('data-theme', t);
       h.setAttribute('data-ui', t === 'atomic' ? 'atomic' : 'pro');
       var m = d.querySelector('meta[name="theme-color"]');
