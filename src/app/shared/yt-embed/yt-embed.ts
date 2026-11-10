@@ -1,5 +1,6 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
-  ChangeDetectionStrategy, Component, DestroyRef, ElementRef, computed, inject, input, signal, viewChild,
+  ChangeDetectionStrategy, Component, DestroyRef, ElementRef, PLATFORM_ID, computed, inject, input, signal, viewChild,
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Video, thumbFor } from '../../data/videos';
@@ -38,6 +39,9 @@ let nextId = 0;
 export class YtEmbed {
   private readonly sanitizer = inject(DomSanitizer);
   private readonly eq = inject(EqService);
+  private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
+  private readonly pageOrigin = this.browser ? globalThis.location.origin : '';
+  private listening = false;
   private readonly key = `yt-${nextId++}`;
   readonly video = input.required<Video>();
   /** Load the thumbnail eagerly (above-the-fold hero). */
@@ -52,7 +56,7 @@ export class YtEmbed {
   readonly url = computed(() =>
     this.sanitizer.bypassSecurityTrustResourceUrl(
       `${YT_ORIGIN}/embed/${encodeURIComponent(this.video().id)}?autoplay=1&rel=0&modestbranding=1&playsinline=1` +
-        `&enablejsapi=1&origin=${encodeURIComponent(location.origin)}`,
+        `&enablejsapi=1&origin=${encodeURIComponent(this.pageOrigin)}`,
     ),
   );
 
@@ -77,7 +81,10 @@ export class YtEmbed {
 
   constructor() {
     inject(DestroyRef).onDestroy(() => {
-      window.removeEventListener('message', this.onMessage);
+      if (this.listening) {
+        window.removeEventListener('message', this.onMessage);
+        this.listening = false;
+      }
       this.eq.setSource(this.key, null);
     });
   }
@@ -86,7 +93,10 @@ export class YtEmbed {
     this.playing.set(true);
     // The click is the intent to play; state messages from the player refine this once it loads.
     this.eq.setSource(this.key, 'ext', this.label());
-    window.addEventListener('message', this.onMessage);
+    if (this.browser && !this.listening) {
+      window.addEventListener('message', this.onMessage);
+      this.listening = true;
+    }
   }
 
   /** Ask the embed to post its state changes to this page. */

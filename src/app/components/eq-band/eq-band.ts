@@ -27,6 +27,7 @@ export class EqBand {
 
   constructor() {
     let eq: HeadUnitEQ | undefined;
+    const destroyRef = inject(DestroyRef);
     const onResize = () => eq?.setBars(barsFor(innerWidth));
     afterNextRender(() => {
       eq = new HeadUnitEQ(this.canvas().nativeElement, {
@@ -38,13 +39,14 @@ export class EqBand {
       });
       this.svc.register(eq);
       addEventListener('resize', onResize, { passive: true });
-    });
-    inject(DestroyRef).onDestroy(() => {
-      removeEventListener('resize', onResize);
-      if (eq) {
-        this.svc.unregister(eq);
-        eq.destroy();
-      }
+      // Register cleanup only in the browser; the server never adds the listener.
+      destroyRef.onDestroy(() => {
+        removeEventListener('resize', onResize);
+        if (eq) {
+          this.svc.unregister(eq);
+          eq.destroy();
+        }
+      });
     });
   }
 }
