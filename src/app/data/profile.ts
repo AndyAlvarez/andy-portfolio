@@ -12,7 +12,7 @@ export interface HeroBullet {
 
 export const PROFILE = {
   name: { first: 'Andy', last: 'Alvarez' },
-  title: 'Embedded Systems Engineer · Project Lead',
+  title: 'Systems & Full-Stack Engineer',
   lede: 'I build software and hardware that run in the real world, from embedded systems to full-stack apps.',
   /** Hero skill rows. */
   skills: [

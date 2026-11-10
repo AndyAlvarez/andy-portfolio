@@ -1,6 +1,9 @@
 {
   "name": "andy-portfolio",
   "compatibility_date": "2026-11-02",
+  // Static assets stay in dist/andy-portfolio/browser after prerender (outputMode: static).
+  // / is served from the prerendered index.html. SPA fallback to index.html is correct
+  // because this app has a single route.
   "assets": {
     "directory": "./dist/andy-portfolio/browser",
     "not_found_handling": "single-page-application"

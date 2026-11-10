@@ -8,7 +8,7 @@ Source for my personal engineering portfolio, live at [andy.inspirehomehub.com](
 
 ## Tech stack
 
-- **Angular 22** with standalone components and SCSS
+- **Angular 22** with standalone components and SCSS; the production build prerenders `/` to static HTML
 - **Cloudflare Workers** (static assets) for hosting, deployed from GitHub
 
 ## Getting started
@@ -16,7 +16,7 @@ Source for my personal engineering portfolio, live at [andy.inspirehomehub.com](
 ```bash
 npm install
 npm start          # dev server at http://localhost:4200
-npm run build      # production build in dist/andy-portfolio/browser
+npm run build      # production build + prerender of / in dist/andy-portfolio/browser
 ```
 
 ## Deployment

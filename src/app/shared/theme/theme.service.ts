@@ -1,4 +1,5 @@
-import { ApplicationRef, DOCUMENT, Injectable, computed, inject, signal } from '@angular/core';
+import { ApplicationRef, DOCUMENT, Injectable, PLATFORM_ID, afterNextRender, computed, inject, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { powerDown, powerOn } from './crt';
 
 /** light / dark = the Pro look; atomic = the Atomic look. */
@@ -11,25 +12,35 @@ const THEME_COLOR: Record<Theme, string> = { light: '#FAFAF8', dark: '#0B0F17', 
 
 /**
  * Site theme. The inline script in index.html picks the first theme before paint
- * (?theme= > localStorage `theme` > prefers-color-scheme) and sets data-theme / data-ui on <html>;
- * this service reads that, and applies + saves later changes.
+ * (?theme= > localStorage `theme` > prefers-color-scheme) and sets data-theme / data-ui on <html>.
+ *
+ * Prerender and the first client render (hydration) always start as light so the DOM matches.
+ * After hydration, this service reads the attribute the inline script already set.
  */
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   private readonly doc = inject(DOCUMENT);
   private readonly appRef = inject(ApplicationRef);
-  readonly theme = signal<Theme>(this.initial());
+  private readonly browser = isPlatformBrowser(inject(PLATFORM_ID));
+  readonly theme = signal<Theme>('light');
   readonly atomic = computed(() => this.theme() === 'atomic');
 
+  constructor() {
+    afterNextRender(() => {
+      const t = this.doc.documentElement.getAttribute('data-theme');
+      if (isTheme(t) && t !== this.theme()) this.theme.set(t);
+    });
+  }
+
   set(next: Theme) {
-    if (next === this.theme()) return;
+    if (!this.browser || next === this.theme()) return;
     try { localStorage.setItem('theme', next); } catch { /* private mode: still switch for this visit */ }
     this.dropUrlParam();
     const apply = () => {
       this.theme.set(next);
       this.applyAttrs(next);
     };
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduce = this.doc.defaultView?.matchMedia('(prefers-reduced-motion: reduce)').matches ?? false;
     if (reduce) return apply();
     // Into / out of Atomic: CRT power-on / power-down; the swap happens while the screen is dark.
     // A click during the effect just retargets it: the latest pick is what gets applied.
@@ -57,14 +68,6 @@ export class ThemeService {
 
   private crt: { target: Theme; swapped: boolean } | null = null;
 
-  private initial(): Theme {
-    const t = this.doc.documentElement.getAttribute('data-theme');
-    if (isTheme(t)) return t;
-    const fallback: Theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    this.applyAttrs(fallback);
-    return fallback;
-  }
-
   private applyAttrs(t: Theme) {
     const html = this.doc.documentElement;
     html.setAttribute('data-theme', t);
@@ -74,9 +77,11 @@ export class ThemeService {
 
   /** A ?theme= link only sets the first visit; once the visitor picks, a reload keeps their pick. */
   private dropUrlParam() {
-    const url = new URL(location.href);
+    const win = this.doc.defaultView;
+    if (!win) return;
+    const url = new URL(win.location.href);
     if (!url.searchParams.has('theme')) return;
     url.searchParams.delete('theme');
-    history.replaceState(history.state, '', url);
+    win.history.replaceState(win.history.state, '', url);
   }
 }
