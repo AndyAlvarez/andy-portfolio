@@ -6,7 +6,7 @@
 :root {
   --ink: #0b0b12; --chrome: #c0c6cf; --blue: #1f51ff; --cyan: #00e5ff; --green: #39ff14; --gold: #d4af37; --purple: #7b2cff; --mute: #8fa0b5;
   --f-display: 'Orbitron', sans-serif; --f-ui: 'Chakra Petch', sans-serif; --f-vfd: 'VT323', monospace; --f-body: 'IBM Plex Sans', sans-serif;
-  --pad: 56px; --max: 1328px;
+  --pad: 56px; --max: 1520px; --measure: 720px;
 }
 @media (max-width: 900px) { :root { --pad: 28px; } }
 @media (max-width: 600px) { :root { --pad: 18px; } }
@@ -16,7 +16,7 @@
   --f-sans: 'Schibsted Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --f-head: 'Schibsted Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --f-mono: 'Martian Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-  --r: 8px; --r2: 6px; --r3: 12px; --wrap: 1200px; --gut: 40px;
+  --r: 8px; --r2: 6px; --r3: 12px; --wrap: 1520px; --gut: 40px;
 }
 @media (max-width: 800px) { [data-ui='pro'] { --gut: 20px; } }
 [data-theme='light'] {
@@ -42,6 +42,7 @@ a { color: inherit; text-decoration: none; }
 img, video, canvas { max-width: 100%; }
 button.chip-btn { border: 0; }
 .tags i { font-style: normal; }
+.nw { white-space: nowrap; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 // Theme switch cross-fade (View Transitions); ThemeService skips it under prefers-reduced-motion.
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .22s; }

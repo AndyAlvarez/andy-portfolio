@@ -11,3 +11,16 @@
 // Atomic-only rules live inside `@include m.atomic { ... }`; use `&` for the host element.
 @mixin atomic { :host-context([data-ui='atomic']) { @content; } }
 @mixin pro { :host-context([data-ui='pro']) { @content; } }
+
+// PCM tiles and WPT media insets: 2px transparent border at rest (no layout shift),
+// theme accent on hover/focus-visible (Pro: --accent/blue, Atomic: --cyan).
+@mixin hover-frame($hover: var(--accent)) {
+  border: 2px solid transparent;
+  box-shadow: none;
+  outline: none;
+  transition: border-color .15s;
+  &:hover, &:focus-visible {
+    border-color: $hover;
+    outline: none;
+  }
+}

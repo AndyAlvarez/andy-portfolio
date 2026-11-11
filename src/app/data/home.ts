@@ -23,7 +23,7 @@ export const FEATURED: FeaturedCard[] = [
   {
     id: 'pcm',
     title: 'Passenger Communication Module',
-    body: 'Led end-to-end development and deployment aboard 2 autonomous shuttles: a C++ streaming module (GStreamer pipeline, WebRTC, WebSocket signaling, state machine) for live two-way video/audio with a remote operator at <200 ms glass-to-glass latency, plus an Angular onboard UI with routes, ETAs and rotating ads. 5,500+ passengers over 400+ hours of live operation.',
+    body: 'Led end-to-end development and deployment aboard 2 autonomous shuttles: a C++ streaming module (GStreamer pipeline, WebRTC, WebSocket signaling, state machine) for live two-way video/audio with a remote operator, plus an Angular onboard UI with routes, ETAs and rotating ads.',
     tags: ['C++', 'GStreamer', 'WebRTC'],
     foot: 'Project Lead · Guident · 2024 – present',
   },
@@ -56,6 +56,13 @@ export const FEATURED: FeaturedCard[] = [
     tags: ['Python', 'TensorFlow', 'Keras'],
     foot: 'FIU coursework · Spring 2024',
   },
+];
+
+/** Highlight figures on the PCM card, taken from the body copy above. Edit the values here. */
+export const PCM_STATS: { value: string; label: string }[] = [
+  { value: '<200 ms', label: 'glass-to-glass latency' },
+  { value: '5,500+', label: 'passengers served' },
+  { value: '400+', label: 'hours of live operation' },
 ];
 
 /** Paper shown on the WPT card (opens in the in-page pdf.js viewer; never downloaded / linked out). */

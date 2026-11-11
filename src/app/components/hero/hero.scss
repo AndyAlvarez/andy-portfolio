@@ -2,7 +2,7 @@
 
 @include m.atomic {
   .pi { display: none; }
-  .hx { position: relative; max-width: 1440px; margin: 0 auto; padding: 44px var(--pad); }
+  .hx { position: relative; max-width: var(--max); margin: 0 auto; padding: 44px var(--pad); }
   .unit {
     position: absolute; inset: 22px 30px; border: 1px solid #c0c6cf22; pointer-events: none;
     clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);

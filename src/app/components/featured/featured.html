@@ -34,10 +34,9 @@
             }
           }
         </div>
-        @if (c.id === 'pcm') { <app-reaction-game class="rxg" /> }
         <div class="cb">
           <h4>{{ c.title }}</h4>
-          <p>{{ c.body }}</p>
+          <p>@for (part of bodyParts(c.body); track $index) {@if (part.nw) {<span class="nw">{{ part.text }}</span>} @else {{{ part.text }}}}</p>
           @if (c.more) { <p class="note">{{ c.more }}</p> }
           @if (c.id === 'wpt') {
             <button type="button" class="paperlink" (click)="openPaper()">
@@ -46,16 +45,28 @@
             </button>
           }
           <div class="tags">@for (t of c.tags; track t) { <i>{{ t }}</i> }</div>
+          @if (c.id === 'pcm') {
+            <div class="pstats">
+              @for (s of pcmStats; track s.value) {
+                <div class="pstat"><b>{{ s.value }}</b><span>{{ s.label }}</span></div>
+              }
+            </div>
+            <app-reaction-game class="rxg" />
+          }
           <div class="foot">{{ c.foot }}</div>
         </div>
         @if (c.id === 'pcm') {
           <div class="pstrip">
             <figure class="ptile vid">
-              <app-loop-clip [src]="routeLoop.src" [poster]="routeLoop.poster" />
+              <button type="button" (click)="openClip(routeLoop)" [attr.aria-label]="'Enlarge video: ' + routeLoop.caption">
+                <app-loop-clip [src]="routeLoop.src" [poster]="routeLoop.poster" />
+              </button>
               <figcaption>{{ routeLoop.caption }}</figcaption>
             </figure>
             <figure class="ptile vid">
-              <app-loop-clip [src]="mapLoop.src" [poster]="mapLoop.poster" />
+              <button type="button" (click)="openClip(mapLoop)" [attr.aria-label]="'Enlarge video: ' + mapLoop.caption">
+                <app-loop-clip [src]="mapLoop.src" [poster]="mapLoop.poster" />
+              </button>
               <figcaption>{{ mapLoop.caption }}</figcaption>
             </figure>
             @for (p of pcmPhotos; track p.src) {
@@ -81,11 +92,19 @@
     <small class="credit">{{ paper.credit }}</small>
   </dialog>
 
-  <dialog #photoDlg class="photodlg" [attr.aria-label]="photo().title" (click)="onPhotoClick($event)" (close)="onPhotoClose()">
+  <dialog #photoDlg class="photodlg" [attr.aria-label]="media().title" (click)="onPhotoClick($event)" (close)="onPhotoClose()">
     <div class="dlgbar">
-      <span>{{ photo().title }}</span>
+      <span>{{ media().title }}</span>
       <button type="button" class="x" (click)="closePhoto()" aria-label="Close">✕</button>
     </div>
-    @if (photoOpen()) { <img [src]="photo().src" [alt]="photo().alt" (contextmenu)="$event.preventDefault()" draggable="false" /> }
+    @if (mediaOpen()) {
+      @if (media().kind === 'image') {
+        <img [src]="media().src" [alt]="media().alt" (contextmenu)="$event.preventDefault()" draggable="false" />
+      } @else {
+        <video [src]="media().src" [poster]="media().poster" [attr.aria-label]="media().alt"
+          muted loop playsinline autoplay disablePictureInPicture
+          (loadeddata)="playLightbox($event)" (contextmenu)="$event.preventDefault()"></video>
+      }
+    }
   </dialog>
 </section>

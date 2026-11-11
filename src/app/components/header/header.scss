@@ -7,9 +7,13 @@ li a { display: block; }
 .burger { all: unset; display: none; cursor: pointer; }
 
 @include m.atomic {
+  & {
+    border-bottom: 1px solid #1f51ff55;
+    background: linear-gradient(#15161f, #0b0b12f2);
+    backdrop-filter: blur(6px);
+  }
   .nav {
-    justify-content: space-between; padding: 18px var(--pad);
-    border-bottom: 1px solid #1f51ff55; background: linear-gradient(#15161f, #0b0b12f2); backdrop-filter: blur(6px);
+    max-width: var(--max); margin: 0 auto; justify-content: space-between; padding: 18px var(--pad);
   }
   .mark, .l-pro, .pi { display: none; }
   .logo, .hr { flex: 1 1 0; }

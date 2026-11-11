@@ -39,7 +39,7 @@ import { ThemeService } from '../../shared/theme/theme.service';
       .contact { max-width: var(--max); margin: 64px auto 0; padding: 0 var(--pad) 56px; }
       .cbox { display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; align-items: center; padding: 34px 36px; }
       h3 { font-family: var(--f-display); font-size: 34px; font-weight: 700; line-height: 1.05; margin-bottom: 10px; }
-      .lede { font-size: 16px; line-height: 1.55; color: #d5d9df; }
+      .lede { font-size: 16px; line-height: 1.55; color: #d5d9df; max-width: var(--measure); }
       .clinks { display: grid; gap: 10px; }
       .clinks a {
         display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: #05060a; border: 1px solid #1f51ff66;
@@ -62,7 +62,7 @@ import { ThemeService } from '../../shared/theme/theme.service';
       .contact { max-width: var(--wrap); margin: 0 auto; padding: 76px var(--gut) 0; }
       .cbox { grid-template-columns: 1fr 1fr; gap: 32px; padding: 34px; border: 1px solid var(--line); border-radius: var(--r3); background: var(--surf); }
       h3 { font-family: var(--f-head); font-size: 34px; font-weight: 600; letter-spacing: -.025em; line-height: 1.1; margin-bottom: 10px; color: var(--tx); }
-      .lede { font-size: 18.5px; line-height: 1.6; color: var(--tx2); }
+      .lede { font-size: 18.5px; line-height: 1.6; color: var(--tx2); max-width: var(--measure); }
       .clinks a { padding: 14px 16px; border: 1px solid var(--line2); border-radius: 0; font-size: 15px; color: var(--tx); transition: border-color .15s; }
       .clinks a:hover { border-color: var(--accent); }
       .clinks .ico { color: var(--accent-t); flex: none; }
