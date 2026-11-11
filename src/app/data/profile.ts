@@ -12,11 +12,11 @@ export interface HeroBullet {
 
 export const PROFILE = {
   name: { first: 'Andy', last: 'Alvarez' },
-  title: 'Systems & Full-Stack Engineer',
-  lede: 'I build software and hardware that run in the real world, from embedded systems to full-stack apps.',
+  title: 'Software Engineer · Linux Edge Systems',
+  lede: 'I build software for hardware that runs in the real world, from microcontroller projects to Linux edge devices and full-stack apps.',
   /** Hero skill rows. */
   skills: [
-    { group: 'Embedded & systems', items: ['C', 'C++', 'Arduino', 'ESP32', 'State machines', 'TCP/UDP', 'ROS integration'] },
+    { group: 'Edge systems', items: ['C', 'C++', 'Arduino', 'ESP32', 'Raspberry Pi', 'Jetson', 'State machines', 'TCP/UDP', 'ROS integration'] },
     { group: 'Full-stack & data', items: ['TypeScript', 'Angular', 'Node.js', 'Python', 'PostgreSQL', 'TimescaleDB', 'Redis', 'REST APIs', 'Docker', 'AWS'] },
   ],
   bullets: [

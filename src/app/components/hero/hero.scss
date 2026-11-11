@@ -9,6 +9,7 @@
   }
   .top { display: grid; grid-template-columns: minmax(0, 1fr) 560px; gap: 48px; align-items: center; }
   .eyebrow { font-family: var(--f-vfd); font-size: 23px; letter-spacing: 1px; color: var(--cyan); }
+  .eyebrow span { white-space: nowrap; }
   .role { display: none; }
   .btns .chip-btn:not(.chrome) { box-shadow: 0 0 16px #1f51ff99; }
   h1 { font-family: var(--f-display); font-weight: 700; font-size: 88px; line-height: .96; margin: 10px 0 18px; filter: drop-shadow(0 2px 0 var(--blue)); }
