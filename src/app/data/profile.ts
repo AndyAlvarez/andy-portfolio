@@ -13,7 +13,7 @@ export interface HeroBullet {
 export const PROFILE = {
   name: { first: 'Andy', last: 'Alvarez' },
   title: 'Software Engineer · Linux Edge Systems',
-  lede: 'I build software for hardware that runs in the real world, from microcontroller projects to Linux edge devices and full-stack apps.',
+  lede: 'I build software for hardware that runs in the real world, from microcontrollers to Linux edge devices and full-stack apps.',
   /** Hero skill rows. */
   skills: [
     { group: 'Edge systems', items: ['C', 'C++', 'Arduino', 'ESP32', 'Raspberry Pi', 'NVIDIA Jetson', 'State machines', 'TCP/UDP', 'ROS integration'] },
