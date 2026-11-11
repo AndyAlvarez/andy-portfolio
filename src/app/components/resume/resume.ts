@@ -6,7 +6,7 @@ import { scrollToSection } from '../../scroll';
 
 /**
  * Experience: timeline + skills on the left, my resume PDF on the right in the inline pdf.js
- * viewer (canvas only, no download / print). The served copy has the phone number removed from the file itself.
+ * viewer (zoom, expand, download / open). The served copy has the phone number removed from the file itself.
  */
 @Component({
   selector: 'app-resume',

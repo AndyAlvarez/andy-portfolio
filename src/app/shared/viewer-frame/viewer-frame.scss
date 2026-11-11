@@ -1,26 +1,59 @@
 @use '../../../styles/mixins' as m;
-:host { display: flex; flex-direction: column; overflow: hidden; min-height: 0; }
-.bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; white-space: nowrap; }
-.name { overflow: hidden; text-overflow: ellipsis; }
-.zoom button { all: unset; cursor: pointer; padding: 0 4px; }
-.body { flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; align-items: center; gap: 10px; }
-.body::-webkit-scrollbar { width: 8px; }
+
+:host { display: flex; flex-direction: column; overflow: hidden; min-height: 0; container-type: inline-size; }
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; flex: 1 1 auto; }
+.page { flex: none; white-space: nowrap; }
+.tools { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-left: auto; }
+@container (max-width: 640px) {
+  .tools { flex: 1 1 100%; justify-content: flex-start; margin-left: 0; }
+}
+
+.ibtn {
+  appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  cursor: pointer; text-decoration: none; white-space: nowrap; border-radius: 0;
+}
+.ibtn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.zoom { display: flex; align-items: center; }
+.zoom b { text-align: center; font-weight: 500; }
+.body { flex: 1; min-height: 0; overflow: auto; }
+.body::-webkit-scrollbar { width: 8px; height: 8px; }
 
 @include m.atomic {
   & { background: #05060a; border: 1px solid #1f51ff88; }
-  .bar { padding: 7px 12px; background: linear-gradient(#2a2d36, #15161d); font-family: var(--f-vfd); font-size: 16px; color: var(--chrome); }
+  .bar { padding: 8px 12px; background: linear-gradient(#2a2d36, #15161d); font-family: var(--f-vfd); font-size: 17px; color: var(--chrome); }
   .page { color: var(--cyan); }
-  .zoom button:hover { color: var(--cyan); }
+  .zoom { border: 1px solid #1f51ff88; }
+  .zoom b { font-family: var(--f-vfd); font-size: 16px; font-weight: 400; color: var(--chrome); min-width: 48px; }
+  .ibtn {
+    height: 28px; padding: 0 10px; background: transparent; border: 1px solid #1f51ff88; color: var(--chrome);
+    font-family: var(--f-display); font-size: 11.5px; font-weight: 600; letter-spacing: .3px;
+    @include m.cut(5px);
+  }
+  .zoom .ibtn { border: 0; clip-path: none; min-width: 28px; padding: 0 8px; }
+  .ibtn:hover, .zoom .ibtn:hover { background: #00e5ff14; color: var(--cyan); border-color: #00e5ff66; }
+  .ibtn:focus-visible { outline: 1px solid var(--cyan); outline-offset: 2px; }
+  .ibtn.primary { background: linear-gradient(#3b6bff, var(--blue)); border-color: transparent; color: #fff; }
+  .ibtn.primary:hover { filter: brightness(1.15); color: #fff; }
   .body { padding: 12px; background: #1a1c24; }
   .body::-webkit-scrollbar-thumb { background: #1f51ff88; }
 }
 
 @include m.pro {
   & { background: var(--surf); }
-  .bar { padding: 10px 14px; border-bottom: 1px solid var(--line); font-family: var(--f-mono); font-size: 12px; color: var(--mut); }
-  .zoom button { padding: 0 6px; border-radius: 4px; color: var(--tx2); }
-  .zoom button:hover { color: var(--accent-t); background: var(--chip); }
-  .zoom button:focus-visible { outline: 2px solid var(--accent); }
+  .bar { padding: 8px 12px; border-bottom: 1px solid var(--line); font-family: var(--f-mono); font-size: 11.5px; color: var(--mut); }
+  .zoom { border: 1px solid var(--line2); }
+  .zoom b { font-size: 11px; color: var(--tx); min-width: 42px; }
+  .ibtn {
+    height: 30px; padding: 0 10px; background: var(--surf); border: 1px solid var(--line2); color: var(--tx);
+    font-family: var(--f-sans); font-size: 12.5px; font-weight: 500; letter-spacing: -.01em;
+  }
+  .zoom .ibtn { border: 0; height: 28px; min-width: 28px; padding: 0 8px; }
+  .ibtn:hover { border-color: var(--mut); background: var(--bg); }
+  .zoom .ibtn:hover { background: var(--chip); color: var(--accent-t); }
+  .ibtn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .ibtn.primary { background: var(--accent); border-color: var(--accent); color: var(--onacc); }
+  .ibtn.primary:hover { filter: brightness(1.08); background: var(--accent); color: var(--onacc); }
   .body { padding: 18px; background: var(--pdfbg); }
   .body::-webkit-scrollbar-thumb { background: var(--line2); border-radius: 4px; }
 }
