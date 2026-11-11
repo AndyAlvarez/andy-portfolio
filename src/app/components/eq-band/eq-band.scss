@@ -4,8 +4,15 @@
 }
 .r { display: flex; justify-content: space-between; gap: 12px; font-family: var(--f-vfd); font-size: 17px; color: #5d6a7d; margin-bottom: 6px; white-space: nowrap; }
 .r > span:first-child { overflow: hidden; text-overflow: ellipsis; }
-b { font-weight: 400; color: var(--green); text-shadow: 0 0 6px var(--green); }
-b.on { color: var(--cyan); text-shadow: 0 0 6px var(--cyan); }
+/* Status is a real button; keep the VFD readout look, no extra glow. */
+.st {
+  appearance: none; background: none; border: 0; padding: 0; margin: 0;
+  font: inherit; letter-spacing: inherit; cursor: pointer;
+  font-weight: 400; color: var(--green); text-shadow: 0 0 6px var(--green);
+}
+.st.on { color: var(--cyan); text-shadow: 0 0 6px var(--cyan); }
+.st:focus { outline: none; }
+.st:focus-visible { outline: 1px solid var(--cyan); outline-offset: 3px; }
 canvas { display: block; width: 100%; height: 120px; }
 @media (max-width: 600px) {
   :host { margin-top: 24px; padding: 10px 10px 8px; }

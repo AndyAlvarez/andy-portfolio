@@ -2,15 +2,17 @@ import { Injectable, computed, signal } from '@angular/core';
 import { EqMode, HeadUnitEQ } from './head-unit-eq';
 
 interface Source {
-  mode: Exclude<EqMode, 'idle'>;
+  mode: 'live' | 'ext';
   label: string;
 }
 
 /**
- * Bus between media players and the hero EQ band.
+ * Bus between media players, the user idle/playing toggle, and the hero EQ band.
  *  - Self-hosted <video> (InlineVideo) -> `attachVideo()` -> live Web Audio mode while it plays
  *  - YouTube embeds (YtEmbed)          -> `setSource(key, 'ext' | null)` -> simulated mode while it plays
- * The most recently started source wins; when everything stops the band returns to idle.
+ *  - The VFD IDLE/PLAYING button       -> `togglePreferred()` -> idle drift or centered bass
+ * The most recently started source wins; when everything stops the band returns to
+ * whatever the user last toggled (idle by default).
  */
 @Injectable({ providedIn: 'root' })
 export class EqService {
@@ -20,7 +22,9 @@ export class EqService {
     const all = [...this.active().values()];
     return all.length ? all[all.length - 1] : null;
   });
-  readonly mode = computed<EqMode>(() => this.current()?.mode ?? 'idle');
+  /** User's idle/playing preference when no video is driving the band. Default: idle. */
+  readonly preferredPlaying = signal(false);
+  readonly mode = computed<EqMode>(() => this.current()?.mode ?? (this.preferredPlaying() ? 'bass' : 'idle'));
   readonly label = computed(() => this.current()?.label ?? '');
 
   register(eq: HeadUnitEQ) {
@@ -30,6 +34,12 @@ export class EqService {
 
   unregister(eq: HeadUnitEQ) {
     if (this.eq === eq) this.eq = null;
+  }
+
+  /** Toggle the user's idle/playing preference and apply it if no video is active. */
+  togglePreferred() {
+    this.preferredPlaying.update((v) => !v);
+    this.eq?.setMode(this.mode());
   }
 
   /** Set (or clear with null) what a given player is doing. */

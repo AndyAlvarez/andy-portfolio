@@ -3,12 +3,16 @@
  *
  * Modes
  *  - idle: slow procedural drift (static frame when the visitor prefers reduced motion)
+ *  - bass: user-toggled playing — centered bass-heavy simulated groove
  *  - live: Web Audio AnalyserNode on a same-origin <video> (self-hosted clips)
- *  - ext:  a cross-origin player (YouTube) is playing; its audio can't be read, so a simulated pattern is drawn
+ *  - ext:  a cross-origin player (YouTube) is playing; its audio can't be read, so the same
+ *          centered bass pattern is drawn
  *
  * Bar approach after codepen.io/nfj525/pen/rVBaab (AnalyserNode + getByteFrequencyData), restyled to the site palette.
  */
-export type EqMode = 'idle' | 'live' | 'ext';
+import { centeredBassTargets } from './bass-targets';
+
+export type EqMode = 'idle' | 'bass' | 'live' | 'ext';
 
 export interface HeadUnitEqOptions {
   bars?: number;
@@ -47,6 +51,7 @@ export class HeadUnitEQ {
   private readonly io: IntersectionObserver;
   private raf = 0;
   private visible = true;
+  private pageVisible = true;
   private silentFrames = 0;
   private d = 1;
   private mode: EqMode = 'idle';
@@ -73,6 +78,8 @@ export class HeadUnitEQ {
     });
     this.io.observe(c);
     this.reducedQuery.addEventListener('change', this.onReducedChange);
+    this.pageVisible = !document.hidden;
+    document.addEventListener('visibilitychange', this.onVisibility);
     this.resize();
     this.schedule();
   }
@@ -132,6 +139,7 @@ export class HeadUnitEQ {
     this.ro.disconnect();
     this.io.disconnect();
     this.reducedQuery.removeEventListener('change', this.onReducedChange);
+    document.removeEventListener('visibilitychange', this.onVisibility);
     void this.audio?.ctx.close();
     this.audio = null;
   }
@@ -139,6 +147,11 @@ export class HeadUnitEQ {
   private readonly onReducedChange = () => {
     this.schedule();
     this.drawStatic();
+  };
+
+  private readonly onVisibility = () => {
+    this.pageVisible = !document.hidden;
+    this.schedule();
   };
 
   private resize() {
@@ -150,11 +163,11 @@ export class HeadUnitEQ {
     this.drawStatic();
   }
 
-  /** Run the rAF loop only when visible, not destroyed, and motion is allowed. */
+  /** Run the rAF loop only when visible, the tab is in the foreground, not destroyed, and motion is allowed. */
   private schedule() {
     cancelAnimationFrame(this.raf);
     this.raf = 0;
-    if (this.destroyed || !this.visible || this.reduced) return;
+    if (this.destroyed || !this.visible || !this.pageVisible || this.reduced) return;
     this.raf = requestAnimationFrame(this.frame);
   }
 
@@ -166,7 +179,7 @@ export class HeadUnitEQ {
   /** Reduced motion (or before the first frame): one settled frame of the current mode, no animation. */
   private drawStatic() {
     if (this.destroyed) return;
-    const tg = this.mode === 'idle' ? this.targets(0) : this.simulated(1.2, false);
+    const tg = this.mode === 'idle' ? this.targets(0) : centeredBassTargets(1.2, this.bars, false);
     this.val.set(tg);
     this.peak.set(tg);
     this.draw(tg, true);
@@ -193,21 +206,12 @@ export class HeadUnitEQ {
       if (this.silentFrames === 90) this.opts.onSilence?.();
       return out;
     }
-    if (this.mode === 'ext' || this.mode === 'live') return this.simulated(t, true);
+    if (this.mode === 'ext' || this.mode === 'live' || this.mode === 'bass') {
+      return centeredBassTargets(t, n, true);
+    }
     const out = new Float32Array(n);
     for (let i = 0; i < n; i++) {
       out[i] = 0.16 + 0.11 * Math.sin(t * 0.7 + i * 0.33) + 0.08 * Math.sin(t * 1.15 - i * 0.61) + 0.05 * Math.sin(t * 0.37 + i * 1.7);
-    }
-    return out;
-  }
-
-  /** Simulated "playing" pattern for players whose audio can't be read. */
-  private simulated(t: number, noise: boolean): Float32Array {
-    const n = this.bars, out = new Float32Array(n);
-    const beat = Math.pow(Math.max(0, Math.sin(t * Math.PI * 2.1)), 6);
-    for (let i = 0; i < n; i++) {
-      const x = i / n, tilt = 1 - x * 0.55;
-      out[i] = Math.min(1, tilt * (0.28 + 0.22 * Math.sin(t * 3.1 + i * 0.7) * Math.sin(t * 1.3 + i * 0.21) + 0.3 * beat * (1 - x)) + (noise ? 0.12 * Math.random() : 0.06));
     }
     return out;
   }

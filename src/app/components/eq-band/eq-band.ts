@@ -6,13 +6,22 @@ import { HeadUnitEQ } from '../../shared/eq/head-unit-eq';
 
 const barsFor = (w: number) => (w < 600 ? 30 : 72);
 
-/** Full-width hero EQ band. Idle drift by default; reacts while a video on the page plays. */
+/** Full-width hero EQ band. Idle drift by default; the VFD status toggles a centered bass groove. */
 @Component({
   selector: 'app-eq-band',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="r">
-      <span aria-live="polite"><b [class.on]="mode() !== 'idle'">● {{ status() }}</b> · {{ detail() }}</span>
+      <span aria-live="polite">
+        <button
+          type="button"
+          class="st"
+          [class.on]="playing()"
+          [attr.aria-pressed]="playing()"
+          (click)="toggle()"
+        ><span aria-hidden="true">● </span>{{ status() }}</button>
+        · {{ detail() }}
+      </span>
     </div>
     <canvas #c aria-hidden="true"></canvas>
   `,
@@ -22,8 +31,9 @@ export class EqBand {
   private readonly svc = inject(EqService);
   private readonly canvas = viewChild.required<ElementRef<HTMLCanvasElement>>('c');
   readonly mode = this.svc.mode;
-  readonly status = computed(() => (this.mode() === 'idle' ? 'IDLE' : 'PLAYING'));
-  readonly detail = computed(() => (this.mode() === 'idle' ? 'AMBIENT' : this.svc.label() || 'NOW PLAYING'));
+  readonly playing = computed(() => this.mode() !== 'idle');
+  readonly status = computed(() => (this.playing() ? 'PLAYING' : 'IDLE'));
+  readonly detail = computed(() => (this.mode() === 'idle' ? 'AMBIENT' : this.svc.label() || 'SIMULATED'));
 
   constructor() {
     let eq: HeadUnitEQ | undefined;
@@ -48,5 +58,9 @@ export class EqBand {
         }
       });
     });
+  }
+
+  toggle() {
+    this.svc.togglePreferred();
   }
 }
