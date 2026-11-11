@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, signal, viewChild } from '@angular/core';
 import { FEATURED, FeaturedCard, WPT_PAPER_CARD } from '../../data/home';
 import { videosFor } from '../../data/videos';
-import { IEEE_PAPER, PCM_PHOTOS, PCM_ROUTE_LOOP, SUMO_CARD_CLIP, WPT_CARD_CLIP, WPT_MISALIGNMENT_PHOTO } from '../../data/media';
+import { IEEE_PAPER, PCM_MAP_LOOP, PCM_PHOTOS, PCM_ROUTE_LOOP, SUMO_CARD_CLIP, WPT_CARD_CLIP, WPT_MISALIGNMENT_PHOTO } from '../../data/media';
 import { YtEmbed } from '../../shared/yt-embed/yt-embed';
 import { InlineVideo } from '../../shared/inline-video/inline-video';
 import { PdfViewer } from '../../shared/pdf-viewer/pdf-viewer';
@@ -26,6 +26,7 @@ export class Featured {
   readonly paperCard = WPT_PAPER_CARD;
   readonly misalign = WPT_MISALIGNMENT_PHOTO;
   readonly routeLoop = PCM_ROUTE_LOOP;
+  readonly mapLoop = PCM_MAP_LOOP;
   readonly pcmPhotos = PCM_PHOTOS;
   readonly clipPlaying = signal(false);
   /** Photo shown in the popup (WPT lab readout or a PCM strip photo); full-size file loads only while open. */

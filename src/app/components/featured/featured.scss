@@ -16,10 +16,10 @@
   .badge.r.gold { color: #ffd34d; border-color: #ffd34d88; }
   /* PCM spans the full row on top; its media sits beside the text on wide screens. */
   .card.wide { grid-column: 1 / -1; }
-  /* PCM media strip: silent route-map loop + two photos, full card width under the video and text. */
-  .pstrip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 12px 14px 14px; border-top: 1px solid #1f51ff55; background: #07070d; }
+  /* PCM media strip: two silent loops + two photos, full card width under the video and text. */
+  .pstrip { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 12px 14px 14px; border-top: 1px solid #1f51ff55; background: #07070d; }
   .ptile { margin: 0; min-width: 0; }
-  .ptile app-loop-clip, .ptile button { display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border: 1px solid #c0c6cf26; border-radius: 4px; background: #000; }
+  .ptile app-loop-clip, .ptile button { display: block; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid #c0c6cf26; border-radius: 4px; background: #000; }
   .ptile button { padding: 0; cursor: zoom-in; transition: border-color .15s; }
   .ptile button:hover, .ptile button:focus-visible { border-color: var(--cyan); outline: none; }
   .ptile img { width: 100%; height: 100%; object-fit: cover; display: block; user-select: none; }

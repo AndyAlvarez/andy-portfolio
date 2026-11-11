@@ -54,6 +54,10 @@
               <app-loop-clip [src]="routeLoop.src" [poster]="routeLoop.poster" />
               <figcaption>{{ routeLoop.caption }}</figcaption>
             </figure>
+            <figure class="ptile vid">
+              <app-loop-clip [src]="mapLoop.src" [poster]="mapLoop.poster" />
+              <figcaption>{{ mapLoop.caption }}</figcaption>
+            </figure>
             @for (p of pcmPhotos; track p.src) {
               <figure class="ptile">
                 <button type="button" (click)="openPhoto(p.src, p.alt, p.caption)" [attr.aria-label]="'Enlarge photo: ' + p.caption">

@@ -42,7 +42,7 @@
   .paperlink small { font-size: 12px; color: var(--mut); }
   .foot { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--mut); }
 
-  .pstrip { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0 16px 16px; }
+  .pstrip { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 16px 16px; }
   .ptile { margin: 0; min-width: 0; }
   .ptile app-loop-clip, .ptile button { display: block; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--r2); background: #000; }
   .ptile button { all: unset; display: block; width: 100%; aspect-ratio: 16 / 10; overflow: hidden; border-radius: var(--r2); cursor: zoom-in; box-sizing: border-box; border: 1px solid transparent; transition: border-color .15s; }
@@ -88,6 +88,7 @@
     .cb { padding: 20px; }
     .cim.diagram { aspect-ratio: auto; height: 291px; }
     .pstrip { gap: 8px; }
+    .ptile.vid { grid-column: 1 / -1; }
     .ptile figcaption { font-size: 11px; }
     .paper-in { width: 62px; height: 82px; right: 8px; bottom: 8px; }
     .photo-in { width: 84px; height: 58px; left: 8px; bottom: 8px; }
