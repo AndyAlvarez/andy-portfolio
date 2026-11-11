@@ -16,7 +16,7 @@ export const PROFILE = {
   lede: 'I build software for hardware that runs in the real world, from microcontroller projects to Linux edge devices and full-stack apps.',
   /** Hero skill rows. */
   skills: [
-    { group: 'Edge systems', items: ['C', 'C++', 'Arduino', 'ESP32', 'Raspberry Pi', 'Jetson', 'State machines', 'TCP/UDP', 'ROS integration'] },
+    { group: 'Edge systems', items: ['C', 'C++', 'Arduino', 'ESP32', 'Raspberry Pi', 'NVIDIA Jetson', 'State machines', 'TCP/UDP', 'ROS integration'] },
     { group: 'Full-stack & data', items: ['TypeScript', 'Angular', 'Node.js', 'Python', 'PostgreSQL', 'TimescaleDB', 'Redis', 'REST APIs', 'Docker', 'AWS'] },
   ],
   bullets: [
